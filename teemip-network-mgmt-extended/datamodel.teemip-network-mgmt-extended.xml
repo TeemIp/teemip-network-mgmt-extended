@@ -2038,6 +2038,14 @@
               </dashlet>
             </dashlets>
           </cell>
+          <cell id="teemip_connectivity" _delta="must_exist">
+            <dashlets>
+              <dashlet id="teemip-snmp_credentials" xsi:type="DashletBadge" _delta="define">
+                <rank>50</rank>
+                <class>SnmpCredentials</class>
+              </dashlet>
+            </dashlets>
+          </cell>
         </cells>
       </definition>
     </menu>
@@ -2057,20 +2065,6 @@
               <dashlet id="teemip-1106" xsi:type="DashletBadge" _delta="define">
                 <rank>5</rank>
                 <class>InterfaceConnector</class>
-              </dashlet>
-            </dashlets>
-          </cell>
-        </cells>
-      </definition>
-    </menu>
-    <menu id="IPSpace" _delta="must_exist">
-      <definition>
-        <cells>
-          <cell id="teemip-300" _delta="must_exist">
-            <dashlets>
-              <dashlet id="teemip-snmp_credentials" xsi:type="DashletBadge" _delta="define">
-                <rank>6</rank>
-                <class>SnmpCredentials</class>
               </dashlet>
             </dashlets>
           </cell>

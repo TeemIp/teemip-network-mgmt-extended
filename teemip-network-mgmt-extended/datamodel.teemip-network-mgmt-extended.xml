@@ -1694,6 +1694,9 @@
             <attribute id="name"/>
           </attributes>
         </reconsiliation>
+        <style>
+          <icon>asset/img/icons8-switch-48-lock.png</icon>
+        </style>
       </properties>
       <fields>
         <field id="org_id" xsi:type="AttributeExternalKey">

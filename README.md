@@ -1,4 +1,4 @@
-# ![](https://wiki.teemip.net/lib/exe/fetch.php?media=extensions:icons8-stack.png) TeemIp Network Management Extended
+# ![](https://wiki.teemip.net/lib/exe/fetch.php?media=extensions:picto_networkmanagementextended.png) TeemIp Network Management Extended
 
 TeemIp extension that provides advanced classes for network management.
 

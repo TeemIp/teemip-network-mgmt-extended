@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Set>
+	<ClusterNetwork alias="ClusterNetwork" id="301">
+		<name>Net Cluster 1</name>
+		<description>Cluster Network that group 2 network switches together</description>
+		<org_id>2</org_id>
+		<business_criticity>medium</business_criticity>
+		<move2production>2023-12-14</move2production>
+		<status>production</status>
+		<type>highavailability</type>
+		<mode>active_standby</mode>
+		<redundancy>1</redundancy>
+	</ClusterNetwork>
+</Set>

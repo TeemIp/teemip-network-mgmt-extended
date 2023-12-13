@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Set>
+	<Model alias="Model" id="367">
+		<name>PS HP 3600</name>
+		<brand_id>1</brand_id>
+		<type>NetworkDevice</type>
+	</Model>
+</Set>

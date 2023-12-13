@@ -35,6 +35,18 @@ SetupWebPage::AddModule(
 			'data/data.sample.InterfaceConnector.xml',
 			'data/data.sample.InterfaceSpeed.xml',
 			'data/data.sample.Layer2Protocol.xml',
+			'data/data.sample.Model.xml',
+			'data/data.sample.SnmpCredentials.xml',
+			'data/data.sample.ClusterNetwork.xml',
+			'data/data.sample.lnkClusterNetworkToIPAddress.xml',
+			'data/data.sample.NetworkDevice.xml',
+			'data/data.sample.NetworkDeviceComponent.xml',
+			'data/data.sample.AggregateLink.xml',
+			'data/data.sample.PhysicalInterface.xml',
+			'data/data.sample.NetworkDeviceVirtualInterface.xml',
+			'data/data.sample.lnkIPInterfaceToIPAddress.xml',
+			'data/data.sample.NetworkFlowCapacity.xml',
+			'data/data.sample.NetworkFlow.xml',
 		),
 
 		// Documentation

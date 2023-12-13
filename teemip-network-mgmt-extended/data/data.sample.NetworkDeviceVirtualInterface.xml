@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Set>
+	<NetworkDeviceVirtualInterface alias="NetworkDeviceVirtualInterface" id="1078">
+		<name>VI #5</name>
+		<comment>No specific comment</comment>
+		<macaddress>00:97:af:cc:10:48</macaddress>
+		<interfacespeed_id>2</interfacespeed_id>
+		<layer2protocol_id>1</layer2protocol_id>
+		<networkdevice_id>311</networkdevice_id>
+		<status>active</status>
+	</NetworkDeviceVirtualInterface>
+</Set>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Set>
+	<lnkClusterNetworkToIPAddress alias="lnkClusterNetworkToIPAddress" id="361">
+		<clusternetwork_id>301</clusternetwork_id>
+		<ipaddress_id>40</ipaddress_id>
+	</lnkClusterNetworkToIPAddress>
+</Set>

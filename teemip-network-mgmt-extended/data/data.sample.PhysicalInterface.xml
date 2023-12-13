@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Set>
+	<PhysicalInterface alias="PhysicalInterface" id="321">
+		<name>eth1</name>
+		<macaddress>00:11:22:33:44:55</macaddress>
+		<interfaceconnector_id>1</interfaceconnector_id>
+		<interfacespeed_id>2</interfacespeed_id>
+		<layer2protocol_id>1</layer2protocol_id>
+		<connectableci_id>311</connectableci_id>
+		<status>active</status>
+		<interfaceconnector_id>1</interfaceconnector_id>
+	</PhysicalInterface>
+	<PhysicalInterface alias="PhysicalInterface" id="322">
+		<name>eth1</name>
+		<macaddress>00:AA:22:33:44:55</macaddress>
+		<interfaceconnector_id>1</interfaceconnector_id>
+		<interfacespeed_id>2</interfacespeed_id>
+		<layer2protocol_id>1</layer2protocol_id>
+		<connectableci_id>311</connectableci_id>
+		<status>active</status>
+	</PhysicalInterface>
+	<PhysicalInterface alias="PhysicalInterface" id="323">
+		<name>eth1</name>
+		<macaddress>00:33:22:33:44:55</macaddress>
+		<interfaceconnector_id>1</interfaceconnector_id>
+		<interfacespeed_id>2</interfacespeed_id>
+		<layer2protocol_id>1</layer2protocol_id>
+		<connectableci_id>312</connectableci_id>
+		<status>active</status>
+		<interfaceconnector_id>1</interfaceconnector_id>
+		<aggregatelink_id>331</aggregatelink_id>
+	</PhysicalInterface>
+	<PhysicalInterface alias="PhysicalInterface" id="324">
+		<name>eth1</name>
+		<macaddress>00:BB:22:33:44:55</macaddress>
+		<interfaceconnector_id>1</interfaceconnector_id>
+		<interfacespeed_id>2</interfacespeed_id>
+		<layer2protocol_id>1</layer2protocol_id>
+		<connectableci_id>312</connectableci_id>
+		<status>active</status>
+		<aggregatelink_id>331</aggregatelink_id>
+	</PhysicalInterface>
+</Set>

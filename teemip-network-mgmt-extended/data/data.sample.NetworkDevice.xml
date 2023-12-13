@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Set>
+	<NetworkDevice alias="NetworkDevice" id="311">
+		<name>Switch3</name>
+		<org_id>2</org_id>
+		<business_criticity>low</business_criticity>
+		<move2production>2024-12-14</move2production>
+		<serialnumber>12345-AB</serialnumber>
+		<location_id>2</location_id>
+		<status>production</status>
+		<brand_id>7</brand_id>
+		<model_id>5</model_id>
+		<asset_number>98765432-1</asset_number>
+		<purchase_date>2024-09-24</purchase_date>
+		<networkdevicetype_id>11</networkdevicetype_id>
+		<clusternetwork_id>301</clusternetwork_id>
+		<clusternetwork_role>active</clusternetwork_role>
+		<snmpcredentials_id>351</snmpcredentials_id>
+	</NetworkDevice>
+	<NetworkDevice alias="NetworkDevice" id="312">
+		<name>Switch4</name>
+		<org_id>2</org_id>
+		<business_criticity>low</business_criticity>
+		<move2production>2024-12-14</move2production>
+		<serialnumber>12345-CD</serialnumber>
+		<location_id>2</location_id>
+		<status>production</status>
+		<brand_id>7</brand_id>
+		<model_id>5</model_id>
+		<asset_number>98765432-5</asset_number>
+		<purchase_date>2024-09-24</purchase_date>
+		<networkdevicetype_id>11</networkdevicetype_id>
+	</NetworkDevice>
+	<NetworkDevice alias="NetworkDevice" id="6">
+		<clusternetwork_id>301</clusternetwork_id>
+		<clusternetwork_role>standby</clusternetwork_role>
+	</NetworkDevice>
+</Set>

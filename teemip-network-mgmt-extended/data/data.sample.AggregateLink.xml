@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Set>
+	<AggregateLink alias="AggregateLink" id="331">
+		<name>Trunk #1</name>
+		<macaddress>00:97:af:cc:10:48</macaddress>
+		<layer2protocol_id>2</layer2protocol_id>
+		<status>active</status>
+		<description>Aggregate between main switch &amp; router</description>
+		<connectableci_id>312</connectableci_id>
+	</AggregateLink>
+	<AggregateLink alias="AggregateLink" id="332">
+		<name>Trunk #2</name>
+		<operational_status>active</operational_status>
+		<layer2protocol_id>2</layer2protocol_id>
+		<connectableci_id>5</connectableci_id>
+		<peer_id>331</peer_id>
+	</AggregateLink>
+</Set>

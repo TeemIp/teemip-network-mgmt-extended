@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Set>
+	<NetworkFlow alias="NetworkFlow" id="371">
+		<name>CRM Backup #1</name>
+		<org_id>3</org_id>
+		<protocol>UDP/TCP</protocol>
+		<source_port>11223</source_port>
+		<dest_port>44556</dest_port>
+		<source_ci_id>2</source_ci_id>
+		<dest_ci_id>311</dest_ci_id>
+		<status>production</status>
+		<move2production>2023-11-06</move2production>
+		<business_criticity>low</business_criticity>
+		<networkflowcapacity_id>365</networkflowcapacity_id>
+	</NetworkFlow>
+	<NetworkFlow alias="NetworkFlow" id="372">
+		<name>CRM Backup #2</name>
+		<org_id>3</org_id>
+		<protocol>UDP/TCP</protocol>
+		<source_port>123456</source_port>
+		<dest_port>222</dest_port>
+		<source_ci_id>311</source_ci_id>
+		<dest_ci_id>3</dest_ci_id>
+		<status>production</status>
+		<move2production>2023-11-06</move2production>
+		<business_criticity>low</business_criticity>
+	</NetworkFlow>
+</Set>

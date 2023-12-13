@@ -6,7 +6,7 @@
 
 SetupWebPage::AddModule(
 	__FILE__, // Path to the current file, all other file names are relative to the directory containing this file
-	'teemip-network-mgmt-extended/3.1.1',
+	'teemip-network-mgmt-extended/3.1.2',
 	array(
 		// Identification
 		//
@@ -16,6 +16,7 @@ SetupWebPage::AddModule(
 		// Setup
 		//
 		'dependencies' => array(
+			'teemip-framework/3.1.4',
 			'teemip-ip-mgmt/3.1.0',
 			'teemip-config-mgmt-adaptor/3.1.0',
 			'teemip-network-mgmt/3.1.0',

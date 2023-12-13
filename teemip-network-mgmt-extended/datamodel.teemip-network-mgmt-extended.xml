@@ -692,7 +692,7 @@
             </value>
           </values>
           <sql>type</sql>
-          <default_value></default_value>
+          <default_value/>
           <is_null_allowed>true</is_null_allowed>
           <display_style>list</display_style>
         </field>
@@ -709,7 +709,7 @@
             </value>
           </values>
           <sql>mode</sql>
-          <default_value></default_value>
+          <default_value/>
           <is_null_allowed>true</is_null_allowed>
           <display_style>list</display_style>
         </field>
@@ -1083,7 +1083,7 @@
             </value>
           </values>
           <sql>clusternetwork_role</sql>
-          <default_value></default_value>
+          <default_value/>
           <is_null_allowed>true</is_null_allowed>
           <display_style>radio_horizontal</display_style>
         </field>
@@ -2222,12 +2222,12 @@
           <default_value/>
           <is_null_allowed>false</is_null_allowed>
         </field>
-        <field id="source_port" xsi:type="AttributeDomainName">
+        <field id="source_port" xsi:type="AttributeString">
           <sql>source_port</sql>
           <default_value/>
           <is_null_allowed>true</is_null_allowed>
         </field>
-        <field id="dest_port" xsi:type="AttributeDomainName">
+        <field id="dest_port" xsi:type="AttributeString">
           <sql>dest_port</sql>
           <default_value/>
           <is_null_allowed>true</is_null_allowed>
@@ -2317,7 +2317,7 @@
       </fields>
       <methods/>
       <relations>
-        <relation id="networkflow" _delta="define">
+        <relation id="networkflow">
           <neighbours>
             <neighbour id="dest_ci_id">
               <attribute>dest_ci_id</attribute>

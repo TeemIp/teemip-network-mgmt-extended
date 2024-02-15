@@ -12,6 +12,7 @@
 		<move2production>2023-11-06</move2production>
 		<business_criticity>low</business_criticity>
 		<networkflowcapacity_id>365</networkflowcapacity_id>
+		<interfacespeed_id>2</interfacespeed_id>
 	</NetworkFlow>
 	<NetworkFlow alias="NetworkFlow" id="372">
 		<name>CRM Backup #2</name>

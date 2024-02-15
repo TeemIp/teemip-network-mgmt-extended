@@ -2314,6 +2314,12 @@
           <is_null_allowed>true</is_null_allowed>
           <on_target_delete>DEL_AUTO</on_target_delete>
         </field>
+        <field id="interfacespeed_id" xsi:type="AttributeExternalKey" _delta="define">
+          <sql>interfacespeed_id</sql>
+          <target_class>InterfaceSpeed</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
       </fields>
       <methods/>
       <relations>
@@ -2381,6 +2387,9 @@
                     <item id="networkflowcapacity_id">
                       <rank>60</rank>
                     </item>
+                    <item id="interfacespeed_id">
+                      <rank>70</rank>
+                    </item>
                   </items>
                 </item>
               </items>
@@ -2406,6 +2415,9 @@
             </item>
             <item id="networkflowcapacity_id">
               <rank>60</rank>
+            </item>
+            <item id="interfacespeed_id">
+              <rank>70</rank>
             </item>
           </items>
         </default_search>
@@ -2438,6 +2450,9 @@
             <item id="networkflowcapacity_id">
               <rank>90</rank>
             </item>
+            <item id="interfacespeed_id">
+              <rank>100</rank>
+            </item>
           </items>
         </search>
         <list>
@@ -2468,6 +2483,9 @@
             </item>
             <item id="networkflowcapacity_id">
               <rank>90</rank>
+            </item>
+            <item id="interfacespeed_id">
+              <rank>100</rank>
             </item>
           </items>
         </list>

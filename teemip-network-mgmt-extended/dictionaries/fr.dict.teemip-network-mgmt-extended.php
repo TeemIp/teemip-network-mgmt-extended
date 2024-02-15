@@ -302,7 +302,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 
 Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:NetworkFlowCapacity' => 'Capacité d\'un flux',
-	'Class:NetworkFlowCapacity+' => 'Capacité fournie par un flux réseau',
+	'Class:NetworkFlowCapacity+' => 'Spécifie la taille maximum des paquets ou des bursts sur un flux réseau',
 	'Class:NetworkFlowCapacity/Attribute:description' => 'Description',
 	'Class:NetworkFlowCapacity/Attribute:description+' => '',
 	'Class:NetworkFlowCapacity/Attribute:networkflows_list' => 'Flux réseau',
@@ -368,7 +368,9 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:NetworkFlow/Attribute:business_criticity/Value:high' => 'Haute',
 	'Class:NetworkFlow/Attribute:business_criticity/Value:high+' => '',
 	'Class:NetworkFlow/Attribute:networkflowcapacity_id' => 'Capacité',
-	'Class:NetworkFlow/Attribute:networkflowcapacity_id+' => '',
+	'Class:NetworkFlow/Attribute:networkflowcapacity_id+' => 'Taille maximum des paquets ou bursts',
+	'Class:NetworkFlow/Attribute:interfacespeed_id' => 'Bande Passante',
+	'Class:NetworkFlow/Attribute:interfacespeed_id+' => 'Vitesse maximum disponible',
 ));
 
 //

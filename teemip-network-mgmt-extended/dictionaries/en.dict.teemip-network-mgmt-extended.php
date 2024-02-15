@@ -302,7 +302,7 @@ Dict::Add('EN US', 'English', 'English', array(
 
 Dict::Add('EN US', 'English', 'English', array(
 	'Class:NetworkFlowCapacity' => 'Flow Capacity',
-	'Class:NetworkFlowCapacity+' => 'Capacity provided by a Network Flow',
+	'Class:NetworkFlowCapacity+' => 'Specifies how big packets or bursts can be on a Network Flow',
 	'Class:NetworkFlowCapacity/Attribute:description' => 'Description',
 	'Class:NetworkFlowCapacity/Attribute:description+' => '',
 	'Class:NetworkFlowCapacity/Attribute:networkflows_list' => 'Network flows',
@@ -368,7 +368,9 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:NetworkFlow/Attribute:business_criticity/Value:high' => 'High',
 	'Class:NetworkFlow/Attribute:business_criticity/Value:high+' => '',
 	'Class:NetworkFlow/Attribute:networkflowcapacity_id' => 'Capacity',
-	'Class:NetworkFlow/Attribute:networkflowcapacity_id+' => '',
+	'Class:NetworkFlow/Attribute:networkflowcapacity_id+' => 'Maximum size of packets or bursts',
+	'Class:NetworkFlow/Attribute:interfacespeed_id' => 'Bandwidth',
+	'Class:NetworkFlow/Attribute:interfacespeed_id+' => 'Maximum speed available',
 ));
 
 //

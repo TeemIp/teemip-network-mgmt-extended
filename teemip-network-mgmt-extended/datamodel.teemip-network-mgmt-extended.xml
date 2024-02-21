@@ -764,7 +764,7 @@
             $oConnectableCIsSet =  new CMDBObjectSet(DBObjectSearch::FromOQL($sOQL), array(), array('id' => $this->GetKey()));
             $sName = Dict::S('Class:ClusterNetwork/Tab:connectablecis_list');
             $sTitle = Dict::S('Class:ClusterNetwork/Tab:connectablecis_list+');
-            TeemIp\TeemIp\Extension\Framework\Helper\IPUtils::DisplayTabContent($oP, $sName, 'connectable_cis', 'ConnectableCI', $sTitle, '', $oConnectableCIsSet);
+            TeemIp\TeemIp\Extension\Framework\Helper\IPUtils::DisplayTabContent($oP, $sName, 'connectable_cis', 'ConnectableCI', $sTitle, '', $oConnectableCIsSet, false);
        }
     }]]></code>
         </method>

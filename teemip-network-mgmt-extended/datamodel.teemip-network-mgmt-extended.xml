@@ -1210,6 +1210,13 @@
             </item>
           </items>
         </details>
+        <summary>
+          <items>
+            <item id="picture" _delta="define_if_not_exists">
+              <rank>30</rank>
+            </item>
+          </items>
+        </summary>
       </presentation>
     </class>
     <class id="AggregateLink" _delta="define">

@@ -165,12 +165,23 @@ Dict::Add('EN US', 'English', 'English', array(
 ));
 
 //
+// Class: Brand
+//
+
+Dict::Add('EN US', 'English', 'English', array(
+	'Class:Brand/Attribute:logo' => 'Logo',
+	'Class:Brand/Attribute:logo+' => 'Logo of the brand to ease its identification',
+));
+
+//
 // Class: Model
 //
 
 Dict::Add('EN US', 'English', 'English', array(
 	'Class:Model/Attribute:type/Value:NetworkDeviceComponent' => 'Network Device Component',
 	'Class:Model/Attribute:type/Value:NetworkDeviceComponent+' => '',
+	'Class:Model/Attribute:picture' => 'Picture',
+	'Class:Model/Attribute:picture+' => 'Image of the model to ease its identification',
 ));
 
 //

@@ -2672,12 +2672,4 @@
       </profile>
     </profiles>
   </user_rights>
-  <dictionaries>
-    <dictionary id="EN US">
-      <entries>
-        <entry id="Class:Brand/Attribute:logo" _delta="define_if_not_exists">Logo</entry>
-        <entry id="Class:Model/Attribute:picture" _delta="define_if_not_exists">Picture</entry>
-      </entries>
-    </dictionary>
-  </dictionaries>
 </itop_design>

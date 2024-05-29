@@ -164,12 +164,23 @@ Dict::Add('FR FR', 'French', 'Français', array(
 ));
 
 //
+// Class: Brand
+//
+
+Dict::Add('FR FR', 'French', 'Français', array(
+	'Class:Brand/Attribute:logo' => 'Logo',
+	'Class:Brand/Attribute:logo+' => 'Logo de la marque, facilitant son identification',
+));
+
+//
 // Class: Model
 //
 
 Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Model/Attribute:type/Value:NetworkDeviceComponent' => 'Composant d\'Equipement Réseau',
 	'Class:Model/Attribute:type/Value:NetworkDeviceComponent+' => '',
+	'Class:Model/Attribute:picture' => 'Image',
+	'Class:Model/Attribute:picture+' => 'Image du modèle, facilitant son identificationn',
 ));
 
 //

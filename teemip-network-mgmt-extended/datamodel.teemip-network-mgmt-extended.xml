@@ -2546,6 +2546,14 @@
             </item>
           </items>
         </summary>
+        <list>
+          <items>
+            <item id="name" _delta="delete_if_exists"/>
+            <item id="logo" _delta="define_if_not_exists">
+              <rank>10</rank>
+            </item>
+          </items>
+        </list>
       </presentation>
     </class>
   </classes>

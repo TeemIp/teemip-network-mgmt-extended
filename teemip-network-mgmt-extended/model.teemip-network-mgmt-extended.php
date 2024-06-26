@@ -1,4 +1,8 @@
 <?php
+/*
+ * @copyright   Copyright (C) 2010-2024 TeemIp
+ * @license     http://opensource.org/licenses/AGPL-3.0
+ */
 
 // PHP Data Model definition file
 

@@ -92,6 +92,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:ClusterNetwork/Attribute:status/Value:production+' => '',
 	'Class:ClusterNetwork/Attribute:status/Value:implementation' => 'Implémentation',
 	'Class:ClusterNetwork/Attribute:status/Value:implementation+' => '',
+    'Class:ClusterNetwork/Attribute:status/Value:obsolete' => 'Obsolète',
+    'Class:ClusterNetwork/Attribute:status/Value:obsolete+' => '',
 	'Class:ClusterNetwork/Attribute:networkdevices_list' => 'Nœuds',
 	'Class:ClusterNetwork/Attribute:networkdevices_list+' => 'Liste de tous les équipements réseau du cluster',
 	'Class:ClusterNetwork/Attribute:ips_list' => 'Adresses IP',

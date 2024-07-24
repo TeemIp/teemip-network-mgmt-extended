@@ -657,6 +657,9 @@
             <value id="implementation">
               <code>implementation</code>
             </value>
+            <value id="obsolete">
+              <code>obsolete</code>
+            </value>
           </values>
           <sql>status</sql>
           <default_value>production</default_value>

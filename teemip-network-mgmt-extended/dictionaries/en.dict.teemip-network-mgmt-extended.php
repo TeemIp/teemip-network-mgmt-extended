@@ -92,6 +92,8 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:ClusterNetwork/Attribute:status/Value:production+' => '',
 	'Class:ClusterNetwork/Attribute:status/Value:implementation' => 'Implementation',
 	'Class:ClusterNetwork/Attribute:status/Value:implementation+' => '',
+    'Class:ClusterNetwork/Attribute:status/Value:obsolete' => 'Obsolete',
+    'Class:ClusterNetwork/Attribute:status/Value:obsolete+' => '',
 	'Class:ClusterNetwork/Attribute:networkdevices_list' => 'Nodes',
 	'Class:ClusterNetwork/Attribute:networkdevices_list+' => 'List of all network devices within the cluster',
 	'Class:ClusterNetwork/Attribute:ips_list' => 'IP addresses',

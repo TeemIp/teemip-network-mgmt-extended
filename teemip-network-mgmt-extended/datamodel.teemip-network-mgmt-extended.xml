@@ -744,9 +744,8 @@
         // Execute parent function first
         parent::DisplayBareRelations($oP, $bEditMode);
 
-        if (!$bEditMode)
-        {
-           // Search for ConnectableCIs linked to NetworkDevices that make the cluster
+        if ($this->GetDisplayMode() == static::ENUM_DISPLAY_MODE_VIEW) {
+            // Search for ConnectableCIs linked to NetworkDevices that make the cluster
             $sOQL = "SELECT ConnectableCI AS c JOIN lnkConnectableCIToNetworkDevice AS l ON l.connectableci_id = c.id JOIN NetworkDevice AS nd ON l.networkdevice_id = nd.id JOIN ClusterNetwork AS cn ON nd.clusternetwork_id = cn.id WHERE cn.id = :id AND l.connection_type='downlink'";
             $oConnectableCIsSet =  new CMDBObjectSet(DBObjectSearch::FromOQL($sOQL), array(), array('id' => $this->GetKey()));
             $sName = Dict::S('Class:ClusterNetwork/Tab:connectablecis_list');

@@ -204,16 +204,20 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:AggregateLink/Attribute:status/Value:active+' => '',
 	'Class:AggregateLink/Attribute:status/Value:inactive' => 'Inactive',
 	'Class:AggregateLink/Attribute:status/Value:inactive+' => '',
-	'Class:AggregateLink/Attribute:connectableci_id' => 'Device',
-	'Class:AggregateLink/Attribute:connectableci_id+' => 'Device that hosts the aggregate link',
-	'Class:AggregateLink/Attribute:connectableci_name' => 'Device name',
-	'Class:AggregateLink/Attribute:connectableci_name+' => '',
+	'Class:AggregateLink/Attribute:functionalci_id' => 'Device',
+	'Class:AggregateLink/Attribute:functionalci_id+' => 'Device that hosts the aggregate link. It can be a Connectable CI or a VirtualMachine',
+	'Class:AggregateLink/Attribute:functionalci_name' => 'Device name',
+	'Class:AggregateLink/Attribute:functionalci_name+' => '',
 	'Class:AggregateLink/Attribute:description' => 'Description',
 	'Class:AggregateLink/Attribute:description+' => '',
 	'Class:AggregateLink/Attribute:peer_id' => 'Peer aggregate',
 	'Class:AggregateLink/Attribute:peer_id+' => 'Aggregate link of the device at the other end of this link',
-	'Class:AggregateLink/Attribute:physicalinterfaces_list' => 'Physical interfaces',
-	'Class:AggregateLink/Attribute:physicalinterfaces_list+' => '',
+    'Class:AggregateLink/Attribute:vlans_list' => 'VLANs',
+    'Class:AggregateLink/Attribute:vlans_list+' => '',
+    'Class:AggregateLink/Attribute:vrfs_list' => 'VRFs',
+    'Class:AggregateLink/Attribute:vrfs_list+' => '',
+	'Class:AggregateLink/Tab:ipinterfaces' => 'IP interfaces',
+	'Class:AggregateLink/Tab:ipinterfaces+' => 'Physical, Logical or Network Device Virtual Interfaces that make the aggregate'
 ));
 
 //

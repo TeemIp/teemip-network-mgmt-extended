@@ -1,10 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.1" load="strict">
     <classes>
+        <class id="AggregateLink" _delta="must_exist">
+            <fields>
+                <field id="functionalci_id" xsi:type="AttributeExternalKey" _delta="must_exist">
+                    <filter _delta="redefine"><![CDATA[SELECT FunctionalCI WHERE finalclass IN ('NetworkDevice', 'Server', 'VirtualMachine')]]></filter>
+                </field>
+            </fields>
+        </class>
         <class id="LogicalInterface" _delta="must_exist">
+            <fields>
+                <field id="aggregatelink_id" xsi:type="AttributeExternalKey" _delta="define">
+                    <sql>aggregatelink_id</sql>
+                    <target_class>AggregateLink</target_class>
+                    <filter><![CDATA[SELECT AggregateLink WHERE functionalci_id = :this->virtualmachine_id]]></filter>
+                    <dependencies>
+                        <attribute id="virtualmachine_id"/>
+                    </dependencies>
+                    <is_null_allowed>true</is_null_allowed>
+                    <on_target_delete>DEL_AUTO</on_target_delete>
+                </field>
+                <field id="aggregatelink_name" xsi:type="AttributeExternalField" _delta="define">
+                    <extkey_attcode>aggregatelink_id</extkey_attcode>
+                    <target_attcode>name</target_attcode>
+                </field>
+            </fields>
             <presentation>
                 <details>
                     <items>
+                        <item id="col:col1" _delta="must_exist">
+                            <items>
+                                <item id="fieldset:Class:NetworkInterface:baseinfo" _delta="must_exist">
+                                    <items>
+                                        <item id="aggregatelink_id" _delta="define">
+                                            <rank>45</rank>
+                                        </item>
+                                    </items>
+                                </item>
+                            </items>
+                        </item>
                         <item id="col:col2" _delta="must_exist">
                             <items>
                                 <item id="fieldset:Class:NetworkInterface:moreinfo" _delta="must_exist">

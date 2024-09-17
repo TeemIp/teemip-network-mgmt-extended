@@ -398,9 +398,36 @@
       </presentation>
     </class>
     <class id="NetworkDeviceVirtualInterface" _delta="must_exist">
+      <fields>
+        <field id="aggregatelink_id" xsi:type="AttributeExternalKey" _delta="define">
+          <sql>aggregatelink_id</sql>
+          <target_class>AggregateLink</target_class>
+          <filter><![CDATA[SELECT AggregateLink WHERE functionalci_id = :this->networkdevice_id]]></filter>
+          <dependencies>
+            <attribute id="networkdevice_id"/>
+          </dependencies>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="aggregatelink_name" xsi:type="AttributeExternalField" _delta="define">
+          <extkey_attcode>aggregatelink_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+      </fields>
       <presentation>
         <details>
           <items>
+            <item id="col:col1" _delta="must_exist">
+              <items>
+                <item id="fieldset:Class:NetworkInterface:baseinfo" _delta="must_exist">
+                  <items>
+                    <item id="aggregatelink_id" _delta="define">
+                      <rank>35</rank>
+                    </item>
+                  </items>
+                </item>
+              </items>
+            </item>
             <item id="col:col2" _delta="must_exist">
               <items>
                 <item id="fieldset:Class:NetworkInterface:moreinfo" _delta="must_exist">
@@ -744,7 +771,7 @@
         // Execute parent function first
         parent::DisplayBareRelations($oP, $bEditMode);
 
-        if ($this->GetDisplayMode() == static::ENUM_DISPLAY_MODE_VIEW) {
+        if ($this->GetDisplayMode() == cmdbAbstractObject::ENUM_DISPLAY_MODE_VIEW) {
             // Search for ConnectableCIs linked to NetworkDevices that make the cluster
             $sOQL = "SELECT ConnectableCI AS c JOIN lnkConnectableCIToNetworkDevice AS l ON l.connectableci_id = c.id JOIN NetworkDevice AS nd ON l.networkdevice_id = nd.id JOIN ClusterNetwork AS cn ON nd.clusternetwork_id = cn.id WHERE cn.id = :id AND l.connection_type='downlink'";
             $oConnectableCIsSet =  new CMDBObjectSet(DBObjectSearch::FromOQL($sOQL), array(), array('id' => $this->GetKey()));
@@ -1083,7 +1110,7 @@
         </field>
         <field id="aggregatelinks_list" xsi:type="AttributeLinkedSet" _delta="define">
           <linked_class>AggregateLink</linked_class>
-          <ext_key_to_me>connectableci_id</ext_key_to_me>
+          <ext_key_to_me>functionalci_id</ext_key_to_me>
           <edit_mode>add_remove</edit_mode>
           <count_min>0</count_min>
           <count_max>0</count_max>
@@ -1206,7 +1233,7 @@
       </presentation>
     </class>
     <class id="AggregateLink" _delta="define">
-      <parent>NetworkInterface</parent>
+      <parent>IPInterface</parent>
       <properties>
         <category>bizmodel,searchable,configmgmt</category>
         <abstract>false</abstract>
@@ -1217,7 +1244,7 @@
         <naming>
           <attributes>
             <attribute id="name"/>
-            <attribute id="connectableci_name"/>
+            <attribute id="functionalci_name"/>
           </attributes>
         </naming>
         <style>
@@ -1226,28 +1253,13 @@
         <reconciliation>
           <attributes>
             <attribute id="name"/>
-            <attribute id="connectableci_id"/>
-            <attribute id="connectableci_name"/>
+            <attribute id="functionalci_id"/>
+            <attribute id="functionalci_name"/>
           </attributes>
         </reconciliation>
         <uniqueness_rules/>
       </properties>
       <fields>
-        <field id="macaddress" xsi:type="AttributeMacAddress">
-          <sql>macaddress</sql>
-          <default_value/>
-          <is_null_allowed>true</is_null_allowed>
-        </field>
-        <field id="layer2protocol_id" xsi:type="AttributeExternalKey">
-          <sql>layer2protocol_id</sql>
-          <target_class>Layer2Protocol</target_class>
-          <is_null_allowed>true</is_null_allowed>
-          <on_target_delete>DEL_AUTO</on_target_delete>
-        </field>
-        <field id="layer2protocol_name" xsi:type="AttributeExternalField">
-          <extkey_attcode>layer2protocol_id</extkey_attcode>
-          <target_attcode>name</target_attcode>
-        </field>
         <field id="status" xsi:type="AttributeEnum">
           <values>
             <value id="active">
@@ -1262,30 +1274,21 @@
           <is_null_allowed>true</is_null_allowed>
           <display_style>radio_horizontal</display_style>
         </field>
-        <field id="description" xsi:type="AttributeText">
-          <sql>description</sql>
-          <default_value/>
-          <is_null_allowed>true</is_null_allowed>
-        </field>
-        <field id="connectableci_id" xsi:type="AttributeExternalKey">
-          <sql>connectableci_id</sql>
-          <target_class>ConnectableCI</target_class>
-          <filter><![CDATA[SELECT ConnectableCI WHERE finalclass IN ('NetworkDevice')]]></filter>
+        <field id="functionalci_id" xsi:type="AttributeExternalKey">
+          <sql>functionalci_id</sql>
+          <target_class>FunctionalCI</target_class>
+          <filter><![CDATA[SELECT FunctionalCI WHERE finalclass IN ('ConnectableCI')]]></filter>
           <dependencies/>
           <is_null_allowed>false</is_null_allowed>
           <on_target_delete>DEL_AUTO</on_target_delete>
         </field>
-        <field id="connectableci_name" xsi:type="AttributeExternalField">
-          <extkey_attcode>connectableci_id</extkey_attcode>
+        <field id="functionalci_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>functionalci_id</extkey_attcode>
           <target_attcode>name</target_attcode>
         </field>
         <field id="org_id" xsi:type="AttributeExternalField">
-          <extkey_attcode>connectableci_id</extkey_attcode>
+          <extkey_attcode>functionalci_id</extkey_attcode>
           <target_attcode>org_id</target_attcode>
-        </field>
-        <field id="location_id" xsi:type="AttributeExternalField">
-          <extkey_attcode>connectableci_id</extkey_attcode>
-          <target_attcode>location_id</target_attcode>
         </field>
         <field id="peer_id" xsi:type="AttributeExternalKey">
           <sql>peer_id</sql>
@@ -1299,12 +1302,20 @@
           <extkey_attcode>peer_id</extkey_attcode>
           <target_attcode>friendlyname</target_attcode>
         </field>
-        <field id="physicalinterfaces_list" xsi:type="AttributeLinkedSet">
-          <linked_class>PhysicalInterface</linked_class>
+        <field id="vlans_list" xsi:type="AttributeLinkedSetIndirect">
+          <linked_class>lnkAggregateLinkToVLAN</linked_class>
           <ext_key_to_me>aggregatelink_id</ext_key_to_me>
-          <edit_mode>add_remove</edit_mode>
           <count_min>0</count_min>
           <count_max>0</count_max>
+          <ext_key_to_remote>vlan_id</ext_key_to_remote>
+          <duplicates/>
+        </field>
+        <field id="vrfs_list" xsi:type="AttributeLinkedSetIndirect" _delta="define">
+          <linked_class>lnkAggregateLinkToVRF</linked_class>
+          <ext_key_to_me>aggregatelink_id</ext_key_to_me>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+          <ext_key_to_remote>vrf_id</ext_key_to_remote>
           <duplicates/>
         </field>
       </fields>
@@ -1388,65 +1399,91 @@
         }
 	}]]></code>
         </method>
-        <method id="GetAttributeParams" _delta="define">
+        <method id="DisplayBareRelations" _delta="define">
           <comment/>
           <static>false</static>
           <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public function GetAttributeParams($sAttCode)
+          <type>Custom</type>
+          <code><![CDATA[ public function DisplayBareRelations(WebPage $oP, $bEditMode = false)
     {
-        if ($sAttCode == 'macaddress')
-	    {
-			return('colons');
-	    }
-	    return '';
-	}]]></code>
+        // Execute parent function first
+        parent::DisplayBareRelations($oP, $bEditMode);
+
+        if ($this->GetDisplayMode() == cmdbAbstractObject::ENUM_DISPLAY_MODE_VIEW) {
+            // Search for ConnectableCIs linked to NetworkDevices that make the cluster
+            $sOQL = "SELECT PhysicalInterface AS pi WHERE pi.aggregatelink_id = :id
+               UNION SELECT LogicalInterface AS li WHERE li.aggregatelink_id = :id
+               UNION SELECT NetworkDeviceVirtualInterface AS ndvi WHERE ndvi.aggregatelink_id = :id";
+            $oIPInterfacesSet =  new CMDBObjectSet(DBObjectSearch::FromOQL($sOQL), array(), array('id' => $this->GetKey()));
+            $sName = Dict::S('Class:AggregateLink/Tab:ipinterfaces');
+            $sTitle = Dict::S('Class:AggregateLink/Tab:ipinterfaces+');
+            TeemIp\TeemIp\Extension\Framework\Helper\IPUtils::DisplayTabContent($oP, $sName, 'ipinterfaces', 'IPInterface', $sTitle, '', $oIPInterfacesSet, false);
+       }
+    }]]></code>
         </method>
       </methods>
       <presentation>
         <details>
           <items>
-          <item id="physicalinterfaces_list">
-            <rank>10</rank>
-          </item>
-          <item id="col:col1">
-            <rank>20</rank>
-            <items>
-              <item id="fieldset:Class:AggregateLink:baseinfo">
-                <rank>10</rank>
-                <items>
-                  <item id="name">
-                    <rank>20</rank>
-                  </item>
-                  <item id="macaddress">
-                    <rank>30</rank>
-                  </item>
-                  <item id="layer2protocol_id">
-                    <rank>40</rank>
-                  </item>
-                  <item id="status">
-                    <rank>50</rank>
-                  </item>
-                  <item id="connectableci_id">
-                    <rank>60</rank>
-                  </item>
-                  <item id="location_id">
-                    <rank>62</rank>
-                  </item>
-                  <item id="org_id">
-                    <rank>63</rank>
-                  </item>
-                  <item id="peer_id">
-                    <rank>70</rank>
-                  </item>
-                  <item id="description">
-                    <rank>80</rank>
-                  </item>
-                </items>
-              </item>
-            </items>
-          </item>
-        </items>
+            <item id="vlans_list">
+              <rank>10</rank>
+            </item>
+            <item id="vrfs_list">
+              <rank>20</rank>
+            </item>
+            <item id="ip_list">
+              <rank>50</rank>
+            </item>
+            <item id="col:col1">
+              <rank>60</rank>
+              <items>
+                <item id="fieldset:Class:AggregateLink:baseinfo">
+                  <rank>10</rank>
+                  <items>
+                    <item id="name">
+                      <rank>10</rank>
+                    </item>
+                    <item id="status">
+                      <rank>20</rank>
+                    </item>
+                    <item id="functionalci_id">
+                      <rank>30</rank>
+                    </item>
+                    <item id="org_id">
+                      <rank>40</rank>
+                    </item>
+                    <item id="comment">
+                      <rank>50</rank>
+                    </item>
+                  </items>
+                </item>
+              </items>
+            </item>
+            <item id="col:col2">
+              <rank>60</rank>
+              <items>
+                <item id="fieldset:Class:NetworkInterface:peerinfo">
+                  <rank>10</rank>
+                  <items>
+                    <item id="peer_id">
+                      <rank>10</rank>
+                    </item>
+                  </items>
+                </item>
+                <item id="fieldset:Class:NetworkInterface:moreinfo">
+                  <rank>20</rank>
+                  <items>
+                    <item id="macaddress">
+                      <rank>10</rank>
+                    </item>
+                    <item id="layer2protocol_id">
+                      <rank>20</rank>
+                    </item>
+                  </items>
+                </item>
+              </items>
+            </item>
+          </items>
         </details>
         <list>
           <items>
@@ -1459,7 +1496,7 @@
             <item id="status">
               <rank>30</rank>
             </item>
-            <item id="connectableci_id">
+            <item id="functionalci_id">
               <rank>40</rank>
             </item>
             <item id="peer_id">
@@ -1505,6 +1542,253 @@
             </item>
           </items>
         </search>
+      </presentation>
+    </class>
+    <class id="lnkAggregateLinkToVLAN" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <is_link>1</is_link>
+        <category>bizmodel</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>lnkaggregatelinktovlan</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="aggregatelink_device_name"/>
+            <attribute id="aggregatelink_name"/>
+            <attribute id="vlan_tag"/>
+          </attributes>
+        </naming>
+        <style>
+          <icon/>
+        </style>
+        <reconciliation>
+          <attributes>
+            <attribute id="aggregatelink_id"/>
+            <attribute id="vlan_id"/>
+          </attributes>
+        </reconciliation>
+        <uniqueness_rules>
+          <rule id="no_duplicate">
+            <attributes>
+              <attribute id="aggregatelink_id"/>
+              <attribute id="vlan_id"/>
+            </attributes>
+            <filter><![CDATA[]]></filter>
+            <disabled>false</disabled>
+            <is_blocking>true</is_blocking>
+          </rule>
+        </uniqueness_rules>
+      </properties>
+      <fields>
+        <field id="aggregatelink_id" xsi:type="AttributeExternalKey">
+          <sql>aggregatelink_id</sql>
+          <target_class>AggregateLink</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="aggregatelink_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>aggregatelink_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="aggregatelink_device_id" xsi:type="AttributeExternalField">
+          <extkey_attcode>aggregatelink_id</extkey_attcode>
+          <target_attcode>functionalci_id</target_attcode>
+        </field>
+        <field id="aggregatelink_device_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>aggregatelink_id</extkey_attcode>
+          <target_attcode>functionalci_name</target_attcode>
+        </field>
+        <field id="vlan_id" xsi:type="AttributeExternalKey">
+          <sql>vlan_id</sql>
+          <target_class>VLAN</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="vlan_tag" xsi:type="AttributeExternalField">
+          <extkey_attcode>vlan_id</extkey_attcode>
+          <target_attcode>vlan_tag</target_attcode>
+        </field>
+        <field id="mode" xsi:type="AttributeEnum" _delta="define">
+          <values>
+            <value id="tagged">
+              <code>tagged</code>
+              <style>
+                <main_color>hsla(207, 72.6%, 57.1%, 1)</main_color>
+                <complementary_color>hsla(0, 0%, 100%, 1)</complementary_color>
+                <decoration_classes/>
+              </style>
+            </value>
+            <value id="untagged">
+              <code>untagged</code>
+              <style>
+                <main_color>hsla(209, 23.7%, 74.3%, 1)</main_color>
+                <complementary_color>hsla(0, 0%, 100%, 1)</complementary_color>
+                <decoration_classes/>
+              </style>
+            </value>
+          </values>
+          <sql>mode</sql>
+          <default_value>untagged</default_value>
+          <is_null_allowed>true</is_null_allowed>
+          <display_style/>
+        </field>
+      </fields>
+      <methods/>
+      <presentation>
+        <details>
+          <items>
+            <item id="aggregatelink_id">
+              <rank>10</rank>
+            </item>
+            <item id="vlan_id">
+              <rank>20</rank>
+            </item>
+            <item id="mode">
+              <rank>30</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="aggregatelink_id">
+              <rank>10</rank>
+            </item>
+            <item id="vlan_id">
+              <rank>20</rank>
+            </item>
+            <item id="mode">
+              <rank>30</rank>
+            </item>
+          </items>
+        </search>
+        <dfault_search>
+          <items>
+            <item id="aggregatelink_id">
+              <rank>10</rank>
+            </item>
+            <item id="vlan_id">
+              <rank>20</rank>
+            </item>
+            <item id="mode">
+              <rank>30</rank>
+            </item>
+          </items>
+        </dfault_search>
+        <list>
+          <items>
+            <item id="mode">
+              <rank>10</rank>
+            </item>
+            <item id="aggregatelink_id">
+              <rank>20</rank>
+            </item>
+            <item id="vlan_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </list>
+      </presentation>
+    </class>
+    <class id="lnkAggregateLinkToVRF" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <is_link>1</is_link>
+        <category>bizmodel</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>lnkaggregatelinktovrf</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="aggregatelink_name"/>
+            <attribute id="vrf_name"/>
+          </attributes>
+        </naming>
+        <icon/>
+        <reconciliation>
+          <attributes>
+            <attribute id="aggregatelink_id"/>
+            <attribute id="vrf_id"/>
+          </attributes>
+        </reconciliation>
+        <uniqueness_rules>
+          <rule id="no_duplicate">
+            <attributes>
+              <attribute id="aggregatelink_id"/>
+              <attribute id="vrf_id"/>
+            </attributes>
+            <filter><![CDATA[]]></filter>
+            <disabled>false</disabled>
+            <is_blocking>true</is_blocking>
+          </rule>
+        </uniqueness_rules>
+      </properties>
+      <fields>
+        <field id="aggregatelink_id" xsi:type="AttributeExternalKey">
+          <sql>aggregatelink_id</sql>
+          <target_class>AggregateLink</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="aggregatelink_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>aggregatelink_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="aggregatelink_device_id" xsi:type="AttributeExternalField">
+          <extkey_attcode>aggregatelink_id</extkey_attcode>
+          <target_attcode>functionalci_id</target_attcode>
+        </field>
+        <field id="aggregatelink_device_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>aggregatelink_id</extkey_attcode>
+          <target_attcode>functionalci_name</target_attcode>
+        </field>
+        <field id="vrf_id" xsi:type="AttributeExternalKey">
+          <sql>vrf_id</sql>
+          <target_class>VRF</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="vrf_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>vrf_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+      </fields>
+      <methods/>
+      <presentation>
+        <details>
+          <items>
+            <item id="aggregatelink_id">
+              <rank>10</rank>
+            </item>
+            <item id="vrf_id">
+              <rank>20</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="aggregatelink_id">
+              <rank>10</rank>
+            </item>
+            <item id="vrf_id">
+              <rank>20</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="aggregatelink_id">
+              <rank>10</rank>
+            </item>
+            <item id="vrf_id">
+              <rank>20</rank>
+            </item>
+          </items>
+        </list>
       </presentation>
     </class>
     <class id="NetworkInterface" _created_in="itop-config-mgmt" _delta="must_exist">

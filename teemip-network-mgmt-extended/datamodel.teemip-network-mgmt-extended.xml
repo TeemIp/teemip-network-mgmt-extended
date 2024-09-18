@@ -329,7 +329,7 @@
         <field id="aggregatelink_id" xsi:type="AttributeExternalKey" _delta="define">
           <sql>aggregatelink_id</sql>
           <target_class>AggregateLink</target_class>
-          <filter><![CDATA[SELECT AggregateLink WHERE connectableci_id = :this->connectableci_id]]></filter>
+          <filter><![CDATA[SELECT AggregateLink WHERE functionalci_id = :this->connectableci_id]]></filter>
           <dependencies>
             <attribute id="connectableci_id"/>
           </dependencies>

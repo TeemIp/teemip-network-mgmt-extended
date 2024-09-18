@@ -393,6 +393,9 @@
             <item id="interfacespeed_id" _delta="define">
               <rank>10</rank>
             </item>
+            <item id="aggregatelink_id" _delta="define">
+              <rank>44</rank>
+            </item>
           </items>
         </list>
       </presentation>
@@ -449,7 +452,10 @@
           <items>
             <item id="speed" _delta="delete"/>
             <item id="interfacespeed_id" _delta="define">
-              <rank>40</rank>
+              <rank>20</rank>
+            </item>
+            <item id="aggregatelink_id" _delta="define">
+              <rank>44</rank>
             </item>
           </items>
         </list>

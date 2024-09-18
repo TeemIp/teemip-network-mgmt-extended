@@ -6,7 +6,7 @@
 
 SetupWebPage::AddModule(
 	__FILE__, // Path to the current file, all other file names are relative to the directory containing this file
-	'teemip-network-mgmt-extended/3.2.0-dev',
+	'teemip-network-mgmt-extended/3.2.0-beta',
 	array(
 		// Identification
 		//
@@ -114,12 +114,12 @@ if (!class_exists('NetworkMgmtExtendedInstaller')) {
 		 */
 		public static function AfterDatabaseCreation(Config $oConfiguration, $sPreviousVersion, $sCurrentVersion)
 		{
-            if (version_compare($sPreviousVersion, '3.2.0', '<') && !str_contains($sPreviousVersion, '3.2.0-dev')) {
+            if (version_compare($sPreviousVersion, '3.2.0', '<') && (strpos($sPreviousVersion, '3.2.0-') === false)) {
 //              if (version_compare($sPreviousVersion, '3.2.0', '<')) {
                 $sDBSubname = $oConfiguration->Get('db_subname');
                 SetupLog::Info("Module teemip-network-mgmt-extended: migrate AggregateLink under IPInterface");
 
-                $sSQL1 = "INSERT INTO ".$sDBSubname."ipinterface (id, comment, macaddress, layer2protocol_id, finalclass) SELECT id, description, macaddress, layer2protocol_id, 'AggregateLink' FROM".$sDBSubname."aggregatelink";
+                $sSQL1 = "INSERT INTO ".$sDBSubname."ipinterface (id, comment, macaddress, layer2protocol_id, finalclass) SELECT id, description, macaddress, layer2protocol_id, 'AggregateLink' FROM ".$sDBSubname."aggregatelink";
                 $sSQL2 = "UPDATE ".$sDBSubname."aggregatelink SET functionalci_id = connectableci_id";
                 CMDBSource::Query($sSQL1);
                 CMDBSource::Query($sSQL2);

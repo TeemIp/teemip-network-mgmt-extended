@@ -221,6 +221,56 @@ Dict::Add('EN US', 'English', 'English', array(
 ));
 
 //
+//class: lnkAggregateLinkToVLAN
+//
+
+Dict::Add('EN US', 'English', 'English', array(
+    'Class:lnkAggregateLinkToVLAN' => 'Link Aggregate Link / VLAN',
+    'Class:lnkAggregateLinkToVLAN+' => '',
+    'Class:lnkAggregateLinkToVLAN/Name' => '%1$s / %2$s',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_id' => 'Aggregate Link',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_id+' => '',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_name' => 'Aggregate Link name',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_name+' => '',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_device_id' => 'Aggregate Link functional CI',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_device_id+' => '',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_device_name' => 'Aggregate Link functional CI name',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_device_name+' => '',
+    'Class:lnkAggregateLinkToVLAN/Attribute:vlan_id' => 'VLAN',
+    'Class:lnkAggregateLinkToVLAN/Attribute:vlan_id+' => '',
+    'Class:lnkAggregateLinkToVLAN/Attribute:vlan_tag' => 'VLAN Tag',
+    'Class:lnkAggregateLinkToVLAN/Attribute:vlan_tag+' => '',
+    'Class:lnkAggregateLinkToVLAN/Attribute:mode' => 'Mode',
+    'Class:lnkAggregateLinkToVLAN/Attribute:mode+' => 'Mode tagged or untagged',
+    'Class:lnkAggregateLinkToVLAN/Attribute:mode/Value:tagged' => 'Tagged',
+    'Class:lnkAggregateLinkToVLAN/Attribute:mode/Value:tagged+' => '',
+    'Class:lnkAggregateLinkToVLAN/Attribute:mode/Value:untagged' => 'Untagged',
+    'Class:lnkAggregateLinkToVLAN/Attribute:mode/Value:untagged+' => '',
+));
+
+//
+//class: lnkAggregateLinkToVRF
+//
+
+Dict::Add('EN US', 'English', 'English', array(
+    'Class:lnkAggregateLinkToVRF' => 'Link Aggregate Link / VRF',
+    'Class:lnkAggregateLinkToVRF+' => '',
+    'Class:lnkAggregateLinkToVRF/Name' => '%1$s / %2$s',
+    'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_id' => 'Aggregate Link',
+    'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_id+' => '',
+    'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_name' => 'Aggregate Link name',
+    'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_name+' => '',
+    'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_device_id' => 'Aggregate Link functional CI',
+    'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_device_id+' => '',
+    'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_device_name' => 'Aggregate Link functional CI name',
+    'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_device_name+' => '',
+    'Class:lnkAggregateLinkToVRF/Attribute:vrf_id' => 'VRF',
+    'Class:lnkAggregateLinkToVRF/Attribute:vrf_id+' => '',
+    'Class:lnkAggregateLinkToVRF/Attribute:vrf_name' => 'VRF Name',
+    'Class:lnkAggregateLinkToVRF/Attribute:vrf_name+' => '',
+));
+
+//
 // Class: PhysicalInterface
 //
 

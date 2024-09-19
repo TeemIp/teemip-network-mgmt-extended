@@ -220,6 +220,54 @@ Dict::Add('FR FR', 'French', 'Français', array(
 ));
 
 //
+//class: lnkAggregateLinkToVLAN
+//
+
+Dict::Add('FR FR', 'French', 'Français', array(
+    'Class:lnkAggregateLinkToVLAN' => 'Lien Agrégat de Liens / VLAN',
+    'Class:lnkAggregateLinkToVLAN+' => '',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_id' => 'Agrégat de Liens',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_id+' => '',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_name' => 'Nom agrégat de Liens',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_name+' => '',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_device_id' => 'CI de l\'agrégat de Liens',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_device_id+' => '',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_device_name' => 'Nom du CI de l\'agrégat de Liens',
+    'Class:lnkAggregateLinkToVLAN/Attribute:aggregatelink_device_name+' => '',
+    'Class:lnkAggregateLinkToVLAN/Attribute:vlan_id' => 'VLAN',
+    'Class:lnkAggregateLinkToVLAN/Attribute:vlan_id+' => '',
+    'Class:lnkAggregateLinkToVLAN/Attribute:vlan_tag' => 'VLAN Tag',
+    'Class:lnkAggregateLinkToVLAN/Attribute:vlan_tag+' => '',
+    'Class:lnkAggregateLinkToVLAN/Attribute:mode' => 'Mode',
+    'Class:lnkAggregateLinkToVLAN/Attribute:mode+' => 'Mode tagged ou untagged',
+    'Class:lnkAggregateLinkToVLAN/Attribute:mode/Value:tagged' => 'Tagged',
+    'Class:lnkAggregateLinkToVLAN/Attribute:mode/Value:tagged+' => '',
+    'Class:lnkAggregateLinkToVLAN/Attribute:mode/Value:untagged' => 'Untagged',
+    'Class:lnkAggregateLinkToVLAN/Attribute:mode/Value:untagged+' => '',
+));
+
+//
+//class: lnkAggregateLinkToVRF
+//
+
+Dict::Add('FR FR', 'French', 'Français', array(
+    'Class:lnkAggregateLinkToVRF' => 'Lien Agrégat de Liens / VRF',
+    'Class:lnkAggregateLinkToVRF+' => '',
+     'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_id' => 'Agrégat de Liens',
+    'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_id+' => '',
+    'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_name' => 'Nom agrégat de Liens',
+    'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_name+' => '',
+    'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_device_id' => 'CI de l\'agrégat de Liens',
+    'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_device_id+' => '',
+    'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_device_name' => 'Nom du CI de l\'agrégat de Liens',
+    'Class:lnkAggregateLinkToVRF/Attribute:aggregatelink_device_name+' => '',
+    'Class:lnkAggregateLinkToVRF/Attribute:vrf_id' => 'VRF',
+    'Class:lnkAggregateLinkToVRF/Attribute:vrf_id+' => '',
+    'Class:lnkAggregateLinkToVRF/Attribute:vrf_name' => 'Nom VRF',
+    'Class:lnkAggregateLinkToVRF/Attribute:vrf_name+' => '',
+));
+
+//
 // Class: PhysicalInterface
 //
 
@@ -402,5 +450,3 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Relation:networkflow/UpStream' => 'Flux entrant...',
 	'Relation:networkflow/UpStream+' => 'Schéma du flux entrant',
 ));
-
-

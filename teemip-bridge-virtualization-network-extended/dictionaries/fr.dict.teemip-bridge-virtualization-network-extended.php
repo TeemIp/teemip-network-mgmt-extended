@@ -14,5 +14,3 @@ Dict::Add('FR FR', 'French', 'Français', array(
     'Class:LogicalInterface/Attribute:aggregatelink_name' => 'Nom de l\'agrégat',
     'Class:LogicalInterface/Attribute:aggregatelink_name+' => '',
 ));
-
-

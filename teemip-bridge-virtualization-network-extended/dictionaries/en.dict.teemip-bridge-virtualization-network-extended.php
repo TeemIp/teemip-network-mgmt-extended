@@ -14,5 +14,3 @@ Dict::Add('EN US', 'English', 'English', array(
     'Class:LogicalInterface/Attribute:aggregatelink_name' => 'Aggregate link name',
     'Class:LogicalInterface/Attribute:aggregatelink_name+' => '',
 ));
-
-

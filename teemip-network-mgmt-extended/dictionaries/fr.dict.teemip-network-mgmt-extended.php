@@ -192,7 +192,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:AggregateLink' => 'Agrégat de Liens',
 	'Class:AggregateLink+' => 'Combine plusieurs connexions réseau en parallèle',
-	'Class:AggregateLink:baseinfo' => 'Informations Générales',
+	'Class:AggregateLink:baseinfo' => 'Informations pair',
 	'Class:AggregateLink/Attribute:macaddress' => 'Adresse MAC',
 	'Class:AggregateLink/Attribute:macaddress+' => '',
 	'Class:AggregateLink/Attribute:layer2protocol_id' => 'Protocole',

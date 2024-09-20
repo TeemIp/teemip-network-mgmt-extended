@@ -193,7 +193,7 @@ Dict::Add('EN US', 'English', 'English', array(
 Dict::Add('EN US', 'English', 'English', array(
 	'Class:AggregateLink' => 'Aggregate Link',
 	'Class:AggregateLink+' => 'Combine multiple network connections in parallel',
-	'Class:AggregateLink:baseinfo' => 'General Information',
+	'Class:AggregateLink:peerinfo' => 'Peer Information',
 	'Class:AggregateLink/Attribute:macaddress' => 'MAC address',
 	'Class:AggregateLink/Attribute:macaddress+' => '',
 	'Class:AggregateLink/Attribute:layer2protocol_id' => 'Protocol',

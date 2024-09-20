@@ -1443,7 +1443,7 @@
             <item id="col:col1">
               <rank>60</rank>
               <items>
-                <item id="fieldset:Class:AggregateLink:baseinfo">
+                <item id="fieldset:Class:NetworkInterface:baseinfo">
                   <rank>10</rank>
                   <items>
                     <item id="name">
@@ -1468,7 +1468,7 @@
             <item id="col:col2">
               <rank>60</rank>
               <items>
-                <item id="fieldset:Class:NetworkInterface:peerinfo">
+                <item id="fieldset:Class:AggregateLink:peerinfo">
                   <rank>10</rank>
                   <items>
                     <item id="peer_id">

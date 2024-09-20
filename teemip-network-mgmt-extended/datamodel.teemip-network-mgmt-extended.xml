@@ -2550,6 +2550,21 @@
           <extkey_attcode>source_ci_id</extkey_attcode>
           <target_attcode>name</target_attcode>
         </field>
+        <field id="source_ipaddress_id" xsi:type="AttributeExternalKey">
+          <sql>source_ipaddress_id</sql>
+          <target_class>IPAddress</target_class>
+          <filter><![CDATA[SELECT IPAddress WHERE org_id = :this->org_id]]></filter>
+          <dependencies>
+            <attribute id="org_id"/>
+          </dependencies>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+          <jointype/>
+        </field>
+        <field id="source_ipaddress_fqdn" xsi:type="AttributeExternalField">
+          <extkey_attcode>source_ipaddress_id</extkey_attcode>
+          <target_attcode>fqdn</target_attcode>
+        </field>
         <field id="dest_ci_id" xsi:type="AttributeExternalKey">
           <sql>dest_ci_id</sql>
           <target_class>FunctionalCI</target_class>
@@ -2563,6 +2578,21 @@
         <field id="dest_ci_name" xsi:type="AttributeExternalField">
           <extkey_attcode>dest_ci_id</extkey_attcode>
           <target_attcode>name</target_attcode>
+        </field>
+        <field id="dest_ipaddress_id" xsi:type="AttributeExternalKey">
+          <sql>dest_ipaddress_id</sql>
+          <target_class>IPAddress</target_class>
+          <filter><![CDATA[SELECT IPAddress WHERE org_id = :this->org_id]]></filter>
+          <dependencies>
+            <attribute id="org_id"/>
+          </dependencies>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+          <jointype/>
+        </field>
+        <field id="dest_ipaddress_fqdn" xsi:type="AttributeExternalField">
+          <extkey_attcode>dest_ipaddress_id</extkey_attcode>
+          <target_attcode>fqdn</target_attcode>
         </field>
         <field id="status" xsi:type="AttributeEnum">
           <values>
@@ -2679,20 +2709,26 @@
                     <item id="source_ci_id">
                       <rank>20</rank>
                     </item>
-                    <item id="source_port">
-                      <rank>30</rank>
-                    </item>
-                    <item id="dest_ci_id">
+                    <item id="source_ipaddress_id">
                       <rank>40</rank>
                     </item>
-                    <item id="dest_port">
+                    <item id="source_port">
                       <rank>50</rank>
                     </item>
-                    <item id="networkflowcapacity_id">
+                    <item id="dest_ci_id">
                       <rank>60</rank>
                     </item>
-                    <item id="interfacespeed_id">
+                    <item id="dest_ipaddress_id">
+                      <rank>60</rank>
+                    </item>
+                    <item id="dest_port">
                       <rank>70</rank>
+                    </item>
+                    <item id="networkflowcapacity_id">
+                      <rank>80</rank>
+                    </item>
+                    <item id="interfacespeed_id">
+                      <rank>90</rank>
                     </item>
                   </items>
                 </item>

@@ -2695,40 +2695,50 @@
                     </item>
                   </items>
                 </item>
+                <item id="fieldset:Class:NetworkFlow:moreinfo">
+                  <rank>20</rank>
+                  <items>
+                    <item id="protocol">
+                      <rank>10</rank>
+                    </item>
+                    <item id="networkflowcapacity_id">
+                      <rank>20</rank>
+                    </item>
+                    <item id="interfacespeed_id">
+                      <rank>30</rank>
+                    </item>
+                  </items>
+                </item>
               </items>
             </item>
             <item id="col:col2">
               <rank>20</rank>
               <items>
-                <item id="fieldset:Class:NetworkFlow:flowinfo">
+                <item id="fieldset:Class:NetworkFlow:source">
                   <rank>10</rank>
                   <items>
-                    <item id="protocol">
+                    <item id="source_ci_id">
                       <rank>10</rank>
                     </item>
-                    <item id="source_ci_id">
+                    <item id="source_ipaddress_id">
                       <rank>20</rank>
                     </item>
-                    <item id="source_ipaddress_id">
-                      <rank>40</rank>
-                    </item>
                     <item id="source_port">
-                      <rank>50</rank>
+                      <rank>30</rank>
                     </item>
+                  </items>
+                </item>
+                <item id="fieldset:Class:NetworkFlow:destination">
+                  <rank>20</rank>
+                  <items>
                     <item id="dest_ci_id">
-                      <rank>60</rank>
+                      <rank>10</rank>
                     </item>
                     <item id="dest_ipaddress_id">
-                      <rank>60</rank>
+                      <rank>20</rank>
                     </item>
                     <item id="dest_port">
-                      <rank>70</rank>
-                    </item>
-                    <item id="networkflowcapacity_id">
-                      <rank>80</rank>
-                    </item>
-                    <item id="interfacespeed_id">
-                      <rank>90</rank>
+                      <rank>30</rank>
                     </item>
                   </items>
                 </item>

@@ -114,8 +114,8 @@ if (!class_exists('NetworkMgmtExtendedInstaller')) {
 		 */
 		public static function AfterDatabaseCreation(Config $oConfiguration, $sPreviousVersion, $sCurrentVersion)
 		{
-            if (version_compare($sPreviousVersion, '3.2.0', '<') && (strpos($sPreviousVersion, '3.2.0-') === false)) {
-//              if (version_compare($sPreviousVersion, '3.2.0', '<')) {
+            if (version_compare($sPreviousVersion, '1.0.0', '>=') && version_compare($sPreviousVersion, '3.2.0', '<') && (strpos($sPreviousVersion, '3.2.0-') === false)) {
+//              if (version_compare($sPreviousVersion, '1.0.0', '>=') && version_compare($sPreviousVersion, '3.2.0', '<')) {
                 $sDBSubname = $oConfiguration->Get('db_subname');
                 SetupLog::Info("Module teemip-network-mgmt-extended: migrate AggregateLink under IPInterface");
 

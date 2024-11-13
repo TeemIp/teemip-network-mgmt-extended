@@ -283,6 +283,17 @@ Dict::Add('FR FR', 'French', 'Français', array(
 ));
 
 //
+// Class: NetworkDeviceVirtualInterface
+//
+
+Dict::Add('FR FR', 'French', 'Français', array(
+    'Class:NetworkDeviceVirtualInterface/Attribute:aggregatelink_id' => 'Agrégat de Liens',
+    'Class:NetworkDeviceVirtualInterface/Attribute:aggregatelink_id+' => 'Agrégat de Liens dont fait partie l\'interface',
+    'Class:NetworkDeviceVirtualInterface/Attribute:aggregatelink_name' => 'Nom de l\'agrégat de Liens',
+    'Class:NetworkDeviceVirtualInterface/Attribute:aggregatelink_name+' => '',
+));
+
+//
 // Class: VLAN
 //
 

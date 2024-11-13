@@ -286,6 +286,17 @@ Dict::Add('EN US', 'English', 'English', array(
 ));
 
 //
+// Class: NetworkDeviceVirtualInterface
+//
+
+Dict::Add('EN US', 'English', 'English', array(
+    'Class:NetworkDeviceVirtualInterface/Attribute:aggregatelink_id' => 'Aggregate link',
+    'Class:NetworkDeviceVirtualInterface/Attribute:aggregatelink_id+' => 'Aggregate link that the interface is part of',
+    'Class:NetworkDeviceVirtualInterface/Attribute:aggregatelink_name' => 'Aggregate link name',
+    'Class:NetworkDeviceVirtualInterface/Attribute:aggregatelink_name+' => '',
+));
+
+//
 // Class: VLAN
 //
 

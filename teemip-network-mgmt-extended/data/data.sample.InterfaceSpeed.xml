@@ -2,8 +2,10 @@
 <Set>
     <InterfaceSpeed alias="InterfaceSpeed" id="1">
         <name>1 Gb/s</name>
+        <raw>1000000000</raw>
     </InterfaceSpeed>
     <InterfaceSpeed alias="InterfaceSpeed" id="2">
         <name>10 Gb/s</name>
+        <raw>10000000000</raw>
     </InterfaceSpeed>
 </Set>

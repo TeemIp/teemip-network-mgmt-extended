@@ -1,6 +1,6 @@
 <?php
 /*
- * @copyright   Copyright (C) 2010-2024 TeemIp
+ * @copyright   Copyright (C) 2010-2025 TeemIp
  * @license     http://opensource.org/licenses/AGPL-3.0
  */
 
@@ -42,6 +42,8 @@ Dict::Add('EN US', 'English', 'English', array(
 Dict::Add('EN US', 'English', 'English', array(
 	'Class:InterfaceSpeed' => 'Interface Speed',
 	'Class:InterfaceSpeed+' => 'Speed set on network interfaces',
+	'Class:InterfaceSpeed/Attribute:raw' => 'Real value',
+	'Class:InterfaceSpeed/Attribute:raw+' => 'Value to help with sorting and programming',
 	'Class:InterfaceSpeed/Attribute:description' => 'Description',
 	'Class:InterfaceSpeed/Attribute:description+' => '',
 	'Class:InterfaceSpeed/Attribute:ipinterfaces_list' => 'Network interfaces',

@@ -6,6 +6,7 @@
 		<interfaceconnector_id>1</interfaceconnector_id>
 		<interfacespeed_id>2</interfacespeed_id>
 		<layer2protocol_id>1</layer2protocol_id>
+		<mtu>1500</mtu>
 		<connectableci_id>311</connectableci_id>
 		<status>active</status>
 		<interfaceconnector_id>1</interfaceconnector_id>

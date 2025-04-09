@@ -50,6 +50,9 @@
                                         <item id="layer2protocol_id" _delta="define">
                                             <rank>30</rank>
                                         </item>
+                                        <item id="mtu" _delta="define">
+                                            <rank>40</rank>
+                                        </item>
                                     </items>
                                 </item>
                             </items>
@@ -68,6 +71,9 @@
                         <item id="speed" _delta="delete"/>
                         <item id="interfacespeed_id" _delta="define">
                             <rank>15</rank>
+                        </item>
+                        <item id="mtu" _delta="define">
+                            <rank>25</rank>
                         </item>
                         <item id="aggregatelink_id" _delta="define">
                             <rank>44</rank>

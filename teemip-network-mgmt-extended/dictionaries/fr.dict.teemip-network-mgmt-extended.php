@@ -57,6 +57,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:IPInterface/Attribute:interfacespeed_id+' => 'Vitesse maximale disponible sur l\'interface',
 	'Class:IPInterface/Attribute:layer2protocol_id' => 'Protocole',
 	'Class:IPInterface/Attribute:layer2protocol_id+' => 'Protocole de niveau 2',
+	'Class:IPInterface/Attribute:mtu' => 'MTU',
+	'Class:IPInterface/Attribute:mtu+' => 'Unité de transmission maximale',
 ));
 
 //

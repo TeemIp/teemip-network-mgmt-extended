@@ -294,6 +294,11 @@
           <extkey_attcode>layer2protocol_id</extkey_attcode>
           <target_attcode>name</target_attcode>
         </field>
+        <field id="mtu" xsi:type="AttributeInteger" _delta="define">
+          <sql>mtu</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
       </fields>
       <presentation>
         <details>
@@ -309,6 +314,9 @@
             </item>
             <item id="layer2protocol_id" _delta="define">
               <rank>80</rank>
+            </item>
+            <item id="mtu" _delta="define">
+              <rank>90</rank>
             </item>
           </items>
         </list>
@@ -357,7 +365,7 @@
             </item>
             <item id="col:col2" _delta="must_exist">
               <items>
-                 <item id="fieldset:Class:NetworkInterface:wiringinfo" _delta="merge">
+                <item id="fieldset:Class:NetworkInterface:wiringinfo" _delta="merge">
                   <rank _delta="define_if_not_exists">5</rank>
                   <items>
                     <item id="interfaceconnector_id" _delta="define">
@@ -373,6 +381,9 @@
                     </item>
                     <item id="layer2protocol_id" _delta="define">
                       <rank>30</rank>
+                    </item>
+                    <item id="mtu" _delta="define">
+                      <rank>40</rank>
                     </item>
                   </items>
                 </item>
@@ -392,6 +403,9 @@
             <item id="speed" _delta="delete"/>
             <item id="interfacespeed_id" _delta="define">
               <rank>10</rank>
+            </item>
+            <item id="mtu" _delta="define">
+              <rank>25</rank>
             </item>
             <item id="aggregatelink_id" _delta="define">
               <rank>44</rank>
@@ -442,6 +456,9 @@
                     <item id="layer2protocol_id" _delta="define">
                       <rank>30</rank>
                     </item>
+                    <item id="mtu" _delta="define">
+                      <rank>40</rank>
+                    </item>
                   </items>
                 </item>
               </items>
@@ -453,6 +470,9 @@
             <item id="speed" _delta="delete"/>
             <item id="interfacespeed_id" _delta="define">
               <rank>20</rank>
+            </item>
+            <item id="mtu" _delta="define">
+              <rank>35</rank>
             </item>
             <item id="aggregatelink_id" _delta="define">
               <rank>44</rank>
@@ -1457,6 +1477,9 @@
                     <item id="layer2protocol_id">
                       <rank>20</rank>
                     </item>
+                    <item id="mtu">
+                      <rank>30</rank>
+                    </item>
                   </items>
                 </item>
               </items>
@@ -1465,14 +1488,17 @@
         </details>
         <list>
           <items>
-            <item id="macaddress">
+            <item id="layer2protocol_id">
               <rank>10</rank>
             </item>
-            <item id="layer2protocol_id">
+            <item id="status">
               <rank>20</rank>
             </item>
-            <item id="status">
+            <item id="macaddress">
               <rank>30</rank>
+            </item>
+            <item id="mtu" >
+              <rank>40</rank>
             </item>
             <item id="functionalci_id">
               <rank>40</rank>

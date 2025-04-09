@@ -57,6 +57,8 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:IPInterface/Attribute:interfacespeed_id+' => 'Maximum speed available on the interface',
 	'Class:IPInterface/Attribute:layer2protocol_id' => 'Protocol',
 	'Class:IPInterface/Attribute:layer2protocol_id+' => 'Layer 2 protocol',
+	'Class:IPInterface/Attribute:mtu' => 'MTU',
+	'Class:IPInterface/Attribute:mtu+' => 'Maximum Transmission Unit',
 ));
 
 //

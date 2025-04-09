@@ -1,12 +1,12 @@
 <?php
 /*
- * @copyright   Copyright (C) 2010-2024 TeemIp
+ * @copyright   Copyright (C) 2010-2025 TeemIp
  * @license     http://opensource.org/licenses/AGPL-3.0
  */
 
 SetupWebPage::AddModule(
 	__FILE__, // Path to the current file, all other file names are relative to the directory containing this file
-	'teemip-bridge-virtualization-network-extended/3.1.0',
+	'teemip-bridge-virtualization-network-extended/3.2.0',
 	array(
 		// Identification
 		//
@@ -16,8 +16,8 @@ SetupWebPage::AddModule(
 		// Setup
 		//
 		'dependencies' => array(
-			'teemip-virtualization-mgmt-adaptor/3.1.0',
-			'teemip-network-mgmt-extended/3.1.0',
+			'teemip-virtualization-mgmt-adaptor/3.2.1',
+			'teemip-network-mgmt-extended/3.2.1',
 		),
 		'mandatory' => false,
 		'visible' => false,

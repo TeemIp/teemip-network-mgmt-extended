@@ -1493,11 +1493,14 @@
                     <item id="macaddress">
                       <rank>10</rank>
                     </item>
-                    <item id="layer2protocol_id">
+                    <item id="interfacespeed_id">
                       <rank>20</rank>
                     </item>
-                    <item id="mtu">
+                    <item id="layer2protocol_id">
                       <rank>30</rank>
+                    </item>
+                    <item id="mtu">
+                      <rank>40</rank>
                     </item>
                   </items>
                 </item>

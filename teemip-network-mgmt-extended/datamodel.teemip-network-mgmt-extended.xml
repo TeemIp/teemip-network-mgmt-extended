@@ -806,7 +806,7 @@
         </field>
       </fields>
       <methods>
-        <method id="DisplayBareRelations" _delta="define">
+        <method id="DisplayBareRelations">
           <comment/>
           <static>false</static>
           <access>public</access>
@@ -1051,30 +1051,40 @@
           <target_attcode>fqdn</target_attcode>
         </field>
       </fields>
+      <event_listeners>
+        <event_listener id="OnlnkClusterNetworkToIPAddressAfterWriteRequestedByNetworkMgmtExt">
+          <event>EVENT_DB_AFTER_WRITE</event>
+          <callback>OnlnkClusterNetworkToIPAddressAfterWriteRequestedByNetworkMgmtExt</callback>
+          <rank>10</rank>
+        </event_listener>
+        <event_listener id="OnlnkClusterNetworkToIPAddressAfterDeleteRequestedByNetworkMgmtExt">
+          <event>EVENT_DB_AFTER_DELETE</event>
+          <callback>OnlnkClusterNetworkToIPAddressAfterDeleteRequestedByNetworkMgmtExt</callback>
+          <rank>10</rank>
+        </event_listener>
+      </event_listeners>
       <methods>
-        <method id="AfterInsert" _delta="define">
+        <method id="OnlnkClusterNetworkToIPAddressAfterWriteRequestedByNetworkMgmtExt">
           <comment/>
           <static>false</static>
           <access>public</access>
-          <type>Custom</type>
-          <code><![CDATA[ public function AfterInsert()
+          <type>EventListener</type>
+          <code><![CDATA[ public function OnlnkClusterNetworkToIPAddressAfterWriteRequestedByNetworkMgmtExt(Combodo\iTop\Service\Events\EventData $oEventData): void
     {
-        // Execute parent function first
-        parent::AfterInsert();
-
-        TeemIp\TeemIp\Extension\IPManagement\Model\_IPAddress::SetStatusOnAttachment($this->Get('ipaddress_id'));
+        $aEventData = $oEventData->GetEventData();
+        if ($aEventData['is_new']) {
+        	// We are in the AfterInsert situation
+        	TeemIp\TeemIp\Extension\IPManagement\Model\_IPAddress::SetStatusOnAttachment($this->Get('ipaddress_id'));
+        }
     }]]></code>
         </method>
-        <method id="AfterDelete" _delta="define">
+        <method id="OnlnkClusterNetworkToIPAddressAfterDeleteRequestedByNetworkMgmtExt">
           <comment/>
           <static>false</static>
           <access>public</access>
-          <type>Custom</type>
-          <code><![CDATA[ public function AfterDelete()
+          <type>EventListener</type>
+          <code><![CDATA[ public function OnlnkClusterNetworkToIPAddressAfterDeleteRequestedByNetworkMgmtExt(Combodo\iTop\Service\Events\EventData $oEventData): void
     {
-        // Execute parent function first
-        parent::AfterDelete();
-
         TeemIp\TeemIp\Extension\IPManagement\Model\_IPAddress::SetStatusOnDetachment($this->Get('ipaddress_id'));
     }]]></code>
         </method>
@@ -1337,7 +1347,7 @@
           <ext_key_to_remote>vlan_id</ext_key_to_remote>
           <duplicates/>
         </field>
-        <field id="vrfs_list" xsi:type="AttributeLinkedSetIndirect" _delta="define">
+        <field id="vrfs_list" xsi:type="AttributeLinkedSetIndirect">
           <linked_class>lnkAggregateLinkToVRF</linked_class>
           <ext_key_to_me>aggregatelink_id</ext_key_to_me>
           <count_min>0</count_min>
@@ -1346,52 +1356,29 @@
           <duplicates/>
         </field>
       </fields>
+      <event_listeners>
+        <event_listener id="OnAggregateLinkAfterWriteRequestedByNetworkMgmtExt">
+          <event>EVENT_DB_AFTER_WRITE</event>
+          <callback>OnAggregateLinkAfterWriteRequestedByNetworkMgmtExt</callback>
+          <rank>10</rank>
+        </event_listener>
+        <event_listener id="OnAggregateLinkAfterDeleteRequestedByNetworkMgmtExt">
+          <event>EVENT_DB_AFTER_DELETE</event>
+          <callback>OnAggregateLinkAfterWriteRequestedByNetworkMgmtExt</callback>
+          <rank>10</rank>
+        </event_listener>
+      </event_listeners>
       <methods>
-        <method id="AfterInsert" _delta="define">
+        <method id="OnAggregateLinkAfterWriteRequestedByNetworkMgmtExt">
           <comment/>
           <static>false</static>
           <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public function AfterInsert()
+          <type>EventListener</type>
+          <code><![CDATA[ public function OnAggregateLinkAfterWriteRequestedByNetworkMgmtExt(Combodo\iTop\Service\Events\EventData $oEventData): void
     {
-        parent::AfterInsert();
-
-        $iPeerId = $this->Get('peer_id');
-        if ($iPeerId > 0)
-        {
-            $oPeer = MetaModel::GetObject('AggregateLink', $iPeerId, false);
-            if (!is_null($oPeer))
-            {
-                $oPeer->Set('peer_id', $this->GetKey());
-                $oPeer->DBUpdate();
-            }
-        }
-	}]]></code>
-        </method>
-        <method id="AfterUpdate" _delta="define">
-          <comment/>
-          <static>false</static>
-          <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public function AfterUpdate()
-    {
-        parent::AfterUpdate();
-
-		$aListChanges = $this->ListPreviousValuesForUpdatedAttributes();
-        if (array_key_exists('peer_id', $aListChanges))
-        {
-            // Reset peer on old remote
-            $iPreviousPeerId = $aListChanges['peer_id'];
-            if ($iPreviousPeerId > 0)
-            {
-                $oPreviousPeer = MetaModel::GetObject('AggregateLink', $iPreviousPeerId, false);
-                if (!is_null($oPreviousPeer))
-                {
-                    $oPreviousPeer->Set('peer_id', 0);
-                    $oPreviousPeer->DBUpdate();
-                }
-            }
-            // Set peeron new remote
+        $aEventData = $oEventData->GetEventData();
+        if ($aEventData['is_new']) {
+        	// We are in the AfterInsert situation
             $iPeerId = $this->Get('peer_id');
             if ($iPeerId > 0)
             {
@@ -1402,18 +1389,44 @@
                     $oPeer->DBUpdate();
                 }
             }
+        } else {
+        	// We are in the AfterUpdate situation
+        	$aListChanges = $this->ListPreviousValuesForUpdatedAttributes();
+        	if (array_key_exists('peer_id', $aListChanges))
+        	{
+        	    // Reset peer on old remote
+        	    $iPreviousPeerId = $aListChanges['peer_id'];
+        	    if ($iPreviousPeerId > 0)
+        	    {
+        	        $oPreviousPeer = MetaModel::GetObject('AggregateLink', $iPreviousPeerId, false);
+        	        if (!is_null($oPreviousPeer))
+        	        {
+        	            $oPreviousPeer->Set('peer_id', 0);
+        	            $oPreviousPeer->DBUpdate();
+        	        }
+        	    }
+        	    // Set peer on new remote
+        	    $iPeerId = $this->Get('peer_id');
+        	    if ($iPeerId > 0)
+        	    {
+        	        $oPeer = MetaModel::GetObject('AggregateLink', $iPeerId, false);
+        	        if (!is_null($oPeer))
+        	        {
+        	            $oPeer->Set('peer_id', $this->GetKey());
+        	            $oPeer->DBUpdate();
+        	        }
+                }
+        	}
         }
-	}]]></code>
+    }]]></code>
         </method>
-        <method id="AfterDelete" _delta="define">
+        <method id="OnAggregateLinkAfterDeleteRequestedByNetworkMgmtExt">
           <comment/>
           <static>false</static>
           <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[	public function AfterDelete()
+          <type>EventListener</type>
+          <code><![CDATA[ public function OnAggregateLinkAfterDeleteRequestedByNetworkMgmtExt(Combodo\iTop\Service\Events\EventData $oEventData): void
     {
-        parent::AfterDelete();
-
         $iPeerId = $this->Get('peer_id');
         if ($iPeerId > 0)
         {
@@ -1424,9 +1437,9 @@
                 $oPeer->DBUpdate();
             }
         }
-	}]]></code>
+    }]]></code>
         </method>
-        <method id="DisplayBareRelations" _delta="define">
+        <method id="DisplayBareRelations">
           <comment/>
           <static>false</static>
           <access>public</access>
@@ -2191,12 +2204,29 @@
           </dependencies>
         </field>
       </fields>
+      <event_listeners>
+        <event_listener id="OnSnmpCredentialsSetInitialAttributesFlagsRequestedByNetworkMgmtExt">
+          <event>EVENT_DB_SET_INITIAL_ATTRIBUTES_FLAGS</event>
+          <callback>OnSnmpCredentialsSetInitialAttributesFlagsRequestedByNetworkMgmtExt</callback>
+          <rank>10</rank>
+        </event_listener>
+        <event_listener id="OnSnmpCredentialsSetAttributesFlagsRequestedByNetworkMgmtExt">
+          <event>EVENT_DB_SET_ATTRIBUTES_FLAGS</event>
+          <callback>OnSnmpCredentialsSetAttributesFlagsRequestedByNetworkMgmtExt</callback>
+          <rank>10</rank>
+        </event_listener>
+        <event_listener id="OnSnmpCredentialsComputeValuesRequestedByNetworkMgmtExt">
+          <event>EVENT_DB_COMPUTE_VALUES</event>
+          <callback>OnSnmpCredentialsComputeValuesRequestedByNetworkMgmtExt</callback>
+          <rank>10</rank>
+        </event_listener>
+      </event_listeners>
       <methods>
         <method id="IsAttributeRelevantForSecurityLevel">
           <static>true</static>
           <access>public</access>
           <type>Custom</type>
-          <code><![CDATA[	public static function IsAttributeRelevantForSecurityLevel(string $sAttCode, ?string $sSecLevel)
+          <code><![CDATA[	public static function IsAttributeRelevantForSecurityLevel(string $sAttCode, ?string $sSecLevel): bool
 	{
 		switch ($sAttCode) {
 			case 'community':
@@ -2215,64 +2245,68 @@
 		}
 	}]]></code>
         </method>
-        <method id="GetInitialStateAttributeFlags">
+        <method id="OnSnmpCredentialsSetInitialAttributesFlagsRequestedByNetworkMgmtExt">
           <static>false</static>
           <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[ public function GetInitialStateAttributeFlags($sAttCode, &$aReasons = array())
+          <type>EventListener</type>
+          <code><![CDATA[ public function OnSnmpCredentialsSetInitialAttributesFlagsRequestedByNetworkMgmtExt(Combodo\iTop\Service\Events\EventData $oEventData): void
 	{
-		$iFlags = 0;
-		switch ($sAttCode) {
-			case 'priv_passphrase':
-				if (!empty($this->Get('priv_protocol'))) $iFlags |= OPT_ATT_MANDATORY;
-				break;
-			case 'auth_passphrase':
-				if (!empty($this->Get('auth_protocol'))) $iFlags |= OPT_ATT_MANDATORY;
-				break;
-			case 'auth_protocol':
-			case 'priv_protocol':
-			case 'security_name':
-			case 'community';
-				if (static::IsAttributeRelevantForSecurityLevel($sAttCode, $this->Get('security_level'))) $iFlags |= OPT_ATT_MANDATORY;
-				break;
-		}
-
-		return $iFlags | parent::GetInitialStateAttributeFlags($sAttCode, $aReasons);
+	    if (!empty($this->Get('priv_protocol'))) {
+            $this->AddInitialAttributeFlags('priv_passphrase', OPT_ATT_MANDATORY);
+        }
+        if (!empty($this->Get('auth_protocol'))) {
+            $this->AddInitialAttributeFlags('auth_passphrase', OPT_ATT_MANDATORY);
+	    }
+	    $sSecurityLevel = $this->Get('security_level');
+	    if (static::IsAttributeRelevantForSecurityLevel('auth_protocol', $sSecurityLevel)) {
+	        $this->AddInitialAttributeFlags('auth_protocol', OPT_ATT_MANDATORY);
+	    }
+	    if (static::IsAttributeRelevantForSecurityLevel('priv_protocol', $sSecurityLevel)) {
+            $this->AddInitialAttributeFlags('priv_protocol', OPT_ATT_MANDATORY);
+	    }
+	    if (static::IsAttributeRelevantForSecurityLevel('security_name', $sSecurityLevel)) {
+            $this->AddInitialAttributeFlags('security_name', OPT_ATT_MANDATORY);
+	    }
+	    if (static::IsAttributeRelevantForSecurityLevel('community', $sSecurityLevel)) {
+            $this->AddInitialAttributeFlags('community', OPT_ATT_MANDATORY);
+        }
     }]]></code>
         </method>
-        <method id="GetAttributeFlags">
+        <method id="OnSnmpCredentialsSetAttributesFlagsRequestedByNetworkMgmtExt">
           <static>false</static>
           <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[ public function GetAttributeFlags($sAttCode, &$aReasons = array(), $sTargetState = '')
+          <type>EventListener</type>
+          <code><![CDATA[ public function OnSnmpCredentialsSetAttributesFlagsRequestedByNetworkMgmtExt(Combodo\iTop\Service\Events\EventData $oEventData): void
 	{
-		$iFlags = 0;
-		switch ($sAttCode) {
-			case 'priv_passphrase':
-				if (!empty($this->Get('priv_protocol'))) $iFlags |= OPT_ATT_MANDATORY;
-				break;
-			case 'auth_passphrase':
-				if (!empty($this->Get('auth_protocol'))) $iFlags |= OPT_ATT_MANDATORY;
-				break;
-			case 'auth_protocol':
-			case 'priv_protocol':
-			case 'security_name':
-			case 'community';
-				if (static::IsAttributeRelevantForSecurityLevel($sAttCode, $this->Get('security_level'))) $iFlags |= OPT_ATT_MANDATORY;
-				break;
-		}
-
-		return $iFlags | parent::GetAttributeFlags($sAttCode, $aReasons, $sTargetState);
+	    if (!empty($this->Get('priv_protocol'))) {
+            $this->AddAttributeFlags('priv_passphrase', OPT_ATT_MANDATORY);
+        }
+        if (!empty($this->Get('auth_protocol'))) {
+            $this->AddAttributeFlags('auth_passphrase', OPT_ATT_MANDATORY);
+	    }
+	    $sSecurityLevel = $this->Get('security_level');
+	    if (static::IsAttributeRelevantForSecurityLevel('auth_protocol', $sSecurityLevel)) {
+	        $this->AddAttributeFlags('auth_protocol', OPT_ATT_MANDATORY);
+	    }
+	    if (static::IsAttributeRelevantForSecurityLevel('priv_protocol', $sSecurityLevel)) {
+            $this->AddAttributeFlags('priv_protocol', OPT_ATT_MANDATORY);
+	    }
+	    if (static::IsAttributeRelevantForSecurityLevel('security_name', $sSecurityLevel)) {
+            $this->AddAttributeFlags('security_name', OPT_ATT_MANDATORY);
+	    }
+	    if (static::IsAttributeRelevantForSecurityLevel('community', $sSecurityLevel)) {
+            $this->AddAttributeFlags('community', OPT_ATT_MANDATORY);
+        }
     }]]></code>
         </method>
-        <method id="ComputeValues">
+        <method id="OnSnmpCredentialsComputeValuesRequestedByNetworkMgmtExt">
+          <comment/>
           <static>false</static>
           <access>public</access>
-          <type>Overload-DBObject</type>
-          <code><![CDATA[ public function ComputeValues()
-	{
-		parent::ComputeValues();
-
+          <type>EventListener</type>
+          <code><![CDATA[    public function OnSnmpCredentialsComputeValuesRequestedByNetworkMgmtExt(Combodo\iTop\Service\Events\EventData $oEventData): void
+    {
+	    $sSecurityLevel = $this->Get('security_level');
 		foreach ([
 			'community',
 			'security_name',
@@ -2281,8 +2315,8 @@
 			'priv_passphrase',
 			'priv_protocol',
 			'context_name',
-		] as $sAttCode){
-			if (!static::IsAttributeRelevantForSecurityLevel($sAttCode, $this->Get('security_level'))) $this->Set($sAttCode, null);
+		] as $sAttCode) {
+			if (!static::IsAttributeRelevantForSecurityLevel($sAttCode, $sSecurityLevel)) $this->Set($sAttCode, null);
 		}
     }]]></code>
         </method>

@@ -1281,9 +1281,19 @@
           <values>
             <value id="active">
               <code>active</code>
+              <style>
+                <main_color>hsla(92, 47.9%, 42.2%, 1)</main_color>
+                <complementary_color>hsla(0, 0%, 100%, 1)</complementary_color>
+                <decoration_classes/>
+              </style>
             </value>
             <value id="inactive">
               <code>inactive</code>
+              <style>
+                <main_color>hsla(33, 89.9%, 64.9%, 1)</main_color>
+                <complementary_color>hsla(0, 0%, 100%, 1)</complementary_color>
+                <decoration_classes/>
+              </style>
             </value>
           </values>
           <sql>status</sql>
@@ -1493,11 +1503,14 @@
                     <item id="macaddress">
                       <rank>10</rank>
                     </item>
-                    <item id="layer2protocol_id">
+                    <item id="interfacespeed_id">
                       <rank>20</rank>
                     </item>
-                    <item id="mtu">
+                    <item id="layer2protocol_id">
                       <rank>30</rank>
+                    </item>
+                    <item id="mtu">
+                      <rank>40</rank>
                     </item>
                   </items>
                 </item>
@@ -1507,26 +1520,26 @@
         </details>
         <list>
           <items>
-            <item id="layer2protocol_id">
+            <item id="status">
               <rank>10</rank>
             </item>
-            <item id="status">
+            <item id="interfacespeed_id">
               <rank>20</rank>
             </item>
             <item id="macaddress">
               <rank>30</rank>
             </item>
-            <item id="mtu" >
+            <item id="mtu">
               <rank>40</rank>
             </item>
-            <item id="functionalci_id">
-              <rank>40</rank>
-            </item>
-            <item id="peer_id">
+            <item id="comment">
               <rank>50</rank>
             </item>
             <item id="org_id">
-              <rank>52</rank>
+              <rank>60</rank>
+            </item>
+            <item id="peer_id">
+              <rank>70</rank>
             </item>
           </items>
         </list>

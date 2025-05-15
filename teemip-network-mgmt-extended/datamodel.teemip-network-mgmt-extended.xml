@@ -367,7 +367,45 @@
           <extkey_attcode>aggregatelink_id</extkey_attcode>
           <target_attcode>name</target_attcode>
         </field>
+        <field id="networkmodule_id" xsi:type="AttributeExternalKey" _delta="define">
+          <sql>networkmodule_id</sql>
+          <target_class>NetworkModule</target_class>
+          <filter><![CDATA[SELECT NetworkModule WHERE physicalinterface_id = :this->id]]></filter>
+          <dependencies>
+            <attribute id="connectableci_id"/>
+          </dependencies>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="networkmodule_name" xsi:type="AttributeExternalField" _delta="define">
+          <extkey_attcode>networkmodule_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
       </fields>
+      <event_listeners>
+        <event_listener id="OnPhysicalInterfaceCheckToWriteRequestedByNetworkMgmtExt" _delta="define">
+          <event>EVENT_DB_CHECK_TO_WRITE</event>
+          <callback>OnPhysicalInterfaceCheckToWriteRequestedByNetworkMgmtExt</callback>
+          <rank>50</rank>
+        </event_listener>
+      </event_listeners>
+      <methods>
+        <method id="OnPhysicalInterfaceCheckToWriteRequestedByNetworkMgmtExt" _delta="define">
+          <comment/>
+          <static>false</static>
+          <access>public</access>
+          <type>EventListener</type>
+          <code><![CDATA[	public function OnPhysicalInterfaceCheckToWriteRequestedByNetworkMgmtExt(Combodo\iTop\Service\Events\EventData $oEventData): void
+    {
+		// Physical interfaces cannot be linked to both an interface connector and a network module
+		$iIntefaceConnector = $this->Get('interfaceconnector_id');
+		$iNetworkModule = $this->Get('networkmodule_id');
+		if (($iIntefaceConnector > 0) && ($iNetworkModule > 0)) {
+			$this->AddCheckIssue(Dict::S('UI:NetworkMgmtExtended:Action:CreateOrUpdate:PhysicalInterface:PointToConnectorAndModule'));
+		}
+	}]]></code>
+        </method>
+      </methods>
       <presentation>
         <details>
           <items>
@@ -389,6 +427,9 @@
                   <items>
                     <item id="interfaceconnector_id" _delta="define">
                       <rank>10</rank>
+                    </item>
+                    <item id="networkmodule_id" _delta="define">
+                      <rank>12</rank>
                     </item>
                   </items>
                 </item>
@@ -554,7 +595,7 @@
               <rank>20</rank>
             </item>
             <item id="col:col1">
-              <rank>40</rank>
+              <rank>30</rank>
               <items>
                 <item id="fieldset:Class:NetworkDeviceComponent:baseinfo">
                   <rank>10</rank>
@@ -599,7 +640,7 @@
               </items>
             </item>
             <item id="col:col2">
-              <rank>130</rank>
+              <rank>40</rank>
               <items>
                 <item id="fieldset:Class:NetworkDeviceComponent:Date">
                   <rank>10</rank>
@@ -2930,6 +2971,581 @@
         </list>
       </presentation>
     </class>
+    <class id="NetworkModule" _delta="define">
+      <parent>PhysicalDevice</parent>
+      <properties>
+        <category>bizmodel,searchable,configmgmt</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>networkmodule</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+            <attribute id="networkmoduletype_name"/>
+          </attributes>
+        </naming>
+        <style>
+          <icon>asset/img/icons8-laser-beam-hazard.svg</icon>
+        </style>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+            <attribute id="connectableci_id"/>
+            <attribute id="connectableci_name"/>
+            <attribute id="physicalinterface_id"/>
+            <attribute id="physicalinterface_name"/>
+          </attributes>
+        </reconciliation>
+        <uniqueness_rules/>
+      </properties>
+      <fields>
+        <field id="connectableci_id" xsi:type="AttributeExternalKey">
+          <sql>connectableci_id</sql>
+          <target_class>ConnectableCI</target_class>
+          <filter><![CDATA[SELECT ConnectableCI WHERE org_id = :this->org_id]]></filter>
+          <dependencies>
+            <attribute id="org_id"/>
+          </dependencies>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="connectableci_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>connectableci_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="physicalinterface_id" xsi:type="AttributeExternalKey">
+          <sql>physicalinterface_id</sql>
+          <target_class>PhysicalInterface</target_class>
+          <filter><![CDATA[SELECT PhysicalInterface WHERE connectableci_id = :this->connectableci_id]]></filter>
+          <dependencies>
+            <attribute id="connectableci_id"/>
+          </dependencies>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="physicalinterface_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>physicalinterface_id</extkey_attcode>
+          <target_attcode>friendlyname</target_attcode>
+        </field>
+        <field id="physicalinterface_speed" xsi:type="AttributeExternalField">
+          <extkey_attcode>physicalinterface_id</extkey_attcode>
+          <target_attcode>interfacespeed_name</target_attcode>
+        </field>
+        <field id="networkmoduletype_id" xsi:type="AttributeExternalKey">
+          <sql>networkmoduletype_id</sql>
+          <target_class>NetworkModuleType</target_class>
+          <filter/>
+          <dependencies/>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="networkmoduletype_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>networkmoduletype_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="max_data_rate" xsi:type="AttributeExternalField">
+          <extkey_attcode>networkmoduletype_id</extkey_attcode>
+          <target_attcode>interfacespeed_name</target_attcode>
+        </field>
+      </fields>
+      <methods/>
+      <presentation>
+        <details>
+          <items>
+            <item id="contacts_list">
+              <rank>10</rank>
+            </item>
+            <item id="documents_list">
+              <rank>20</rank>
+            </item>
+            <item id="col:col1">
+              <rank>30</rank>
+              <items>
+                <item id="fieldset:Class:NetworkModule:baseinfo">
+                  <rank>10</rank>
+                  <items>
+                    <item id="name">
+                      <rank>10</rank>
+                    </item>
+                    <item id="org_id">
+                      <rank>20</rank>
+                    </item>
+                    <item id="status">
+                      <rank>30</rank>
+                    </item>
+                    <item id="business_criticity">
+                      <rank>40</rank>
+                    </item>
+                    <item id="location_id">
+                      <rank>50</rank>
+                    </item>
+                    <item id="connectableci_id">
+                      <rank>60</rank>
+                    </item>
+                    <item id="physicalinterface_id">
+                      <rank>70</rank>
+                    </item>
+                  </items>
+                </item>
+                <item id="fieldset:Class:NetworkModule:moreinfo">
+                  <rank>20</rank>
+                  <items>
+                    <item id="brand_id">
+                      <rank>10</rank>
+                    </item>
+                    <item id="model_id">
+                      <rank>20</rank>
+                    </item>
+                    <item id="serialnumber">
+                      <rank>30</rank>
+                    </item>
+                    <item id="asset_number">
+                      <rank>40</rank>
+                    </item>
+                  </items>
+                </item>
+              </items>
+            </item>
+            <item id="col:col2">
+              <rank>40</rank>
+              <items>
+                <item id="fieldset:Class:NetworkModule:Date">
+                  <rank>10</rank>
+                  <items>
+                    <item id="move2production">
+                      <rank>10</rank>
+                    </item>
+                    <item id="purchase_date">
+                      <rank>20</rank>
+                    </item>
+                    <item id="end_of_warranty">
+                      <rank>30</rank>
+                    </item>
+                  </items>
+                </item>
+                <item id="fieldset:Class:NetworkModule:otherinfo">
+                  <rank>20</rank>
+                  <items>
+                    <item id="physicalinterface_speed">
+                      <rank>10</rank>
+                    </item>
+                    <item id="networkmoduletype_id">
+                      <rank>20</rank>
+                    </item>
+                    <item id="max_data_rate">
+                      <rank>30</rank>
+                    </item>
+                    <item id="description">
+                      <rank>40</rank>
+                    </item>
+                  </items>
+                </item>
+              </items>
+             </item>
+          </items>
+        </details>
+        <list>
+          <items>
+            <item id="networkmoduletype_id">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+            <item id="status">
+              <rank>30</rank>
+            </item>
+            <item id="business_criticity">
+              <rank>40</rank>
+            </item>
+            <item id="location_id">
+              <rank>50</rank>
+            </item>
+            <item id="brand_id">
+              <rank>60</rank>
+            </item>
+            <item id="model_id">
+              <rank>70</rank>
+            </item>
+            <item id="connectableci_id">
+              <rank>80</rank>
+            </item>
+            <item id="physicalinterface_id">
+              <rank>90</rank>
+            </item>
+          </items>
+        </list>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+            <item id="status">
+              <rank>30</rank>
+            </item>
+            <item id="location_id">
+              <rank>40</rank>
+            </item>
+            <item id="connectableci_id">
+              <rank>50</rank>
+            </item>
+            <item id="physicalinterface_id">
+              <rank>60</rank>
+            </item>
+            <item id="brand_id">
+              <rank>70</rank>
+            </item>
+            <item id="model_id">
+              <rank>80</rank>
+            </item>
+            <item id="serialnumber">
+              <rank>90</rank>
+            </item>
+            <item id="max_data_rate">
+              <rank>100</rank>
+            </item>
+          </items>
+        </default_search>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+            <item id="status">
+              <rank>30</rank>
+            </item>
+            <item id="location_id">
+              <rank>40</rank>
+            </item>
+            <item id="connectableci_id">
+              <rank>50</rank>
+            </item>
+            <item id="physicalinterface_id">
+              <rank>60</rank>
+            </item>
+            <item id="brand_id">
+              <rank>70</rank>
+            </item>
+            <item id="model_id">
+              <rank>80</rank>
+            </item>
+            <item id="serialnumber">
+              <rank>90</rank>
+            </item>
+            <item id="max_data_rate">
+              <rank>100</rank>
+            </item>
+          </items>
+        </search>
+      </presentation>
+    </class>
+    <class id="NetworkModuleType" _delta="define">
+      <parent>Typology</parent>
+      <properties>
+        <category>bizmodel,searchable,configmgmt</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>networkmoduletype</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <icon/>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </reconciliation>
+        <uniqueness_rules>
+          <rule id="name">
+            <attributes>
+              <attribute id="name"/>
+            </attributes>
+            <filter/>
+            <disabled>false</disabled>
+            <is_blocking>true</is_blocking>
+          </rule>
+        </uniqueness_rules>
+      </properties>
+      <fields>
+        <field id="description" xsi:type="AttributeText">
+          <sql>description</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="form_factor" xsi:type="AttributeEnum">
+          <sort_type>rank</sort_type>
+          <values>
+            <value id="integrated">
+              <code>integrated</code>
+              <rank>10</rank>
+            </value>
+            <value id="sfp">
+              <code>sfp</code>
+              <rank>20</rank>
+            </value>
+            <value id="sfp_plus">
+              <code>sfp+</code>
+              <rank>30</rank>
+            </value>
+            <value id="osfp">
+              <code>osfp</code>
+              <rank>40</rank>
+            </value>
+            <value id="qsfp">
+              <code>qsfp</code>
+              <rank>50</rank>
+            </value>
+            <value id="qsfp_plus">
+              <code>qsfp+</code>
+              <rank>60</rank>
+            </value>
+            <value id="xfp">
+              <code>xfp</code>
+              <rank>70</rank>
+            </value>
+            <value id="gbic">
+              <code>gbic</code>
+              <rank>80</rank>
+            </value>
+            <value id="minigbic">
+              <code>minigbic</code>
+              <rank>90</rank>
+            </value>
+            <value id="other">
+              <code>other</code>
+              <rank>100</rank>
+            </value>
+          </values>
+          <sql>form_factor</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+          <display_style>list</display_style>
+        </field>
+        <field id="interfacespeed_id" xsi:type="AttributeExternalKey">
+          <sql>interfacespeed_id</sql>
+          <target_class>InterfaceSpeed</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="interfacespeed_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>interfacespeed_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="interfaceconnector_id" xsi:type="AttributeExternalKey">
+          <sql>interfaceconnector_id</sql>
+          <target_class>InterfaceConnector</target_class>
+          <filter/>
+          <dependencies/>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="interfaceconnector_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>interfaceconnector_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="optical_reach" xsi:type="AttributeEnum">
+          <sort_type>rank</sort_type>
+          <values>
+            <value id="sr">
+              <code>sr</code>
+              <rank>10</rank>
+            </value>
+            <value id="lr">
+              <code>lr</code>
+              <rank>20</rank>
+            </value>
+            <value id="lrm">
+              <code>lrm</code>
+              <rank>30</rank>
+            </value>
+            <value id="er">
+              <code>er</code>
+              <rank>40</rank>
+            </value>
+            <value id="xr">
+              <code>xr</code>
+              <rank>90</rank>
+            </value>
+            <value id="zr">
+              <code>zr</code>
+              <rank>90</rank>
+            </value>
+            <value id="dwdm">
+              <code>dwdm</code>
+              <rank>70</rank>
+            </value>
+            <value id="cwdm">
+              <code>cwdm</code>
+              <rank>80</rank>
+            </value>
+            <value id="other">
+              <code>other</code>
+              <rank>90</rank>
+            </value>
+          </values>
+          <sql>optical_reach</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+          <display_style>list</display_style>
+        </field>
+        <field id="wltx" xsi:type="AttributeString" _delta="define">
+          <sql>wltx</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="wlrx" xsi:type="AttributeString" _delta="define">
+          <sql>wlrx</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="networkmodules_list" xsi:type="AttributeLinkedSet">
+          <linked_class>NetworkModule</linked_class>
+          <ext_key_to_me>networkmoduletype_id</ext_key_to_me>
+          <edit_mode>none</edit_mode>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+          <duplicates/>
+        </field>
+      </fields>
+      <methods/>
+      <presentation>
+        <details>
+          <items>
+            <item id="networkmodules_list">
+              <rank>10</rank>
+            </item>
+            <item id="col:col1">
+              <rank>20</rank>
+              <items>
+                <item id="fieldset:Class:NetworkModuleType:baseinfo">
+                  <rank>10</rank>
+                  <items>
+                    <item id="name">
+                      <rank>10</rank>
+                    </item>
+                    <item id="form_factor">
+                      <rank>20</rank>
+                    </item>
+                    <item id="interfacespeed_id">
+                      <rank>30</rank>
+                    </item>
+                    <item id="interfaceconnector_id">
+                      <rank>40</rank>
+                    </item>
+                    <item id="description">
+                      <rank>50</rank>
+                    </item>
+                  </items>
+                </item>
+              </items>
+            </item>
+            <item id="col:col2">
+              <rank>30</rank>
+              <items>
+                <item id="fieldset:Class:NetworkModuleType:opticalinfo">
+                  <rank>10</rank>
+                  <items>
+                    <item id="optical_reach">
+                      <rank>10</rank>
+                    </item>
+                    <item id="wltx">
+                      <rank>20</rank>
+                    </item>
+                    <item id="wlrx">
+                      <rank>30</rank>
+                    </item>
+                  </items>
+                </item>
+              </items>
+            </item>
+          </items>
+        </details>
+        <list>
+          <items>
+            <item id="form_factor">
+              <rank>10</rank>
+            </item>
+            <item id="interfacespeed_id">
+              <rank>20</rank>
+            </item>
+            <item id="interfaceconnector_id">
+              <rank>30</rank>
+            </item>
+            <item id="optical_reach">
+              <rank>40</rank>
+            </item>
+            <item id="wltx">
+              <rank>50</rank>
+            </item>
+            <item id="wlrx">
+              <rank>60</rank>
+            </item>
+          </items>
+        </list>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="form_factor">
+              <rank>20</rank>
+            </item>
+            <item id="interfacespeed_id">
+              <rank>30</rank>
+            </item>
+            <item id="interfaceconnector_id">
+              <rank>40</rank>
+            </item>
+            <item id="optical_reach">
+              <rank>50</rank>
+            </item>
+            <item id="wltx">
+              <rank>60</rank>
+            </item>
+            <item id="wlrx">
+              <rank>70</rank>
+            </item>
+          </items>
+        </default_search>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="form_factor">
+              <rank>20</rank>
+            </item>
+            <item id="interfacespeed_id">
+              <rank>30</rank>
+            </item>
+            <item id="interfaceconnector_id">
+              <rank>40</rank>
+            </item>
+            <item id="optical_reach">
+              <rank>50</rank>
+            </item>
+            <item id="wltx">
+              <rank>60</rank>
+            </item>
+            <item id="wlrx">
+              <rank>70</rank>
+            </item>
+          </items>
+        </search>
+      </presentation>
+    </class>
   </classes>
   <menus>
     <menu id="ConfigManagementOverview" xsi:type="DashboardMenuNode" _delta="must_exist">
@@ -2955,6 +3571,10 @@
         <cells>
           <cell id="teemip_interfaces" _delta="must_exist">
             <dashlets>
+              <dashlet id="45" xsi:type="DashletBadge" _delta="define">
+                <rank>45</rank>
+                <class>NetworkModule</class>
+              </dashlet>
               <dashlet id="70" xsi:type="DashletBadge" _delta="define">
                 <rank>70</rank>
                 <class>AggregateLink</class>
@@ -2985,6 +3605,10 @@
                 <rank>3</rank>
                 <class>InterfaceSpeed</class>
               </dashlet>
+              <dashlet id="teemip-11021" xsi:type="DashletBadge" _delta="define">
+                <rank>1.5</rank>
+                <class>NetworkModuleType</class>
+              </dashlet>
               <dashlet id="teemip-1105" xsi:type="DashletBadge" _delta="define">
                 <rank>4</rank>
                 <class>Layer2Protocol</class>
@@ -3013,6 +3637,8 @@
           <class id="InterfaceSpeed" _delta="define"/>
           <class id="Layer2Protocol" _delta="define"/>
           <class id="NetworkDeviceComponent" _delta="define"/>
+          <class id="NetworkModule" _delta="define"/>
+          <class id="NetworkModuleType" _delta="define"/>
         </classes>
       </group>
       <group id="SNMP" _delta="define">

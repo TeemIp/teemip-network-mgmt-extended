@@ -69,7 +69,7 @@ Dict::Add('PT BR', 'Brazilian', 'Brazilian', array(
 
 Dict::Add('PT BR', 'Brazilian', 'Brazilian', array(
 	'Class:ClusterNetwork' => 'Cluster de Rede',
-	'Class:ClusterNetwork+' => 'Componente de hardware para dispositivo de rede', // Esta descrição parece um pouco deslocada, talvez fosse melhor "Agrupamento lógico de dispositivos de rede"
+	'Class:ClusterNetwork+' => 'Agrupamento lógico de dispositivos de rede',
 	'Class:ClusterNetwork:baseinfo' => 'Informações Gerais',
 	'Class:ClusterNetwork:moreinfo' => 'Mais Informações',
 	'Class:ClusterNetwork:Date' => 'Datas',

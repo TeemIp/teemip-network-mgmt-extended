@@ -69,7 +69,7 @@ Dict::Add('EN US', 'English', 'English', array(
 
 Dict::Add('EN US', 'English', 'English', array(
 	'Class:ClusterNetwork' => 'Cluster Network',
-	'Class:ClusterNetwork+' => 'Hardware component for network device',
+	'Class:ClusterNetwork+' => 'Cluster of network devices',
 	'Class:ClusterNetwork:baseinfo' => 'General Information',
 	'Class:ClusterNetwork:moreinfo' => 'More Information',
 	'Class:ClusterNetwork:Date' => 'Dates',

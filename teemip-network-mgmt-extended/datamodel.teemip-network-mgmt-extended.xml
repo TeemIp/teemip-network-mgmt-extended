@@ -3101,7 +3101,26 @@
           <target_attcode>interfacespeed_name</target_attcode>
         </field>
       </fields>
-      <methods/>
+      <methods>
+        <method id="PrefillCreationForm">
+          <static>false</static>
+          <access>public</access>
+          <type>Overload-DBObject</type>
+          <code><![CDATA[    public function PrefillCreationForm(&$aContextParam): void
+    {
+        if (array_key_exists('source_obj', $aContextParam)) {
+			$oPhysicalInterface = $aContextParam['source_obj'];
+			if ($oPhysicalInterface && (get_class($oPhysicalInterface) == 'PhysicalInterface')) {
+				$this->Set('connectableci_id', $oPhysicalInterface->Get('connectableci_id'));
+				$this->Set('physicalinterface_id', $oPhysicalInterface->GetKey());
+				$this->Set('org_id', $oPhysicalInterface->Get('org_id'));
+			}
+		}
+
+		parent::PrefillCreationForm($aContextParam);
+    }]]></code>
+        </method>
+      </methods>
       <presentation>
         <details>
           <items>

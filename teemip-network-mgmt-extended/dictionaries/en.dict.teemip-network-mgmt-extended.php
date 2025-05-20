@@ -567,6 +567,7 @@ Dict::Add('EN US', 'English', 'English', array(
     'Class:NetworkModuleType/Attribute:wlrx+' => 'RX wavelength for bidirectional modules',
     'Class:NetworkModuleType/Attribute:networkmodules_list' => 'Network modules',
     'Class:NetworkModuleType/Attribute:networkmodules_list+' => 'List of all network modules of this type',
+    'NetworkModuleType:Overview:NetworkModules' => 'List of all network modules of this type',
 ));
 
 //

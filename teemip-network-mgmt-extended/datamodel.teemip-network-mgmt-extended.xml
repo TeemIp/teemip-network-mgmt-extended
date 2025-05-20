@@ -467,6 +467,12 @@
             <item id="mtu" _delta="define">
               <rank>25</rank>
             </item>
+            <item id="interfaceconnector_id" _delta="define">
+              <rank>26</rank>
+            </item>
+            <item id="networkmodule_id" _delta="define">
+              <rank>27</rank>
+            </item>
             <item id="aggregatelink_id" _delta="define">
               <rank>44</rank>
             </item>

@@ -471,7 +471,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 // Class: NetworkModule
 //
 
-Dict::Add('EN US', 'English', 'English', array(
+Dict::Add('FR FR', 'French', 'Français', array(
     'Class:NetworkModule' => 'Module réseau',
     'Class:NetworkModule+' => 'Pluggable transceiver that can be inserted into a physical interface',
     'Class:NetworkModule:baseinfo' => 'Informations générales',
@@ -502,7 +502,7 @@ Dict::Add('EN US', 'English', 'English', array(
 // Class: NetworkModuleType
 //
 
-Dict::Add('EN US', 'English', 'English', array(
+Dict::Add('FR FR', 'French', 'Français', array(
     'Class:NetworkModuleType' => 'Type de module réseau',
     'Class:NetworkModuleType+' => '',
     'Class:NetworkModuleType:baseinfo' => 'Informations générales',

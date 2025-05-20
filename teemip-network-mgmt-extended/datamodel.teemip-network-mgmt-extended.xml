@@ -733,6 +733,19 @@
             </item>
           </items>
         </list>
+        <summary>
+          <items>
+            <item id="org_id">
+              <rank>10</rank>
+            </item>
+            <item id="networkdevice_id">
+              <rank>20</rank>
+            </item>
+            <item id="model_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </summary>
       </presentation>
     </class>
     <class id="ClusterNetwork" _delta="define">
@@ -1027,6 +1040,22 @@
             </item>
           </items>
         </list>
+        <summary>
+          <items>
+            <item id="org_id">
+              <rank>10</rank>
+            </item>
+            <item id="status">
+              <rank>20</rank>
+            </item>
+            <item id="type">
+              <rank>30</rank>
+            </item>
+            <item id="mode">
+              <rank>40</rank>
+            </item>
+          </items>
+        </summary>
       </presentation>
     </class>
     <class id="lnkClusterNetworkToIPAddress" _delta="define">
@@ -1632,6 +1661,22 @@
             </item>
           </items>
         </search>
+        <summary>
+          <items>
+            <item id="status">
+              <rank>10</rank>
+            </item>
+            <item id="interfacespeed_id">
+              <rank>20</rank>
+            </item>
+            <item id="macaddress">
+              <rank>30</rank>
+            </item>
+            <item id="peer_id">
+              <rank>40</rank>
+            </item>
+          </items>
+        </summary>
       </presentation>
     </class>
     <class id="lnkAggregateLinkToVLAN" _delta="define">
@@ -3245,6 +3290,25 @@
             </item>
           </items>
         </search>
+        <summary>
+          <items>
+            <item id="networkmoduletype_id">
+              <rank>10</rank>
+            </item>
+            <item id="status">
+              <rank>20</rank>
+            </item>
+            <item id="model_id">
+              <rank>30</rank>
+            </item>
+            <item id="connectableci_id">
+              <rank>40</rank>
+            </item>
+            <item id="physicalinterface_id">
+              <rank>50</rank>
+            </item>
+          </items>
+        </summary>
       </presentation>
     </class>
     <class id="NetworkModuleType" _delta="define">
@@ -3544,6 +3608,19 @@
             </item>
           </items>
         </search>
+        <summary>
+          <items>
+            <item id="form_factor">
+              <rank>10</rank>
+            </item>
+            <item id="interfaceconnector_id">
+              <rank>20</rank>
+            </item>
+            <item id="optical_reach">
+              <rank>30</rank>
+            </item>
+          </items>
+        </summary>
       </presentation>
     </class>
   </classes>

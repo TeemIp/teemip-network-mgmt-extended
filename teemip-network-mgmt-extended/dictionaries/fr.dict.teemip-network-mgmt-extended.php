@@ -284,6 +284,10 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:PhysicalInterface/Attribute:aggregatelink_id+' => 'Agrégat de liens dont fait partie l\'interface',
 	'Class:PhysicalInterface/Attribute:aggregatelink_name' => 'Nom de l\'agrégat de liens',
 	'Class:PhysicalInterface/Attribute:aggregatelink_name+' => '',
+    'Class:PhysicalInterface/Attribute:networkmodule_id' => 'Module réseau',
+    'Class:PhysicalInterface/Attribute:networkmodule_id+' => 'Module réseau inséré dans l\'interface',
+    'Class:PhysicalInterface/Attribute:networkmodule_name' => 'Nom du module réseau',
+    'Class:PhysicalInterface/Attribute:networkmodule_name+' => '',
 ));
 
 //
@@ -464,6 +468,107 @@ Dict::Add('FR FR', 'French', 'Français', array(
 ));
 
 //
+// Class: NetworkModule
+//
+
+Dict::Add('EN US', 'English', 'English', array(
+    'Class:NetworkModule' => 'Module réseau',
+    'Class:NetworkModule+' => 'Pluggable transceiver that can be inserted into a physical interface',
+    'Class:NetworkModule:baseinfo' => 'Informations générales',
+    'Class:NetworkModule:moreinfo' => 'Informations complémentaires',
+    'Class:NetworkModule:Date' => 'Dates',
+    'Class:NetworkModule:otherinfo' => 'Détails techniques',
+    'Class:NetworkModule/Attribute:description' => 'Description',
+    'Class:NetworkModule/Attribute:description+' => '',
+    'Class:NetworkModule/Attribute:connectableci_id' => 'Equipement',
+    'Class:NetworkModule/Attribute:connectableci_id+' => 'Equipement hébergeant l\'interface sur laquelle le module est inséré',
+    'Class:NetworkModule/Attribute:connectableci_name' => 'Nom de l\'équipement',
+    'Class:NetworkModule/Attribute:connectableci_name+' => '',
+    'Class:NetworkModule/Attribute:physicalinterface_id' => 'Interface physique',
+    'Class:NetworkModule/Attribute:physicalinterface_id+' => 'Interface sur laquelle le module est inséré',
+    'Class:NetworkModule/Attribute:physicalinterface_name' => 'Nom de l\'interface physique',
+    'Class:NetworkModule/Attribute:physicalinterface_name+' => '',
+    'Class:NetworkModule/Attribute:physicalinterface_speed' => 'Vitesse de l\'interface physique',
+    'Class:NetworkModule/Attribute:physicalinterface_speed+' => 'Vitesse à laquelle l\interface physique peut fonctionner',
+    'Class:NetworkModule/Attribute:networkmoduletype_id' => 'Type de module',
+    'Class:NetworkModule/Attribute:networkmoduletype_id+' => '',
+    'Class:NetworkModule/Attribute:networkmoduletype_name' => 'Nom du module',
+    'Class:NetworkModule/Attribute:networkmoduletype_name+' => '',
+    'Class:NetworkModule/Attribute:max_data_rate' => 'Débit maximum',
+    'Class:NetworkModule/Attribute:max_data_rate+' => 'Vitesse à laquelle le module peut fonctionner',
+));
+
+//
+// Class: NetworkModuleType
+//
+
+Dict::Add('EN US', 'English', 'English', array(
+    'Class:NetworkModuleType' => 'Type de module réseau',
+    'Class:NetworkModuleType+' => '',
+    'Class:NetworkModuleType:baseinfo' => 'Informations générales',
+    'Class:NetworkModuleType:opticalinfo' => 'Informations optiques',
+    'Class:NetworkModuleType/Attribute:form_factor' => 'Facteur de forme',
+    'Class:NetworkModuleType/Attribute:form_factor+' => '',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:integrated' => 'Intégré',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:integrated+' => '',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:sfp' => 'SFP',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:sfp+' => 'Small form-factor pluggable',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:sfp_plus' => 'SFP+',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:sfp_plus+' => 'Enhanced small form-factor pluggable',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:osfp' => 'OSFP',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:osfp+' => 'Octal small form-factor pluggable',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:qsfp' => 'QSFP',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:qsfp+' => 'Quad small form-factor pluggable',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:qsfp_plus' => 'QSFP+',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:qsfp_plus+' => 'Enhanced quad small form-factor pluggable',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:xfp' => 'XFP',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:xfp+' => '10 gigabit small form-factor pluggable',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:gbic' => 'GBIC',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:gbic+' => 'Gigabit interface converter',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:minigbic' => 'Mini GBIC',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:minigbic+' => 'Mini gigabit interface converter',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:other' => 'Autre',
+    'Class:NetworkModuleType/Attribute:form_factor/Value:other+' => '',
+    'Class:NetworkModuleType/Attribute:description' => 'Description',
+    'Class:NetworkModuleType/Attribute:description+' => '',
+    'Class:NetworkModuleType/Attribute:interfacespeed_id' => 'Vitesse',
+    'Class:NetworkModuleType/Attribute:interfacespeed_id+' => '',
+    'Class:NetworkModuleType/Attribute:interfacespeed_name' => 'Nom de la vitesse',
+    'Class:NetworkModuleType/Attribute:interfacespeed_name+' => '',
+    'Class:NetworkModuleType/Attribute:interfaceconnector_id' => 'Connecteur',
+    'Class:NetworkModuleType/Attribute:interfaceconnector_id+' => '',
+    'Class:NetworkModuleType/Attribute:interfaceconnector_name' => 'Nom du connecteur',
+    'Class:NetworkModuleType/Attribute:interfaceconnector_name+' => '',
+    'Class:NetworkModuleType/Attribute:optical_reach' => 'Portée optique',
+    'Class:NetworkModuleType/Attribute:optical_reach+' => '',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:sr' => 'SR',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:sr+' => 'Short Reach',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:lr' => 'LR',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:lr+' => 'Long Reach',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:lrm' => 'LRM',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:lrm+' => 'Long Reach Mode',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:er' => 'ER',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:er+' => 'Extended Reach',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:xr' => 'XR',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:xr+' => '',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:Zr' => 'ZR',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:Zr+' => 'Extended Reach - Unofficial format',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:dwdm' => 'DWDM',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:dwdm+' => 'Dense WDM',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:cwdm' => 'ZR',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:cwdm+' => 'Coarse WDM',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:other' => 'Autre',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:other+' => '',
+    'Class:NetworkModuleType/Attribute:wltx' => 'TX lambda',
+    'Class:NetworkModuleType/Attribute:wltx+' => 'Longueur d\'onde ou longueur d\'onde TX pour les modules bidirectionnels',
+    'Class:NetworkModuleType/Attribute:wlrx' => 'RX lambda',
+    'Class:NetworkModuleType/Attribute:wlrx+' => 'Longueur d\'onde RX pour les modules bidirectionnels',
+    'Class:NetworkModuleType/Attribute:networkmodules_list' => 'Modules réseau',
+    'Class:NetworkModuleType/Attribute:networkmodules_list+' => 'Liste de tous les modules réseau de ce type',
+    'NetworkModuleType:Overview:NetworkModules' => 'Liste de tous les modules réseau de ce type',
+));
+
+//
 // Menus
 //
 
@@ -474,4 +579,6 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Relation:networkflow/DownStream+' => 'Schéma du flux sortan',
 	'Relation:networkflow/UpStream' => 'Flux entrant...',
 	'Relation:networkflow/UpStream+' => 'Schéma du flux entrant',
+
+    'UI:NetworkMgmtExtended:Action:CreateOrUpdate:PhysicalInterface:PointToConnectorAndModule' => 'Une interface physique ne peut être liée à la fois à un connecteur et à un module réseau !',
 ));

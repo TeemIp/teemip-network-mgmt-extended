@@ -186,6 +186,8 @@ Dict::Add('PT BR', 'Brazilian', 'Brazilian', array(
 Dict::Add('PT BR', 'Brazilian', 'Brazilian', array(
 	'Class:Model/Attribute:type/Value:NetworkDeviceComponent' => 'Componente de Dispositivo de Rede',
 	'Class:Model/Attribute:type/Value:NetworkDeviceComponent+' => '',
+    'Class:Model/Attribute:type/Value:NetworkModule' => 'Módulo de rede',
+    'Class:Model/Attribute:type/Value:NetworkModule+' => '',
 	'Class:Model/Attribute:picture' => 'Imagem',
 	'Class:Model/Attribute:picture+' => 'Imagem do modelo para facilitar sua identificação',
 ));

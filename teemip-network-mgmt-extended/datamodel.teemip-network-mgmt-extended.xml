@@ -1331,6 +1331,9 @@
             <value id="NetworkDeviceComponent" _delta="define">
               <code>NetworkDeviceComponent</code>
             </value>
+            <value id="NetworkModule" _delta="define">
+              <code>NetworkModule</code>
+            </value>
           </values>
         </field>
       </fields>

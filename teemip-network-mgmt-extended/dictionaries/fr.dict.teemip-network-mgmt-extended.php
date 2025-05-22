@@ -185,6 +185,8 @@ Dict::Add('FR FR', 'French', 'Français', array(
 Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:Model/Attribute:type/Value:NetworkDeviceComponent' => 'Composant d\'Equipement Réseau',
 	'Class:Model/Attribute:type/Value:NetworkDeviceComponent+' => '',
+    'Class:Model/Attribute:type/Value:NetworkModule' => 'Module réseau',
+    'Class:Model/Attribute:type/Value:NetworkModule+' => '',
 	'Class:Model/Attribute:picture' => 'Image',
 	'Class:Model/Attribute:picture+' => 'Image du modèle, facilitant son identificationn',
 ));

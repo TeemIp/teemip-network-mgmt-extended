@@ -557,7 +557,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
     'Class:NetworkModuleType/Attribute:optical_reach/Value:Zr+' => 'Extended Reach - Unofficial format',
     'Class:NetworkModuleType/Attribute:optical_reach/Value:dwdm' => 'DWDM',
     'Class:NetworkModuleType/Attribute:optical_reach/Value:dwdm+' => 'Dense WDM',
-    'Class:NetworkModuleType/Attribute:optical_reach/Value:cwdm' => 'ZR',
+    'Class:NetworkModuleType/Attribute:optical_reach/Value:cwdm' => 'CWDM',
     'Class:NetworkModuleType/Attribute:optical_reach/Value:cwdm+' => 'Coarse WDM',
     'Class:NetworkModuleType/Attribute:optical_reach/Value:other' => 'Autre',
     'Class:NetworkModuleType/Attribute:optical_reach/Value:other+' => '',

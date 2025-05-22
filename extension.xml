@@ -5,7 +5,7 @@
 	<author><![CDATA[Christophe Naud]]></author>
 	<label><![CDATA[Network Management Extended]]></label>
 	<description><![CDATA[TeemIp extension that provides additional classes for network management]]></description>
-	<version>3.2.1</version>
+	<version>3.2.2-dev</version>
 	<release_date>2025-05-21</release_date>
 	<version_description><![CDATA[Enhancements from 3.2.0: See wiki at https://wiki.teemip.net/doku.php?id=extensions:teemip-network-mgmt-extended]]></version_description>
 	<itop_version_min>3.2.0</itop_version_min>

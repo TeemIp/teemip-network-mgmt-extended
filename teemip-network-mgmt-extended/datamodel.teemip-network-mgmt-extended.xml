@@ -370,7 +370,7 @@
         <field id="networkmodule_id" xsi:type="AttributeExternalKey" _delta="define">
           <sql>networkmodule_id</sql>
           <target_class>NetworkModule</target_class>
-          <filter><![CDATA[SELECT NetworkModule WHERE physicalinterface_id = :this->id]]></filter>
+          <filter><![CDATA[SELECT NetworkModule WHERE org_id = :this->org_id]]></filter>
           <dependencies>
             <attribute id="connectableci_id"/>
           </dependencies>
@@ -386,6 +386,16 @@
         <event_listener id="OnPhysicalInterfaceCheckToWriteRequestedByNetworkMgmtExt" _delta="define">
           <event>EVENT_DB_CHECK_TO_WRITE</event>
           <callback>OnPhysicalInterfaceCheckToWriteRequestedByNetworkMgmtExt</callback>
+          <rank>50</rank>
+        </event_listener>
+        <event_listener id="OnPhysicalInterfaceAfterWriteRequestedByNetworkMgmtExt" _delta="define">
+          <event>EVENT_DB_AFTER_WRITE</event>
+          <callback>OnPhysicalInterfaceAfterWriteRequestedByNetworkMgmtExt</callback>
+          <rank>50</rank>
+        </event_listener>
+        <event_listener id="OnPhysicalInterfaceAfterDeleteRequestedByNetworkMgmtExt" _delta="define">
+          <event>EVENT_DB_AFTER_DELETE</event>
+          <callback>OnPhysicalInterfaceAfterDeleteRequestedByNetworkMgmtExt</callback>
           <rank>50</rank>
         </event_listener>
       </event_listeners>
@@ -404,6 +414,76 @@
 			$this->AddCheckIssue(Dict::S('UI:NetworkMgmtExtended:Action:CreateOrUpdate:PhysicalInterface:PointToConnectorAndModule'));
 		}
 	}]]></code>
+        </method>
+        <method id="OnPhysicalInterfaceAfterWriteRequestedByNetworkMgmtExt" _delta="define">
+          <comment/>
+          <static>false</static>
+          <access>public</access>
+          <type>EventListener</type>
+          <code><![CDATA[ public function OnPhysicalInterfaceAfterWriteRequestedByNetworkMgmtExt(Combodo\iTop\Service\Events\EventData $oEventData): void
+    {
+        $aEventData = $oEventData->GetEventData();
+        if ($aEventData['is_new']) {
+        	// We are in the AfterInsert situation
+            $iNetworkModuleId = $this->Get('networkmodule_id');
+            if ($iNetworkModuleId > 0)
+            {
+                $oNetworkModule = MetaModel::GetObject('NetworkModule', $iNetworkModuleId, false);
+                if (!is_null($oNetworkModule))
+                {
+                    $oNetworkModule->Set('physicalinterface_id', $this->GetKey());
+                    $oNetworkModule->DBUpdate();
+                }
+            }
+        } else {
+        	// We are in the AfterUpdate situation
+        	$aListChanges = $this->ListPreviousValuesForUpdatedAttributes();
+        	if (array_key_exists('networkmodule_id', $aListChanges))
+        	{
+        	    // Reset interface on old module
+        	    $iPreviousNetworkModuleId = $aListChanges['networkmodule_id'];
+        	    if ($iPreviousNetworkModuleId > 0)
+        	    {
+        	        $oPreviousNetworkModule = MetaModel::GetObject('NetworkModule', $iPreviousNetworkModuleId, false);
+        	        if (!is_null($oPreviousNetworkModule))
+        	        {
+        	            $oPreviousNetworkModule->Set('physicalinterface_id', 0);
+        	            $oPreviousNetworkModule->DBUpdate();
+        	        }
+        	    }
+        	    // Set interface on new module
+        	    $iNetworkModuleId = $this->Get('networkmodule_id');
+        	    if ($iNetworkModuleId > 0)
+        	    {
+        	        $oNetworkModule = MetaModel::GetObject('NetworkModule', $iNetworkModuleId, false);
+        	        if (!is_null($oNetworkModule))
+        	        {
+        	            $oNetworkModule->Set('physicalinterface_id', $this->GetKey());
+        	            $oNetworkModule->DBUpdate();
+        	        }
+                }
+        	}
+        }
+    }]]></code>
+        </method>
+        <method id="OnPhysicalInterfaceAfterDeleteRequestedByNetworkMgmtExt" _delta="define">
+          <comment/>
+          <static>false</static>
+          <access>public</access>
+          <type>EventListener</type>
+          <code><![CDATA[ public function OnPhysicalInterfaceAfterDeleteRequestedByNetworkMgmtExt(Combodo\iTop\Service\Events\EventData $oEventData): void
+    {
+        $iNetworkModuleId = $this->Get('networkmodule_id');
+        if ($iNetworkModuleId > 0)
+        {
+            $oNetworkModule = MetaModel::GetObject('NetworkModule', $iNetworkModuleId, false);
+            if (!is_null($oNetworkModule))
+            {
+                $oNetworkModule->Set('physicalinterface_id', 0);
+                $oNetworkModule->DBUpdate();
+            }
+        }
+    }]]></code>
         </method>
       </methods>
       <presentation>
@@ -3072,7 +3152,7 @@
         <field id="physicalinterface_id" xsi:type="AttributeExternalKey">
           <sql>physicalinterface_id</sql>
           <target_class>PhysicalInterface</target_class>
-          <filter><![CDATA[SELECT PhysicalInterface WHERE connectableci_id = :this->connectableci_id]]></filter>
+          <filter><![CDATA[SELECT PhysicalInterface WHERE connectableci_id = :this->connectableci_id AND interfaceconnector_id = 0]]></filter>
           <dependencies>
             <attribute id="connectableci_id"/>
           </dependencies>
@@ -3104,6 +3184,18 @@
           <target_attcode>interfacespeed_name</target_attcode>
         </field>
       </fields>
+      <event_listeners>
+        <event_listener id="OnNetworkModuleAfterWriteRequestedByNetworkMgmtExt">
+          <event>EVENT_DB_AFTER_WRITE</event>
+          <callback>OnNetworkModuleAfterWriteRequestedByNetworkMgmtExt</callback>
+          <rank>10</rank>
+        </event_listener>
+        <event_listener id="OnNetworkModuleAfterDeleteRequestedByNetworkMgmtExt">
+          <event>EVENT_DB_AFTER_DELETE</event>
+          <callback>OnNetworkModuleAfterDeleteRequestedByNetworkMgmtExt</callback>
+          <rank>10</rank>
+        </event_listener>
+      </event_listeners>
       <methods>
         <method id="PrefillCreationForm">
           <static>false</static>
@@ -3121,6 +3213,76 @@
 		}
 
 		parent::PrefillCreationForm($aContextParam);
+    }]]></code>
+        </method>
+        <method id="OnNetworkModuleAfterWriteRequestedByNetworkMgmtExt">
+          <comment/>
+          <static>false</static>
+          <access>public</access>
+          <type>EventListener</type>
+          <code><![CDATA[ public function OnNetworkModuleAfterWriteRequestedByNetworkMgmtExt(Combodo\iTop\Service\Events\EventData $oEventData): void
+    {
+        $aEventData = $oEventData->GetEventData();
+        if ($aEventData['is_new']) {
+        	// We are in the AfterInsert situation
+            $iPhysicalInterfaceId = $this->Get('physicalinterface_id');
+            if ($iPhysicalInterfaceId > 0)
+            {
+                $oPhysicalInterface = MetaModel::GetObject('PhysicalInterface', $iPhysicalInterfaceId, false);
+                if (!is_null($oPhysicalInterface))
+                {
+                    $oPhysicalInterface->Set('networkmodule_id', $this->GetKey());
+                    $oPhysicalInterface->DBUpdate();
+                }
+            }
+        } else {
+        	// We are in the AfterUpdate situation
+        	$aListChanges = $this->ListPreviousValuesForUpdatedAttributes();
+        	if (array_key_exists('physicalinterface_id', $aListChanges))
+        	{
+        	    // Reset network module on old interface
+        	    $iPreviousPhysicalInterfaceId = $aListChanges['physicalinterface_id'];
+        	    if ($iPreviousPhysicalInterfaceId > 0)
+        	    {
+        	        $oPreviousPhysicalInterface = MetaModel::GetObject('PhysicalInterface', $iPreviousPhysicalInterfaceId, false);
+        	        if (!is_null($oPreviousPhysicalInterface))
+        	        {
+        	            $oPreviousPhysicalInterface->Set('networkmodule_id', 0);
+        	            $oPreviousPhysicalInterface->DBUpdate();
+        	        }
+        	    }
+        	    // Set network module on new interface
+        	    $iPhysicalInterfaceId = $this->Get('physicalinterface_id');
+        	    if ($iPhysicalInterfaceId > 0)
+        	    {
+        	        $oPhysicalInterface = MetaModel::GetObject('PhysicalInterface', $iPhysicalInterfaceId, false);
+        	        if (!is_null($oPhysicalInterface))
+        	        {
+        	            $oPhysicalInterface->Set('networkmodule_id', $this->GetKey());
+        	            $oPhysicalInterface->DBUpdate();
+        	        }
+                }
+        	}
+        }
+    }]]></code>
+        </method>
+        <method id="OnNetworkModuleAfterDeleteRequestedByNetworkMgmtExt">
+          <comment/>
+          <static>false</static>
+          <access>public</access>
+          <type>EventListener</type>
+          <code><![CDATA[ public function OnNetworkModuleAfterDeleteRequestedByNetworkMgmtExt(Combodo\iTop\Service\Events\EventData $oEventData): void
+    {
+        $iPhysicalInterfaceId = $this->Get('physicalinterface_id');
+        if ($iPhysicalInterfaceId > 0)
+        {
+            $oPhysicalInterface = MetaModel::GetObject('PhysicalInterface', $iPhysicalInterfaceId, false);
+            if (!is_null($oPhysicalInterface))
+            {
+                $oPhysicalInterface->Set('networkmodule_id', 0);
+                $oPhysicalInterface->DBUpdate();
+            }
+        }
     }]]></code>
         </method>
       </methods>

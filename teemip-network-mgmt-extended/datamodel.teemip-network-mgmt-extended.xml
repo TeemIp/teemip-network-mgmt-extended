@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.2" load="strict">
+<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="3.2" load="strict"
+  xsi:noNamespaceSchemaLocation="https://rudnerbjoern.github.io/iTop-schema/itop_design.xsd">
   <classes>
     <class id="InterfaceConnector" _delta="define">
       <parent>Typology</parent>
@@ -15,7 +16,6 @@
             <attribute id="name"/>
           </attributes>
         </naming>
-        <icon/>
         <reconciliation>
           <attributes>
             <attribute id="name"/>
@@ -105,7 +105,6 @@
             <attribute id="name"/>
           </attributes>
         </naming>
-        <icon/>
         <reconciliation>
           <attributes>
             <attribute id="name"/>
@@ -195,7 +194,6 @@
             <attribute id="name"/>
           </attributes>
         </naming>
-        <icon/>
         <reconciliation>
           <attributes>
             <attribute id="name"/>
@@ -1160,7 +1158,6 @@
             <attribute id="ipaddress_fqdn"/>
           </attributes>
         </naming>
-        <icon/>
         <reconciliation>
           <attributes>
             <attribute id="clusternetwork_id"/>
@@ -1474,7 +1471,6 @@
           <sql>functionalci_id</sql>
           <target_class>FunctionalCI</target_class>
           <filter><![CDATA[SELECT FunctionalCI WHERE finalclass IN ('ConnectableCI')]]></filter>
-          <dependencies/>
           <is_null_allowed>false</is_null_allowed>
           <on_target_delete>DEL_AUTO</on_target_delete>
         </field>
@@ -1490,7 +1486,6 @@
           <sql>peer_id</sql>
           <target_class>AggregateLink</target_class>
           <filter><![CDATA[SELECT AggregateLink WHERE id != :this->id AND peer_id = 0]]></filter>
-          <dependencies/>
           <is_null_allowed>true</is_null_allowed>
           <on_target_delete>DEL_AUTO</on_target_delete>
         </field>
@@ -1857,7 +1852,6 @@
           <sql>mode</sql>
           <default_value>untagged</default_value>
           <is_null_allowed>true</is_null_allowed>
-          <display_style/>
         </field>
       </fields>
       <methods/>
@@ -1888,7 +1882,7 @@
             </item>
           </items>
         </search>
-        <dfault_search>
+        <default_search>
           <items>
             <item id="aggregatelink_id">
               <rank>10</rank>
@@ -1900,7 +1894,7 @@
               <rank>30</rank>
             </item>
           </items>
-        </dfault_search>
+        </default_search>
         <list>
           <items>
             <item id="mode">
@@ -1932,7 +1926,6 @@
             <attribute id="vrf_name"/>
           </attributes>
         </naming>
-        <icon/>
         <reconciliation>
           <attributes>
             <attribute id="aggregatelink_id"/>
@@ -2125,7 +2118,7 @@
           </values>
           <sql>status</sql>
           <default_value>used</default_value>
-          <is_null_allowed>flase</is_null_allowed>
+          <is_null_allowed>false</is_null_allowed>
         </field>
       </fields>
       <presentation>
@@ -2621,7 +2614,6 @@
             <attribute id="name"/>
           </attributes>
         </naming>
-        <icon/>
         <reconciliation>
           <attributes>
             <attribute id="name"/>
@@ -3171,7 +3163,6 @@
           <sql>networkmoduletype_id</sql>
           <target_class>NetworkModuleType</target_class>
           <filter/>
-          <dependencies/>
           <is_null_allowed>false</is_null_allowed>
           <on_target_delete>DEL_AUTO</on_target_delete>
         </field>
@@ -3515,7 +3506,6 @@
             <attribute id="name"/>
           </attributes>
         </naming>
-        <icon/>
         <reconciliation>
           <attributes>
             <attribute id="name"/>
@@ -3601,7 +3591,6 @@
           <sql>interfaceconnector_id</sql>
           <target_class>InterfaceConnector</target_class>
           <filter/>
-          <dependencies/>
           <is_null_allowed>false</is_null_allowed>
           <on_target_delete>DEL_AUTO</on_target_delete>
         </field>

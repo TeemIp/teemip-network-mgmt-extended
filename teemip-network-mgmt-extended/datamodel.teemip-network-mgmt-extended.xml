@@ -1780,9 +1780,6 @@
             <attribute id="vlan_tag"/>
           </attributes>
         </naming>
-        <style>
-          <icon/>
-        </style>
         <reconciliation>
           <attributes>
             <attribute id="aggregatelink_id"/>

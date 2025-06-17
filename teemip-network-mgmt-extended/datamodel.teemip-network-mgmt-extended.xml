@@ -3838,7 +3838,7 @@
         </cells>
       </definition>
     </menu>
-    <menu id="ConfigManagement:TeemIpNetworking" _delta="must_exist">
+    <menu id="ConfigManagement:TeemIpNetworking" xsi:type="DashboardMenuNode" _delta="must_exist">
       <definition>
         <cells>
           <cell id="teemip_interfaces" _delta="must_exist">
@@ -3868,7 +3868,7 @@
         </cells>
       </definition>
     </menu>
-    <menu id="Typology" _delta="must_exist">
+    <menu id="Typology" xsi:type="DashboardMenuNode" _delta="must_exist">
       <definition>
         <cells>
           <cell id="Network" _delta="must_exist">

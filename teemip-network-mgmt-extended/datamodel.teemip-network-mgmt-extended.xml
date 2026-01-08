@@ -194,6 +194,11 @@
             <attribute id="name"/>
           </attributes>
         </naming>
+        <order>
+          <columns>
+            <column id="raw" ascending="true"/>
+          </columns>
+        </order>
         <reconciliation>
           <attributes>
             <attribute id="name"/>
@@ -203,6 +208,14 @@
           <rule id="name">
             <attributes>
               <attribute id="name"/>
+            </attributes>
+            <filter/>
+            <disabled>false</disabled>
+            <is_blocking>true</is_blocking>
+          </rule>
+          <rule id="raw">
+            <attributes>
+              <attribute id="raw"/>
             </attributes>
             <filter/>
             <disabled>false</disabled>

@@ -42,7 +42,7 @@
                         </item>
                         <item id="col:col2" _delta="must_exist">
                             <items>
-                                <item id="fieldset:Class:NetworkInterface:moreinfo" _delta="must_exist">
+                                <item id="fieldset:Class:IPInterface:l2info" _delta="must_exist">
                                     <items>
                                         <item id="speed" _delta="delete"/>
                                         <item id="interfacespeed_id" _delta="define">

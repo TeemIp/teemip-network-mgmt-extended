@@ -3828,6 +3828,311 @@
         </summary>
       </presentation>
     </class>
+    <class id="VPNLink" _delta="define">
+      <parent>FunctionalCI</parent>
+      <properties>
+        <category>bizmodel,searchable,configmgmt</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>vpnlink</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <style>
+          <icon>asset/img/icons8-vpn-48.png</icon>
+        </style>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+            <attribute id="org_id"/>
+            <attribute id="organization_name"/>
+          </attributes>
+        </reconciliation>
+        <obsolescence>
+          <condition><![CDATA[status='obsolete']]></condition>
+        </obsolescence>
+      </properties>
+      <fields>
+        <field id="status" xsi:type="AttributeEnum">
+          <values>
+            <value id="stock">
+              <code>stock</code>
+              <style>
+                <main_color>hsla(207, 72.6%, 57.1%, 1)</main_color>
+                <complementary_color>hsla(0, 0%, 100%, 1)</complementary_color>
+                <decoration_classes/>
+              </style>
+            </value>
+            <value id="production">
+              <code>production</code>
+              <style>
+                <main_color>hsla(92, 47.9%, 42.2%, 1)</main_color>
+                <complementary_color>hsla(0, 0%, 100%, 1)</complementary_color>
+                <decoration_classes/>
+              </style>
+            </value>
+            <value id="implementation">
+              <code>implementation</code>
+              <style>
+                <main_color>hsla(33, 89.9%, 64.9%, 1)</main_color>
+                <complementary_color>hsla(0, 0%, 100%, 1)</complementary_color>
+                <decoration_classes/>
+              </style>
+            </value>
+            <value id="obsolete">
+              <code>obsolete</code>
+              <style>
+                <main_color>hsla(0, 60.8%, 48%, 1)</main_color>
+                <complementary_color>hsla(0, 0%, 100%, 1)</complementary_color>
+                <decoration_classes/>
+              </style>
+            </value>
+          </values>
+          <sql>status</sql>
+          <default_value>production</default_value>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="type" xsi:type="AttributeEnum">
+          <values>
+            <value id="site2site">
+              <code>site2site</code>
+              <rank>1</rank>
+            </value>
+            <value id="remoteaccess">
+              <code>remoteaccess</code>
+              <rank>2</rank>
+            </value>
+            <value id="personal">
+              <code>personal</code>
+              <rank>3</rank>
+            </value>
+            <value id="mobile">
+              <code>mobile</code>
+              <rank>4</rank>
+            </value>
+          </values>
+          <sql>type</sql>
+          <default_value>site2site</default_value>
+          <is_null_allowed>false</is_null_allowed>
+          <display_style>list</display_style>
+        </field>
+        <field id="protocol" xsi:type="AttributeEnum">
+          <values>
+            <value id="ikev1">
+              <code>ikev1</code>
+              <rank>1</rank>
+            </value>
+            <value id="ike2">
+              <code>ikeV2</code>
+              <rank>2</rank>
+            </value>
+          </values>
+          <sql>protocol</sql>
+          <default_value>ikev2</default_value>
+          <is_null_allowed>false</is_null_allowed>
+          <display_style>radio_horizontal</display_style>
+        </field>
+        <field id="encryption" xsi:type="AttributeEnum">
+          <values>
+            <value id="des3">
+              <code>des3</code>
+              <rank>1</rank>
+            </value>
+            <value id="aes128">
+              <code>aes128</code>
+              <rank>2</rank>
+            </value>
+            <value id="aes256">
+              <code>aes256</code>
+              <rank>3</rank>
+            </value>
+          </values>
+          <sql>encryption</sql>
+          <default_value>aes256</default_value>
+          <is_null_allowed>false</is_null_allowed>
+          <display_style>radio_horizontal</display_style>
+        </field>
+        <field id="authentication" xsi:type="AttributeEnum">
+          <values>
+            <value id="sha1">
+              <code>sha1</code>
+              <rank>1</rank>
+            </value>
+            <value id="sha256">
+              <code>sha256</code>
+              <rank>2</rank>
+            </value>
+            <value id="sha384">
+              <code>sha384</code>
+              <rank>3</rank>
+            </value>
+          </values>
+          <sql>authentication</sql>
+          <default_value>sha384</default_value>
+          <is_null_allowed>false</is_null_allowed>
+          <display_style>radio_horizontal</display_style>
+        </field>
+        <field id="dhgroup" xsi:type="AttributeInteger">
+          <sql>dhgroup</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="ikeduration" xsi:type="AttributeDuration">
+          <sql>ikeduration</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="saduration" xsi:type="AttributeDuration">
+          <sql>saduration</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+      </fields>
+      <methods/>
+      <presentation>
+        <details>
+          <items>
+            <item id="col:col1">
+              <rank>10</rank>
+              <items>
+                <item id="fieldset:Class:VPNLink:baseinfo">
+                  <rank>10</rank>
+                  <items>
+                    <item id="name">
+                      <rank>10</rank>
+                    </item>
+                    <item id="org_id">
+                      <rank>20</rank>
+                    </item>
+                    <item id="status">
+                      <rank>30</rank>
+                    </item>
+                    <item id="type">
+                      <rank>40</rank>
+                    </item>
+                    <item id="business_criticity">
+                      <rank>50</rank>
+                    </item>
+                    <item id="description">
+                      <rank>60</rank>
+                    </item>
+                  </items>
+                </item>
+              </items>
+            </item>
+            <item id="col:col2">
+              <rank>20</rank>
+              <items>
+                <item id="fieldset:Class:VPNLink:phase1info">
+                  <rank>10</rank>
+                  <items>
+                    <item id="protocol">
+                      <rank>10</rank>
+                    </item>
+                    <item id="encryption">
+                      <rank>20</rank>
+                    </item>
+                    <item id="authentication">
+                      <rank>30</rank>
+                    </item>
+                    <item id="dhgroup">
+                      <rank>40</rank>
+                    </item>
+                    <item id="ikeduration">
+                      <rank>50</rank>
+                    </item>
+                    <item id="saduration">
+                      <rank>60</rank>
+                    </item>
+                  </items>
+                </item>
+             </items>
+            </item>
+            <item id="col:col3">
+              <rank>30</rank>
+              <items>
+                <item id="fieldset:Class:VPNLink:phase2info">
+                  <rank>10</rank>
+                  <items>
+                  </items>
+                </item>
+              </items>
+            </item>
+            <item id="contacts_list">
+              <rank>30</rank>
+            </item>
+            <item id="documents_list">
+              <rank>40</rank>
+            </item>
+            <item id="applicationsolution_list">
+              <rank>60</rank>
+            </item>
+          </items>
+        </details>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+            <item id="status">
+              <rank>30</rank>
+            </item>
+            <item id="type">
+              <rank>40</rank>
+            </item>
+          </items>
+        </default_search>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+            <item id="status">
+              <rank>30</rank>
+            </item>
+            <item id="typeid">
+              <rank>40</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="status">
+              <rank>10</rank>
+            </item>
+            <item id="typeid">
+              <rank>20</rank>
+            </item>
+            <item id="org_id">
+              <rank>100</rank>
+            </item>
+          </items>
+        </list>
+        <summary>
+          <items>
+            <item id="org_id">
+              <rank>10</rank>
+            </item>
+            <item id="status">
+              <rank>20</rank>
+            </item>
+            <item id="name">
+              <rank>30</rank>
+            </item>
+          </items>
+        </summary>
+      </presentation>
+    </class>
   </classes>
   <menus>
     <menu id="ConfigManagementOverview" xsi:type="DashboardMenuNode" _delta="must_exist">
@@ -3865,6 +4170,10 @@
           </cell>
           <cell id="teemip_connectivity" _delta="must_exist">
             <dashlets>
+              <dashlet id="teemip-vpnlinks" xsi:type="DashletBadge" _delta="define">
+                <rank>35</rank>
+                <class>VPNLink</class>
+              </dashlet>
               <dashlet id="teemip-snmp_credentials" xsi:type="DashletBadge" _delta="define">
                 <rank>50</rank>
                 <class>SnmpCredentials</class>
@@ -3934,6 +4243,11 @@
           <class id="NetworkFlow"/>
         </classes>
       </group>
+      <group id="VPN" _delta="define">
+        <classes>
+          <class id="VPNLink"/>
+        </classes>
+      </group>
    </groups>
     <profiles>
       <profile id="5327" _delta="define">
@@ -3957,6 +4271,15 @@
               <action id="action:bulk write">allow</action>
               <action id="action:delete">allow</action>
              </actions>
+          </group>
+          <group id="VPN">
+            <actions>
+              <action id="action:read">allow</action>
+              <action id="action:bulk read">allow</action>
+              <action id="action:write">allow</action>
+              <action id="action:bulk write">allow</action>
+              <action id="action:delete">allow</action>
+            </actions>
           </group>
          </groups>
       </profile>

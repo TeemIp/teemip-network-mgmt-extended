@@ -1,6 +1,6 @@
 <?php
 /*
- * @copyright   Copyright (C) 2010-2025 TeemIp
+ * @copyright   Copyright (C) 2010-2026 TeemIp
  * @license     http://opensource.org/licenses/AGPL-3.0
  */
 
@@ -334,6 +334,8 @@ Dict::Add('PT BR', 'Brazilian', 'Brazilian', array(
 	'Class:VLAN/Attribute:type/Value:network_based+' => '',
 	'Class:VLAN/Attribute:type/Value:protocol_based' => 'Baseada em protocolo',
 	'Class:VLAN/Attribute:type/Value:protocol_based+' => '',
+    'Class:VLAN/Attribute:aggregatelinks_list' => 'Links Agregado',
+    'Class:VLAN/Attribute:aggregatelinks_list+' => 'Lista de todos os links agregados anexados a este VLAN',
 ));
 
 //

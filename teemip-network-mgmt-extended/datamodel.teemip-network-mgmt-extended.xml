@@ -2130,6 +2130,12 @@
           <default_value>used</default_value>
           <is_null_allowed>false</is_null_allowed>
         </field>
+        <field id="aggregatelinks_list" xsi:type="AttributeLinkedSetIndirect" _delta="define">
+          <linked_class>lnkAggregateLinkToVLAN</linked_class>
+          <ext_key_to_me>vlan_id</ext_key_to_me>
+          <ext_key_to_remote>aggregatelink_id</ext_key_to_remote>
+          <duplicates/>
+        </field>
       </fields>
       <presentation>
         <details _delta="redefine">
@@ -2165,11 +2171,8 @@
             <item id="subnets_list">
               <rank>20</rank>
             </item>
-            <item id="physicalinterfaces_list">
+            <item id="interfaces_list" _delta="define">
               <rank>30</rank>
-            </item>
-            <item id="networkdevicevirtualinterfaces_list">
-              <rank>70</rank>
             </item>
           </items>
         </details>

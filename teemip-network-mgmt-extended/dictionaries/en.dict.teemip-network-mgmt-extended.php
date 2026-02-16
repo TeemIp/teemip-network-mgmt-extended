@@ -335,6 +335,8 @@ Dict::Add('EN US', 'English', 'English', array(
 	'Class:VLAN/Attribute:type/Value:network_based+' => '',
 	'Class:VLAN/Attribute:type/Value:protocol_based' => 'Protocol based',
 	'Class:VLAN/Attribute:type/Value:protocol_based+' => '',
+	'Class:VLAN/Attribute:aggregatelinks_list' => 'Aggregate links',
+	'Class:VLAN/Attribute:aggregatelinks_list+' => 'List of all aggregate links attached to this VLAN',
 ));
 
 //

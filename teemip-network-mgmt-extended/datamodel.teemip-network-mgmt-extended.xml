@@ -1332,7 +1332,8 @@
         <field id="aggregatelinks_list" xsi:type="AttributeLinkedSet" _delta="define">
           <linked_class>AggregateLink</linked_class>
           <ext_key_to_me>functionalci_id</ext_key_to_me>
-          <edit_mode>add_remove</edit_mode>
+          <edit_mode>in_place</edit_mode>
+          <tracking_level>all</tracking_level>
           <count_min>0</count_min>
           <count_max>0</count_max>
           <duplicates/>

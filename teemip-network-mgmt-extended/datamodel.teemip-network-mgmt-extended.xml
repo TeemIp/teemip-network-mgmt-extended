@@ -2084,9 +2084,9 @@
         </list>
       </presentation>
     </class>
-    <class id="VLAN" _delta="must_exist">
+    <class id="VLAN" _created_in="itop-config-mgmt" _delta="must_exist">
       <properties>
-        <order>
+        <order _delta="define">
           <columns>
             <column id="vlan_tag" ascending="true"/>
           </columns>

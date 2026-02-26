@@ -618,8 +618,12 @@ Dict::Add('EN US', 'English', 'English', array(
     'Class:VPNLink/Attribute:protocol_id+' => '',
     'Class:VPNLink/Attribute:encryption' => 'Encryption',
     'Class:VPNLink/Attribute:encryption+' => '',
-    'Class:VPNLink/Attribute:authentication' => 'Authentication',
-    'Class:VPNLink/Attribute:authentication+' => '',
+    'Class:VPNLink/Attribute:encryption/Value:des3' => '3DES',
+    'Class:VPNLink/Attribute:encryption/Value:des3+' => '',
+    'Class:VPNLink/Attribute:encryption/Value:aes128' => 'AES-128',
+    'Class:VPNLink/Attribute:encryption/Value:aes128+' => '',
+    'Class:VPNLink/Attribute:encryption/Value:aes256' => 'AES-256',
+    'Class:VPNLink/Attribute:encryption/Value:aes256+' => '',
 ));
 
 //
@@ -630,6 +634,16 @@ Dict::Add('EN US', 'English', 'English', array(
     'Class:VPNType+' => '',
     'Class:VPNType/Attribute:description' => 'Description',
     'Class:VPNType/Attribute:description+' => '',
+));
+
+//
+// Class: VPNProtocol
+//
+Dict::Add('EN US', 'English', 'English', array(
+    'Class:VPNProtocol' => 'VPN Protocol',
+    'Class:VPNProtocol+' => '',
+    'Class:VPNProtocol/Attribute:description' => 'Description',
+    'Class:VPNProtocol/Attribute:description+' => '',
 ));
 
 //

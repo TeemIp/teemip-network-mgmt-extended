@@ -4013,26 +4013,6 @@
           <is_null_allowed>false</is_null_allowed>
           <display_style>radio_horizontal</display_style>
         </field>
-        <field id="authentication" xsi:type="AttributeEnum">
-          <values>
-            <value id="sha1">
-              <code>sha1</code>
-              <rank>1</rank>
-            </value>
-            <value id="sha256">
-              <code>sha256</code>
-              <rank>2</rank>
-            </value>
-            <value id="sha384">
-              <code>sha384</code>
-              <rank>3</rank>
-            </value>
-          </values>
-          <sql>authentication</sql>
-          <default_value>sha384</default_value>
-          <is_null_allowed>false</is_null_allowed>
-          <display_style>radio_horizontal</display_style>
-        </field>
         <field id="carrier_id" xsi:type="AttributeExternalKey">
           <sql>carrier_id</sql>
           <target_class>Organization</target_class>
@@ -4156,14 +4136,11 @@
                     <item id="encryption">
                       <rank>30</rank>
                     </item>
-                    <item id="authentication">
+                    <item id="srcsubnet_id">
                       <rank>40</rank>
                     </item>
-                    <item id="srcsubnet_id">
-                      <rank>50</rank>
-                    </item>
                     <item id="destsubnet_id">
-                      <rank>60</rank>
+                      <rank>50</rank>
                     </item>
                   </items>
                 </item>
@@ -4437,10 +4414,6 @@
                 <rank>35</rank>
                 <class>VPNLink</class>
               </dashlet>
-              <dashlet id="teemip-vpnprotocols" xsi:type="DashletBadge" _delta="define">
-                <rank>36</rank>
-                <class>VPNProtocol</class>
-              </dashlet>
               <dashlet id="teemip-snmp_credentials" xsi:type="DashletBadge" _delta="define">
                 <rank>50</rank>
                 <class>SnmpCredentials</class>
@@ -4462,6 +4435,10 @@
               <dashlet id="teemip-11031" xsi:type="DashletBadge" _delta="define">
                 <rank>2.5</rank>
                 <class>VPNType</class>
+              </dashlet>
+              <dashlet id="teemip-11032" xsi:type="DashletBadge" _delta="define">
+                <rank>2.6</rank>
+                <class>VPNProtocol</class>
               </dashlet>
               <dashlet id="teemip-1104" xsi:type="DashletBadge" _delta="define">
                 <rank>3</rank>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Set>
+  <VPNProtocol alias="VPNProtocol" id="1">
+    <name>OpenVPN</name>
+  </VPNProtocol>
+  <VPNProtocol alias="VPNProtocol" id="2">
+    <name>WireGuard</name>
+  </VPNProtocol>
+  <VPNProtocol alias="VPNProtocol" id="3">
+    <name>PPTP</name>
+  </VPNProtocol>
+  <VPNProtocol alias="VPNProtocol" id="4">
+    <name>SSTP</name>
+  </VPNProtocol>
+  <VPNProtocol alias="VPNProtocol" id="5">
+    <name>L2TP</name>
+  </VPNProtocol>
+  <VPNProtocol alias="VPNProtocol" id="6">
+    <name>L2TP / IPsec</name>
+  </VPNProtocol>
+  <VPNProtocol alias="VPNProtocol" id="7">
+    <name>L2F</name>
+  </VPNProtocol>
+  <VPNProtocol alias="VPNProtocol" id="7">
+    <name>IPsec / IKEv2</name>
+  </VPNProtocol>
+</Set>

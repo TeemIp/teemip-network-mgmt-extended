@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Set>
+  <VPNType alias="VPNType" id="1">
+    <name>Remote Access</name>
+  </VPNType>
+  <VPNType alias="VPNType" id="2">
+    <name>Site to Site</name>
+  </VPNType>
+  <VPNType alias="VPNType" id="3">
+    <name>Point to Site</name>
+  </VPNType>
+</Set>

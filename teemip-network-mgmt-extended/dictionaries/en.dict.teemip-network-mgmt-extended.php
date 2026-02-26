@@ -1,6 +1,6 @@
 <?php
 /*
- * @copyright   Copyright (C) 2010-2025 TeemIp
+ * @copyright   Copyright (C) 2010-2026 TeemIp
  * @license     http://opensource.org/licenses/AGPL-3.0
  */
 
@@ -573,6 +573,63 @@ Dict::Add('EN US', 'English', 'English', array(
     'Class:NetworkModuleType/Attribute:networkmodules_list' => 'Network modules',
     'Class:NetworkModuleType/Attribute:networkmodules_list+' => 'List of all network modules of this type',
     'NetworkModuleType:Overview:NetworkModules' => 'List of all network modules of this type',
+));
+
+//
+// Class: VPNLink
+//
+Dict::Add('EN US', 'English', 'English', array(
+    'Class:VPNLink' => 'VPN Link',
+    'Class:VPNLink+' => '',
+    'Class:VPNLink:baseinfo' => 'General Information',
+    'Class:VPNLink:admininfo' => 'Administrative Information',
+    'Class:VPNLink:locationinfo' => 'End points',
+    'Class:VPNLink:networkinfo' => 'Network Information',
+    'Class:VPNLink:dateinfo' => 'Date Information',
+    'Class:VPNLink/Attribute:status' => 'Status',
+    'Class:VPNLink/Attribute:status+' => '',
+    'Class:VPNLink/Attribute:location_id1' => 'Location #1',
+    'Class:VPNLink/Attribute:location_id1+' => 'Location at one end of the link',
+    'Class:VPNLink/Attribute:location_id2' => 'Location #2',
+    'Class:VPNLink/Attribute:location_id2+' => 'Location at the other end of the link',
+    'Class:VPNLink/Attribute:device_id1' => 'Device #1',
+    'Class:VPNLink/Attribute:device_id1+' => 'Datacenter device at one end of the link',
+    'Class:VPNLink/Attribute:device_id2' => 'Device #2',
+    'Class:VPNLink/Attribute:device_id2+' => 'Datacenter device at the other end of the link',
+    'Class:VPNLink/Attribute:type_id' => 'VPN Type',
+    'Class:VPNLink/Attribute:type_id+' => '',
+    'Class:VPNLink/Attribute:carrier_id' => 'Carrier',
+    'Class:VPNLink/Attribute:carrier_id+' => '',
+    'Class:VPNLink/Attribute:carrier_reference' => 'Carrier Reference',
+    'Class:VPNLink/Attribute:carrier_reference+' => '',
+    'Class:VPNLink/Attribute:internal_reference' => 'Internal Reference',
+    'Class:VPNLink/Attribute:internal_reference+' => '',
+    'Class:VPNLink/Attribute:purchase_date' => 'Order date',
+    'Class:VPNLink/Attribute:purchase_date+' => '',
+    'Class:VPNLink/Attribute:renewal_date' => 'Renewal date',
+    'Class:VPNLink/Attribute:renewal_date+' => '',
+    'Class:VPNLink/Attribute:decommissioning_date' => 'Decommissioning Date',
+    'Class:VPNLink/Attribute:decommissioning_date+' => '',
+    'Class:VPNLink/Attribute:srcsubnet_id' => 'Source subnet',
+    'Class:VPNLink/Attribute:srcsubnet_id+' => '',
+    'Class:VPNLink/Attribute:destsubnet_id' => 'Destination subnet',
+    'Class:VPNLink/Attribute:destsubnet_id+' => '',
+    'Class:VPNLink/Attribute:protocol_id' => 'Protocol',
+    'Class:VPNLink/Attribute:protocol_id+' => '',
+    'Class:VPNLink/Attribute:encryption' => 'Encryption',
+    'Class:VPNLink/Attribute:encryption+' => '',
+    'Class:VPNLink/Attribute:authentication' => 'Authentication',
+    'Class:VPNLink/Attribute:authentication+' => '',
+));
+
+//
+// Class: VPNType
+//
+Dict::Add('EN US', 'English', 'English', array(
+    'Class:VPNType' => 'VPN Link',
+    'Class:VPNType+' => '',
+    'Class:VPNType/Attribute:description' => 'Description',
+    'Class:VPNType/Attribute:description+' => '',
 ));
 
 //

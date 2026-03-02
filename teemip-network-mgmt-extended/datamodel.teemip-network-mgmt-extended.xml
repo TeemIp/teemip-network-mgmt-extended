@@ -3907,79 +3907,90 @@
           <default_value>production</default_value>
           <is_null_allowed>false</is_null_allowed>
         </field>
-        <field id="location_id1" xsi:type="AttributeExternalKey">
-          <filter>
-            <![CDATA[SELECT Location AS l JOIN Organization AS child ON l.org_id = child.id JOIN Organization AS root ON child.parent_id BELOW root.id WHERE (root.id=:this->org_id OR root.id=:this->carrier_id)]]></filter>
+        <field id="local_location_id" xsi:type="AttributeExternalKey">
+          <filter><![CDATA[SELECT Location AS l JOIN Organization AS child ON l.org_id = child.id JOIN Organization AS root ON child.parent_id BELOW root.id WHERE root.id=:this->org_id]]></filter>
           <dependencies>
             <attribute id="org_id"/>
-            <attribute id="carrier_id"/>
           </dependencies>
-          <sql>location_id1</sql>
+          <sql>local_location_id</sql>
           <target_class>Location</target_class>
           <is_null_allowed>true</is_null_allowed>
           <on_target_delete>DEL_MANUAL</on_target_delete>
         </field>
-        <field id="location_name1" xsi:type="AttributeExternalField">
-          <extkey_attcode>location_id1</extkey_attcode>
+        <field id="local_location_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>local_location_id</extkey_attcode>
           <target_attcode>name</target_attcode>
         </field>
-        <field id="device_id1" xsi:type="AttributeExternalKey">
-          <filter>
-            <![CDATA[SELECT DatacenterDevice AS d WHERE d.location_id = :this->location_id1]]></filter>
-          <dependencies>
-            <attribute id="location_id1"/>
-          </dependencies>
-          <sql>device_id1</sql>
-          <target_class>DatacenterDevice</target_class>
-          <is_null_allowed>true</is_null_allowed>
-          <on_target_delete>DEL_MANUAL</on_target_delete>
-        </field>
-        <field id="device_name1" xsi:type="AttributeExternalField">
-          <extkey_attcode>device_id1</extkey_attcode>
-          <target_attcode>name</target_attcode>
-        </field>
-        <field id="device_id2" xsi:type="AttributeExternalKey">
-          <filter>
-            <![CDATA[SELECT DatacenterDevice AS d WHERE d.location_id = :this->location_id2]]></filter>
-          <dependencies>
-            <attribute id="location_id2"/>
-          </dependencies>
-          <sql>device_id2</sql>
-          <target_class>DatacenterDevice</target_class>
-          <is_null_allowed>true</is_null_allowed>
-          <on_target_delete>DEL_MANUAL</on_target_delete>
-        </field>
-        <field id="device_name2" xsi:type="AttributeExternalField">
-          <extkey_attcode>device_id2</extkey_attcode>
-          <target_attcode>name</target_attcode>
-        </field>
-        <field id="location_id2" xsi:type="AttributeExternalKey">
-          <filter>
-            <![CDATA[SELECT Location AS l JOIN Organization AS child ON l.org_id = child.id JOIN Organization AS root ON child.parent_id BELOW root.id WHERE (root.id=:this->org_id OR root.id=:this->carrier_id)]]></filter>
+        <field id="local_device_id" xsi:type="AttributeExternalKey">
+          <filter><![CDATA[SELECT DatacenterDevice AS d WHERE d.org_id = :this->org_id AND d.location_id = :this->local_location_id]]></filter>
           <dependencies>
             <attribute id="org_id"/>
-            <attribute id="carrier_id"/>
+            <attribute id="local_location_id"/>
           </dependencies>
-          <sql>location_id2</sql>
-          <target_class>Location</target_class>
+          <sql>local_device_id</sql>
+          <target_class>DatacenterDevice</target_class>
           <is_null_allowed>true</is_null_allowed>
           <on_target_delete>DEL_MANUAL</on_target_delete>
         </field>
-        <field id="location_name2" xsi:type="AttributeExternalField">
-          <extkey_attcode>location_id2</extkey_attcode>
+        <field id="local_device_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>local_device_id</extkey_attcode>
           <target_attcode>name</target_attcode>
         </field>
-        <field id="type_id" xsi:type="AttributeExternalKey">
-          <filter/>
-          <sql>type_id</sql>
-          <target_class>VPNType</target_class>
+        <field id="remote_org_id" xsi:type="AttributeExternalKey">
+          <sql>remote_org_id</sql>
+          <target_class>Organization</target_class>
+          <dependencies/>
           <is_null_allowed>true</is_null_allowed>
           <on_target_delete>DEL_MANUAL</on_target_delete>
           <jointype/>
         </field>
-        <field id="type_name" xsi:type="AttributeExternalField">
-          <extkey_attcode>type_id</extkey_attcode>
+        <field id="remote_org_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>remote_org_id</extkey_attcode>
           <target_attcode>name</target_attcode>
+        </field>
+        <field id="remote_location_id" xsi:type="AttributeExternalKey">
+          <filter><![CDATA[SELECT Location AS l JOIN Organization AS child ON l.org_id = child.id JOIN Organization AS root ON child.parent_id BELOW root.id WHERE root.id=:this->remote_org_id]]></filter>
+          <dependencies>
+            <attribute id="remote_org_id"/>
+          </dependencies>
+          <sql>remote_location_id</sql>
+          <target_class>Location</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_MANUAL</on_target_delete>
+        </field>
+        <field id="remote_location_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>remote_location_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="remote_device_id" xsi:type="AttributeExternalKey">
+          <filter><![CDATA[SELECT ConnectableCI AS d WHERE d.org_id = :this->remote_org_id AND d.location_id = :this->remote_location_id]]></filter>
+          <dependencies>
+            <attribute id="remote_location_id"/>
+          </dependencies>
+          <sql>remote_device_id</sql>
+          <target_class>ConnectableCI</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_MANUAL</on_target_delete>
+        </field>
+        <field id="remote_device_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>remote_device_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="type" xsi:type="AttributeEnum">
+          <values>
+            <value id="remote_access">
+              <code>remote_access</code>
+              <rank>1</rank>
+            </value>
+            <value id="site_to_site">
+              <code>site_to_site</code>
+              <rank>2</rank>
+            </value>
+          </values>
+          <sql>type</sql>
+          <default_value>remote_access</default_value>
+          <is_null_allowed>false</is_null_allowed>
+          <display_style>radio_horizontal</display_style>
         </field>
         <field id="protocol_id" xsi:type="AttributeExternalKey">
           <filter/>
@@ -4013,23 +4024,8 @@
           <is_null_allowed>false</is_null_allowed>
           <display_style>radio_horizontal</display_style>
         </field>
-        <field id="carrier_id" xsi:type="AttributeExternalKey">
-          <sql>carrier_id</sql>
-          <target_class>Organization</target_class>
-          <is_null_allowed>true</is_null_allowed>
-          <on_target_delete>DEL_MANUAL</on_target_delete>
-        </field>
-        <field id="carrier_name" xsi:type="AttributeExternalField">
-          <extkey_attcode>carrier_id</extkey_attcode>
-          <target_attcode>name</target_attcode>
-        </field>
-        <field id="carrier_reference" xsi:type="AttributeString">
-          <sql>carrier_ref</sql>
-          <default_value/>
-          <is_null_allowed>true</is_null_allowed>
-        </field>
-        <field id="internal_reference" xsi:type="AttributeString">
-          <sql>internal_reference</sql>
+        <field id="reference" xsi:type="AttributeString">
+          <sql>reference</sql>
           <default_value/>
           <is_null_allowed>true</is_null_allowed>
         </field>
@@ -4061,6 +4057,7 @@
           <on_target_delete>DEL_MANUAL</on_target_delete>
         </field>
       </fields>
+      <event_listeners/>
       <methods/>
       <presentation>
         <details>
@@ -4091,14 +4088,20 @@
                 <item id="fieldset:Class:VPNLink:admininfo">
                   <rank>20</rank>
                   <items>
-                    <item id="carrier_id">
+                    <item id="reference">
                       <rank>10</rank>
                     </item>
-                    <item id="carrier_reference">
+                    <item id="purchase_date">
                       <rank>20</rank>
                     </item>
-                    <item id="internal_reference">
+                    <item id="move2production">
                       <rank>30</rank>
+                    </item>
+                    <item id="renewal_date">
+                      <rank>40</rank>
+                    </item>
+                    <item id="decommissioning_date">
+                      <rank>50</rank>
                     </item>
                   </items>
                 </item>
@@ -4110,24 +4113,27 @@
                 <item id="fieldset:Class:VPNLink:locationinfo">
                   <rank>10</rank>
                   <items>
-                    <item id="location_id1">
+                    <item id="local_location_id">
                       <rank>10</rank>
                     </item>
-                    <item id="device_id1">
+                   <item id="local_device_id">
                       <rank>20</rank>
                     </item>
-                    <item id="location_id2">
+                    <item id="remote_org_id">
                       <rank>30</rank>
                     </item>
-                    <item id="device_id2">
+                    <item id="remote_location_id">
                       <rank>40</rank>
+                    </item>
+                    <item id="remote_device_id">
+                      <rank>50</rank>
                     </item>
                   </items>
                 </item>
                 <item id="fieldset:Class:VPNLink:networkinfo">
                   <rank>20</rank>
                   <items>
-                    <item id="type_id">
+                    <item id="type">
                       <rank>10</rank>
                     </item>
                     <item id="protocol_id">
@@ -4141,28 +4147,6 @@
                     </item>
                     <item id="destsubnet_id">
                       <rank>50</rank>
-                    </item>
-                  </items>
-                </item>
-              </items>
-            </item>
-            <item id="col:col3">
-              <rank>10</rank>
-              <items>
-                <item id="fieldset:Class:VPNLink:dateinfo">
-                  <rank>30</rank>
-                  <items>
-                    <item id="purchase_date">
-                      <rank>30</rank>
-                    </item>
-                    <item id="move2production">
-                      <rank>40</rank>
-                    </item>
-                    <item id="renewal_date">
-                      <rank>50</rank>
-                    </item>
-                    <item id="decommissioning_date">
-                      <rank>60</rank>
                     </item>
                   </items>
                 </item>
@@ -4190,17 +4174,14 @@
             <item id="status">
               <rank>30</rank>
             </item>
-            <item id="type_id">
+            <item id="type">
               <rank>40</rank>
             </item>
             <item id="bandwidth">
               <rank>50</rank>
             </item>
-            <item id="carrier_id">
-              <rank>60</rank>
-            </item>
             <item id="renewal_date">
-              <rank>70</rank>
+              <rank>60</rank>
             </item>
           </items>
         </default_search>
@@ -4215,7 +4196,7 @@
             <item id="status">
               <rank>30</rank>
             </item>
-            <item id="type_id">
+            <item id="type">
               <rank>40</rank>
             </item>
           </items>
@@ -4225,11 +4206,11 @@
             <item id="status">
               <rank>10</rank>
             </item>
-            <item id="type_id">
+            <item id="type">
               <rank>20</rank>
             </item>
             <item id="org_id">
-              <rank>100</rank>
+              <rank>30</rank>
             </item>
           </items>
         </list>
@@ -4244,72 +4225,11 @@
             <item id="name">
               <rank>30</rank>
             </item>
-            <item id="type_id">
+            <item id="type">
               <rank>40</rank>
             </item>
           </items>
         </summary>
-      </presentation>
-    </class>
-    <class id="VPNType" _delta="define">
-      <parent>Typology</parent>
-      <properties>
-        <category>bizmodel,searchable,configmgmt</category>
-        <abstract>false</abstract>
-        <key_type>autoincrement</key_type>
-        <db_table>vpntype</db_table>
-        <db_key_field>id</db_key_field>
-        <db_final_class_field/>
-        <naming>
-          <attributes>
-            <attribute id="name"/>
-          </attributes>
-        </naming>
-        <reconciliation>
-          <attributes>
-            <attribute id="name"/>
-          </attributes>
-        </reconciliation>
-      </properties>
-      <fields>
-        <field id="description" xsi:type="AttributeString">
-          <sql>description</sql>
-          <default_value/>
-          <is_null_allowed>true</is_null_allowed>
-        </field>
-      </fields>
-      <methods/>
-      <presentation>
-        <details>
-          <items>
-            <item id="name">
-              <rank>10</rank>
-            </item>
-            <item id="description">
-              <rank>20</rank>
-            </item>
-          </items>
-        </details>
-        <search>
-          <items>
-            <item id="name">
-              <rank>10</rank>
-            </item>
-            <item id="description">
-              <rank>20</rank>
-            </item>
-          </items>
-        </search>
-        <list>
-          <items>
-            <item id="name">
-              <rank>10</rank>
-            </item>
-            <item id="description">
-              <rank>20</rank>
-            </item>
-          </items>
-        </list>
       </presentation>
     </class>
     <class id="VPNProtocol" _delta="define">
@@ -4434,10 +4354,6 @@
             <dashlets>
               <dashlet id="teemip-11031" xsi:type="DashletBadge" _delta="define">
                 <rank>2.5</rank>
-                <class>VPNType</class>
-              </dashlet>
-              <dashlet id="teemip-11032" xsi:type="DashletBadge" _delta="define">
-                <rank>2.6</rank>
                 <class>VPNProtocol</class>
               </dashlet>
               <dashlet id="teemip-1104" xsi:type="DashletBadge" _delta="define">
@@ -4494,7 +4410,6 @@
       <group id="VPN" _delta="define">
         <classes>
           <class id="VPNLink"/>
-          <class id="VPNType"/>
           <class id="VPNProtocol"/>
         </classes>
       </group>

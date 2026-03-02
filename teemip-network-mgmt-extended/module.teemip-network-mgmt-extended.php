@@ -49,7 +49,6 @@ SetupWebPage::AddModule(
 			'data/data.sample.NetworkFlowCapacity.xml',
 			'data/data.sample.NetworkFlow.xml',
             'data/data.sample.VPNProtocol.xml',
-            'data/data.sample.VPNType.xml',
 		),
 
 		// Documentation

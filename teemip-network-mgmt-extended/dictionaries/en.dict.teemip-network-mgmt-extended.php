@@ -578,32 +578,34 @@ Dict::Add('EN US', 'English', 'English', array(
 //
 // Class: VPNLink
 //
-Dict::Add('EN US', 'English', 'English', array(
+Dict::Add('EN US', 'English', 'English', aEntries: array(
     'Class:VPNLink' => 'VPN Link',
     'Class:VPNLink+' => '',
-    'Class:VPNLink:baseinfo' => 'General Information',
-    'Class:VPNLink:admininfo' => 'Administrative Information',
+    'Class:VPNLink:baseinfo' => 'General information',
+    'Class:VPNLink:admininfo' => 'Administrative information',
     'Class:VPNLink:locationinfo' => 'End points',
-    'Class:VPNLink:networkinfo' => 'Network Information',
-    'Class:VPNLink:dateinfo' => 'Date Information',
+    'Class:VPNLink:networkinfo' => 'Network information',
+    'Class:VPNLink:dateinfo' => 'Date information',
     'Class:VPNLink/Attribute:status' => 'Status',
     'Class:VPNLink/Attribute:status+' => '',
-    'Class:VPNLink/Attribute:location_id1' => 'Location #1',
-    'Class:VPNLink/Attribute:location_id1+' => 'Location at one end of the link',
-    'Class:VPNLink/Attribute:location_id2' => 'Location #2',
-    'Class:VPNLink/Attribute:location_id2+' => 'Location at the other end of the link',
-    'Class:VPNLink/Attribute:device_id1' => 'Device #1',
-    'Class:VPNLink/Attribute:device_id1+' => 'Datacenter device at one end of the link',
-    'Class:VPNLink/Attribute:device_id2' => 'Device #2',
-    'Class:VPNLink/Attribute:device_id2+' => 'Datacenter device at the other end of the link',
-    'Class:VPNLink/Attribute:type_id' => 'VPN Type',
-    'Class:VPNLink/Attribute:type_id+' => '',
-    'Class:VPNLink/Attribute:carrier_id' => 'Carrier',
-    'Class:VPNLink/Attribute:carrier_id+' => '',
-    'Class:VPNLink/Attribute:carrier_reference' => 'Carrier Reference',
-    'Class:VPNLink/Attribute:carrier_reference+' => '',
-    'Class:VPNLink/Attribute:internal_reference' => 'Internal Reference',
-    'Class:VPNLink/Attribute:internal_reference+' => '',
+    'Class:VPNLink/Attribute:remote_org_id' => 'Remote organization',
+    'Class:VPNLink/Attribute:remote_org_id+' => 'Organization of that the remote location belongs to',
+    'Class:VPNLink/Attribute:local_location_id' => 'Local location',
+    'Class:VPNLink/Attribute:local_location_id+' => 'Location at the local end of the link',
+    'Class:VPNLink/Attribute:remote_location_id' => 'Remote Location',
+    'Class:VPNLink/Attribute:remote_location_id+' => 'Location at the remote end of the link',
+    'Class:VPNLink/Attribute:local_device_id' => 'Local device',
+    'Class:VPNLink/Attribute:local_device_id+' => 'Datacenter device at the local end of the link',
+    'Class:VPNLink/Attribute:remote_device_id' => 'Remote device',
+    'Class:VPNLink/Attribute:remote_device_id+' => 'Connectable CI at the remote end of the link',
+    'Class:VPNLink/Attribute:type' => 'VPN Type',
+    'Class:VPNLink/Attribute:type+' => '',
+    'Class:VPNLink/Attribute:type/value:remote_access' => 'Remote access',
+    'Class:VPNLink/Attribute:type/value:remote_access+' => '',
+    'Class:VPNLink/Attribute:type/value:site_to_site' => 'Site to site',
+    'Class:VPNLink/Attribute:type/value:site_to_site+' => '',
+    'Class:VPNLink/Attribute:reference' => 'Reference',
+    'Class:VPNLink/Attribute:reference+' => '',
     'Class:VPNLink/Attribute:purchase_date' => 'Order date',
     'Class:VPNLink/Attribute:purchase_date+' => '',
     'Class:VPNLink/Attribute:renewal_date' => 'Renewal date',
@@ -624,16 +626,6 @@ Dict::Add('EN US', 'English', 'English', array(
     'Class:VPNLink/Attribute:encryption/Value:aes128+' => '',
     'Class:VPNLink/Attribute:encryption/Value:aes256' => 'AES-256',
     'Class:VPNLink/Attribute:encryption/Value:aes256+' => '',
-));
-
-//
-// Class: VPNType
-//
-Dict::Add('EN US', 'English', 'English', array(
-    'Class:VPNType' => 'VPN Link',
-    'Class:VPNType+' => '',
-    'Class:VPNType/Attribute:description' => 'Description',
-    'Class:VPNType/Attribute:description+' => '',
 ));
 
 //

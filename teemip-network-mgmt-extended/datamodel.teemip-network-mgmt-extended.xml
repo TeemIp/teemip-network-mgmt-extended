@@ -3945,7 +3945,7 @@
             <attribute id="location_id2"/>
           </dependencies>
           <sql>device_id2</sql>
-          <target_class>DatacenterDevice</target_class>
+          <target_class>ConnectableCI</target_class>
           <is_null_allowed>true</is_null_allowed>
           <on_target_delete>DEL_MANUAL</on_target_delete>
         </field>

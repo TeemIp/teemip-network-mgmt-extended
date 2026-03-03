@@ -4281,6 +4281,9 @@
             <item id="description">
               <rank>20</rank>
             </item>
+            <item id="vpnlinks_list">
+              <rank>30</rank>
+            </item>
           </items>
         </details>
         <search>

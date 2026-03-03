@@ -636,6 +636,8 @@ Dict::Add('EN US', 'English', 'English', array(
     'Class:VPNProtocol+' => '',
     'Class:VPNProtocol/Attribute:description' => 'Description',
     'Class:VPNProtocol/Attribute:description+' => '',
+    'Class:VPNProtocol/Attribute:vpnlinks_list' => 'VPN Links',
+    'Class:VPNProtocol/Attribute:vpnlinks_list+' => 'All VPN links using that protocol',
 ));
 
 //

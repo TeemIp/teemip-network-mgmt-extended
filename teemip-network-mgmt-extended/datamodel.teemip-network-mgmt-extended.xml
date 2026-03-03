@@ -4096,20 +4096,23 @@
                 <item id="fieldset:Class:VPNLink:admininfo">
                   <rank>20</rank>
                   <items>
-                    <item id="reference">
+                    <item id="remote_org_id">
                       <rank>10</rank>
                     </item>
-                    <item id="purchase_date">
+                    <item id="reference">
                       <rank>20</rank>
                     </item>
-                    <item id="move2production">
+                    <item id="purchase_date">
                       <rank>30</rank>
                     </item>
-                    <item id="renewal_date">
+                    <item id="move2production">
                       <rank>40</rank>
                     </item>
-                    <item id="decommissioning_date">
+                    <item id="renewal_date">
                       <rank>50</rank>
+                    </item>
+                    <item id="decommissioning_date">
+                      <rank>60</rank>
                     </item>
                   </items>
                 </item>
@@ -4127,14 +4130,11 @@
                    <item id="local_device_id">
                       <rank>20</rank>
                     </item>
-                    <item id="remote_org_id">
+                    <item id="remote_location_id">
                       <rank>30</rank>
                     </item>
-                    <item id="remote_location_id">
-                      <rank>40</rank>
-                    </item>
                     <item id="remote_device_id">
-                      <rank>50</rank>
+                      <rank>40</rank>
                     </item>
                   </items>
                 </item>
@@ -4185,11 +4185,8 @@
             <item id="type">
               <rank>40</rank>
             </item>
-            <item id="bandwidth">
-              <rank>50</rank>
-            </item>
             <item id="renewal_date">
-              <rank>60</rank>
+              <rank>50</rank>
             </item>
           </items>
         </default_search>
@@ -4220,6 +4217,9 @@
             <item id="org_id">
               <rank>30</rank>
             </item>
+            <item id="protocol_id">
+              <rank>40</rank>
+            </item>
           </items>
         </list>
         <summary>
@@ -4230,10 +4230,10 @@
             <item id="status">
               <rank>20</rank>
             </item>
-            <item id="name">
+            <item id="type">
               <rank>30</rank>
             </item>
-            <item id="type">
+            <item id="protocol_id">
               <rank>40</rank>
             </item>
           </items>

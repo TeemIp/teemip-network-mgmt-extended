@@ -3908,7 +3908,7 @@
           <is_null_allowed>false</is_null_allowed>
         </field>
         <field id="local_location_id" xsi:type="AttributeExternalKey">
-          <filter><![CDATA[SELECT Location AS l JOIN Organization AS child ON l.org_id = child.id JOIN Organization AS root ON child.parent_id BELOW root.id WHERE root.id=:this->org_id]]></filter>
+          <filter><![CDATA[SELECT Location AS l JOIN Organization AS child ON l.org_id = child.id JOIN Organization AS root ON child.parent_id BELOW root.id WHERE root.id = :this->org_id]]></filter>
           <dependencies>
             <attribute id="org_id"/>
           </dependencies>
@@ -3949,7 +3949,7 @@
           <target_attcode>name</target_attcode>
         </field>
         <field id="remote_location_id" xsi:type="AttributeExternalKey">
-          <filter><![CDATA[SELECT Location AS l JOIN Organization AS child ON l.org_id = child.id JOIN Organization AS root ON child.parent_id BELOW root.id WHERE root.id=:this->remote_org_id]]></filter>
+          <filter><![CDATA[SELECT Location AS l JOIN Organization AS child ON l.org_id = child.id JOIN Organization AS root ON child.parent_id BELOW root.id WHERE root.id = :this->remote_org_id]]></filter>
           <dependencies>
             <attribute id="remote_org_id"/>
           </dependencies>
@@ -4047,12 +4047,20 @@
         <field id="srcsubnet_id" xsi:type="AttributeExternalKey">
           <sql>srcsubnet_id</sql>
           <target_class>IPSubnet</target_class>
+          <filter><![CDATA[SELECT IPSubnet AS i WHERE i.org_id = :this->org_id]]></filter>
+          <dependencies>
+            <attribute id="org_id"/>
+          </dependencies>
           <is_null_allowed>true</is_null_allowed>
           <on_target_delete>DEL_MANUAL</on_target_delete>
         </field>
         <field id="destsubnet_id" xsi:type="AttributeExternalKey">
           <sql>destsubnet_id</sql>
           <target_class>IPSubnet</target_class>
+          <filter><![CDATA[SELECT IPSubnet AS i WHERE i.org_id = :this->remote_org_id]]></filter>
+          <dependencies>
+            <attribute id="remote_org_id"/>
+          </dependencies>
           <is_null_allowed>true</is_null_allowed>
           <on_target_delete>DEL_MANUAL</on_target_delete>
         </field>

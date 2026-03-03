@@ -3839,6 +3839,475 @@
         </summary>
       </presentation>
     </class>
+    <class id="VPNLink" _delta="define">
+      <parent>FunctionalCI</parent>
+      <properties>
+        <category>bizmodel,searchable,configmgmt</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>vpnlink</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <style>
+          <icon>asset/img/icons8-vpn-48.png</icon>
+        </style>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+            <attribute id="org_id"/>
+            <attribute id="organization_name"/>
+          </attributes>
+        </reconciliation>
+        <obsolescence>
+          <condition><![CDATA[status='obsolete']]></condition>
+        </obsolescence>
+      </properties>
+      <fields>
+        <field id="status" xsi:type="AttributeEnum">
+          <values>
+            <value id="stock">
+              <code>stock</code>
+              <style>
+                <main_color>hsla(207, 72.6%, 57.1%, 1)</main_color>
+                <complementary_color>hsla(0, 0%, 100%, 1)</complementary_color>
+                <decoration_classes/>
+              </style>
+            </value>
+            <value id="production">
+              <code>production</code>
+              <style>
+                <main_color>hsla(92, 47.9%, 42.2%, 1)</main_color>
+                <complementary_color>hsla(0, 0%, 100%, 1)</complementary_color>
+                <decoration_classes/>
+              </style>
+            </value>
+            <value id="implementation">
+              <code>implementation</code>
+              <style>
+                <main_color>hsla(33, 89.9%, 64.9%, 1)</main_color>
+                <complementary_color>hsla(0, 0%, 100%, 1)</complementary_color>
+                <decoration_classes/>
+              </style>
+            </value>
+            <value id="obsolete">
+              <code>obsolete</code>
+              <style>
+                <main_color>hsla(0, 60.8%, 48%, 1)</main_color>
+                <complementary_color>hsla(0, 0%, 100%, 1)</complementary_color>
+                <decoration_classes/>
+              </style>
+            </value>
+          </values>
+          <sql>status</sql>
+          <default_value>production</default_value>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="local_location_id" xsi:type="AttributeExternalKey">
+          <filter><![CDATA[SELECT Location AS l JOIN Organization AS child ON l.org_id = child.id JOIN Organization AS root ON child.parent_id BELOW root.id WHERE root.id = :this->org_id]]></filter>
+          <dependencies>
+            <attribute id="org_id"/>
+          </dependencies>
+          <sql>local_location_id</sql>
+          <target_class>Location</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_MANUAL</on_target_delete>
+        </field>
+        <field id="local_location_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>local_location_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="local_device_id" xsi:type="AttributeExternalKey">
+          <filter><![CDATA[SELECT DatacenterDevice AS d WHERE d.location_id = :this->local_location_id]]></filter>
+          <dependencies>
+            <attribute id="local_location_id"/>
+          </dependencies>
+          <sql>local_device_id</sql>
+          <target_class>DatacenterDevice</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_MANUAL</on_target_delete>
+        </field>
+        <field id="local_device_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>local_device_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="remote_org_id" xsi:type="AttributeExternalKey">
+          <sql>remote_org_id</sql>
+          <target_class>Organization</target_class>
+          <dependencies/>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_MANUAL</on_target_delete>
+          <jointype/>
+        </field>
+        <field id="remote_org_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>remote_org_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="remote_location_id" xsi:type="AttributeExternalKey">
+          <filter><![CDATA[SELECT Location AS l JOIN Organization AS child ON l.org_id = child.id JOIN Organization AS root ON child.parent_id BELOW root.id WHERE root.id = :this->remote_org_id]]></filter>
+          <dependencies>
+            <attribute id="remote_org_id"/>
+          </dependencies>
+          <sql>remote_location_id</sql>
+          <target_class>Location</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_MANUAL</on_target_delete>
+        </field>
+        <field id="remote_location_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>remote_location_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="remote_device_id" xsi:type="AttributeExternalKey">
+          <filter><![CDATA[SELECT ConnectableCI AS d WHERE d.location_id = :this->remote_location_id]]></filter>
+          <dependencies>
+            <attribute id="remote_location_id"/>
+          </dependencies>
+          <sql>remote_device_id</sql>
+          <target_class>ConnectableCI</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_MANUAL</on_target_delete>
+        </field>
+        <field id="remote_device_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>remote_device_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="type" xsi:type="AttributeEnum">
+          <values>
+            <value id="remote_access">
+              <code>remote_access</code>
+              <rank>1</rank>
+            </value>
+            <value id="site_to_site">
+              <code>site_to_site</code>
+              <rank>2</rank>
+            </value>
+          </values>
+          <sql>type</sql>
+          <default_value>remote_access</default_value>
+          <is_null_allowed>false</is_null_allowed>
+          <display_style>radio_horizontal</display_style>
+        </field>
+        <field id="protocol_id" xsi:type="AttributeExternalKey">
+          <filter/>
+          <sql>protocol_id</sql>
+          <target_class>VPNProtocol</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_MANUAL</on_target_delete>
+          <jointype/>
+        </field>
+        <field id="protocol_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>protocol_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="encryption" xsi:type="AttributeEnum">
+          <values>
+            <value id="des3">
+              <code>des3</code>
+              <rank>1</rank>
+            </value>
+            <value id="aes128">
+              <code>aes128</code>
+              <rank>2</rank>
+            </value>
+            <value id="aes256">
+              <code>aes256</code>
+              <rank>3</rank>
+            </value>
+          </values>
+          <sql>encryption</sql>
+          <default_value>aes256</default_value>
+          <is_null_allowed>true</is_null_allowed>
+          <display_style>radio_horizontal</display_style>
+        </field>
+        <field id="reference" xsi:type="AttributeString">
+          <sql>reference</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="purchase_date" xsi:type="AttributeDate">
+          <sql>purchase_date</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="renewal_date" xsi:type="AttributeDate">
+          <sql>renewal_date</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="decommissioning_date" xsi:type="AttributeDate">
+          <sql>decommissioning_date</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="srcsubnet_id" xsi:type="AttributeExternalKey">
+          <sql>srcsubnet_id</sql>
+          <target_class>IPSubnet</target_class>
+          <filter><![CDATA[SELECT IPSubnet AS i WHERE i.org_id = :this->org_id]]></filter>
+          <dependencies>
+            <attribute id="org_id"/>
+          </dependencies>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_MANUAL</on_target_delete>
+        </field>
+        <field id="destsubnet_id" xsi:type="AttributeExternalKey">
+          <sql>destsubnet_id</sql>
+          <target_class>IPSubnet</target_class>
+          <filter><![CDATA[SELECT IPSubnet AS i WHERE i.org_id = :this->remote_org_id]]></filter>
+          <dependencies>
+            <attribute id="remote_org_id"/>
+          </dependencies>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_MANUAL</on_target_delete>
+        </field>
+      </fields>
+      <event_listeners/>
+      <methods/>
+      <presentation>
+        <details>
+          <items>
+            <item id="col:col1">
+              <rank>10</rank>
+              <items>
+                <item id="fieldset:Class:VPNLink:baseinfo">
+                  <rank>10</rank>
+                  <items>
+                    <item id="name">
+                      <rank>10</rank>
+                    </item>
+                    <item id="org_id">
+                      <rank>20</rank>
+                    </item>
+                    <item id="status">
+                      <rank>30</rank>
+                    </item>
+                    <item id="business_criticity">
+                      <rank>40</rank>
+                    </item>
+                    <item id="description">
+                      <rank>50</rank>
+                    </item>
+                  </items>
+                </item>
+                <item id="fieldset:Class:VPNLink:admininfo">
+                  <rank>20</rank>
+                  <items>
+                    <item id="remote_org_id">
+                      <rank>10</rank>
+                    </item>
+                    <item id="reference">
+                      <rank>20</rank>
+                    </item>
+                    <item id="purchase_date">
+                      <rank>30</rank>
+                    </item>
+                    <item id="move2production">
+                      <rank>40</rank>
+                    </item>
+                    <item id="renewal_date">
+                      <rank>50</rank>
+                    </item>
+                    <item id="decommissioning_date">
+                      <rank>60</rank>
+                    </item>
+                  </items>
+                </item>
+              </items>
+            </item>
+            <item id="col:col2">
+              <rank>20</rank>
+              <items>
+                <item id="fieldset:Class:VPNLink:locationinfo">
+                  <rank>10</rank>
+                  <items>
+                    <item id="local_location_id">
+                      <rank>10</rank>
+                    </item>
+                   <item id="local_device_id">
+                      <rank>20</rank>
+                    </item>
+                    <item id="remote_location_id">
+                      <rank>30</rank>
+                    </item>
+                    <item id="remote_device_id">
+                      <rank>40</rank>
+                    </item>
+                  </items>
+                </item>
+                <item id="fieldset:Class:VPNLink:networkinfo">
+                  <rank>20</rank>
+                  <items>
+                    <item id="type">
+                      <rank>10</rank>
+                    </item>
+                    <item id="protocol_id">
+                      <rank>20</rank>
+                    </item>
+                    <item id="encryption">
+                      <rank>30</rank>
+                    </item>
+                    <item id="srcsubnet_id">
+                      <rank>40</rank>
+                    </item>
+                    <item id="destsubnet_id">
+                      <rank>50</rank>
+                    </item>
+                  </items>
+                </item>
+              </items>
+            </item>
+            <item id="contacts_list">
+              <rank>30</rank>
+            </item>
+            <item id="documents_list">
+              <rank>40</rank>
+            </item>
+            <item id="applicationsolution_list">
+              <rank>60</rank>
+            </item>
+          </items>
+        </details>
+        <default_search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+            <item id="status">
+              <rank>30</rank>
+            </item>
+            <item id="type">
+              <rank>40</rank>
+            </item>
+            <item id="renewal_date">
+              <rank>50</rank>
+            </item>
+          </items>
+        </default_search>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+            <item id="status">
+              <rank>30</rank>
+            </item>
+            <item id="type">
+              <rank>40</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="status">
+              <rank>10</rank>
+            </item>
+            <item id="type">
+              <rank>20</rank>
+            </item>
+            <item id="org_id">
+              <rank>30</rank>
+            </item>
+            <item id="protocol_id">
+              <rank>40</rank>
+            </item>
+          </items>
+        </list>
+        <summary>
+          <items>
+            <item id="org_id">
+              <rank>10</rank>
+            </item>
+            <item id="status">
+              <rank>20</rank>
+            </item>
+            <item id="type">
+              <rank>30</rank>
+            </item>
+            <item id="protocol_id">
+              <rank>40</rank>
+            </item>
+          </items>
+        </summary>
+      </presentation>
+    </class>
+    <class id="VPNProtocol" _delta="define">
+      <parent>Typology</parent>
+      <properties>
+        <category>bizmodel,searchable,configmgmt</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>vpnprotocol</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <fields>
+        <field id="description" xsi:type="AttributeString">
+          <sql>description</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="vpnlinks_list" xsi:type="AttributeLinkedSet">
+          <linked_class>VPNLink</linked_class>
+          <ext_key_to_me>protocol_id</ext_key_to_me>
+          <edit_mode>in_place</edit_mode>
+        </field>
+      </fields>
+      <methods/>
+      <presentation>
+        <details>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="description">
+              <rank>20</rank>
+            </item>
+            <item id="vpnlinks_list">
+              <rank>30</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="description">
+              <rank>20</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="description">
+              <rank>20</rank>
+            </item>
+          </items>
+        </list>
+      </presentation>
+    </class>
   </classes>
   <menus>
     <menu id="ConfigManagementOverview" xsi:type="DashboardMenuNode" _delta="must_exist">
@@ -3876,6 +4345,10 @@
           </cell>
           <cell id="teemip_connectivity" _delta="must_exist">
             <dashlets>
+              <dashlet id="teemip-vpnlinks" xsi:type="DashletBadge" _delta="define">
+                <rank>35</rank>
+                <class>VPNLink</class>
+              </dashlet>
               <dashlet id="teemip-snmp_credentials" xsi:type="DashletBadge" _delta="define">
                 <rank>50</rank>
                 <class>SnmpCredentials</class>
@@ -3894,6 +4367,10 @@
         <cells>
           <cell id="Network" _delta="must_exist">
             <dashlets>
+              <dashlet id="teemip-11031" xsi:type="DashletBadge" _delta="define">
+                <rank>2.5</rank>
+                <class>VPNProtocol</class>
+              </dashlet>
               <dashlet id="teemip-1104" xsi:type="DashletBadge" _delta="define">
                 <rank>3</rank>
                 <class>InterfaceSpeed</class>
@@ -3945,6 +4422,12 @@
           <class id="NetworkFlow"/>
         </classes>
       </group>
+      <group id="VPN" _delta="define">
+        <classes>
+          <class id="VPNLink"/>
+          <class id="VPNProtocol"/>
+        </classes>
+      </group>
    </groups>
     <profiles>
       <profile id="5327" _delta="define">
@@ -3968,6 +4451,15 @@
               <action id="action:bulk write">allow</action>
               <action id="action:delete">allow</action>
              </actions>
+          </group>
+          <group id="VPN">
+            <actions>
+              <action id="action:read">allow</action>
+              <action id="action:bulk read">allow</action>
+              <action id="action:write">allow</action>
+              <action id="action:bulk write">allow</action>
+              <action id="action:delete">allow</action>
+            </actions>
           </group>
          </groups>
       </profile>

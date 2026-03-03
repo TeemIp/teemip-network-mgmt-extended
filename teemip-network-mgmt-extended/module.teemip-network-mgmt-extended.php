@@ -48,6 +48,7 @@ SetupWebPage::AddModule(
 			'data/data.sample.lnkIPInterfaceToIPAddress.xml',
 			'data/data.sample.NetworkFlowCapacity.xml',
 			'data/data.sample.NetworkFlow.xml',
+            'data/data.sample.VPNProtocol.xml',
 		),
 
 		// Documentation

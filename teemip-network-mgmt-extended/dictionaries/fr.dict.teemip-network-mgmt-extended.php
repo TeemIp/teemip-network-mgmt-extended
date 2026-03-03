@@ -332,7 +332,7 @@ Dict::Add('FR FR', 'French', 'Français', array(
 	'Class:VLAN/Attribute:type/Value:protocol_based' => 'Par protocole',
 	'Class:VLAN/Attribute:type/Value:protocol_based+' => '',
     'Class:VLAN/Attribute:aggregatelinks_list' => 'Agrégats de Liens',
-    'Class:VLAN/Attribute:aggregatelinks_list+' => 'Liste de tous les agrégats de liens attachés au VLAN',
+    'Class:VLAN/Attribute:aggregatelinks_list+' => 'Liste de tous les agrégats de liens attachés à ce VLAN',
 ));
 
 //

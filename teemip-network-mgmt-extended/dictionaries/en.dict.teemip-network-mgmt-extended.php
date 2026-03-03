@@ -1,6 +1,6 @@
 <?php
 /*
- * @copyright   Copyright (C) 2010-2025 TeemIp
+ * @copyright   Copyright (C) 2010-2026 TeemIp
  * @license     http://opensource.org/licenses/AGPL-3.0
  */
 
@@ -573,6 +573,71 @@ Dict::Add('EN US', 'English', 'English', array(
     'Class:NetworkModuleType/Attribute:networkmodules_list' => 'Network modules',
     'Class:NetworkModuleType/Attribute:networkmodules_list+' => 'List of all network modules of this type',
     'NetworkModuleType:Overview:NetworkModules' => 'List of all network modules of this type',
+));
+
+//
+// Class: VPNLink
+//
+Dict::Add('EN US', 'English', 'English', aEntries: array(
+    'Class:VPNLink' => 'VPN Link',
+    'Class:VPNLink+' => '',
+    'Class:VPNLink:baseinfo' => 'General information',
+    'Class:VPNLink:admininfo' => 'Administrative information',
+    'Class:VPNLink:locationinfo' => 'End points',
+    'Class:VPNLink:networkinfo' => 'Network information',
+    'Class:VPNLink:dateinfo' => 'Date information',
+    'Class:VPNLink/Attribute:status' => 'Status',
+    'Class:VPNLink/Attribute:status+' => '',
+    'Class:VPNLink/Attribute:remote_org_id' => 'Remote organization',
+    'Class:VPNLink/Attribute:remote_org_id+' => 'Organization of that the remote location belongs to',
+    'Class:VPNLink/Attribute:local_location_id' => 'Local location',
+    'Class:VPNLink/Attribute:local_location_id+' => 'Location at the local end of the link',
+    'Class:VPNLink/Attribute:remote_location_id' => 'Remote Location',
+    'Class:VPNLink/Attribute:remote_location_id+' => 'Location at the remote end of the link',
+    'Class:VPNLink/Attribute:local_device_id' => 'Local device',
+    'Class:VPNLink/Attribute:local_device_id+' => 'Datacenter device at the local end of the link',
+    'Class:VPNLink/Attribute:remote_device_id' => 'Remote device',
+    'Class:VPNLink/Attribute:remote_device_id+' => 'Connectable CI at the remote end of the link',
+    'Class:VPNLink/Attribute:type' => 'VPN Type',
+    'Class:VPNLink/Attribute:type+' => '',
+    'Class:VPNLink/Attribute:type/Value:remote_access' => 'Remote access',
+    'Class:VPNLink/Attribute:type/Value:remote_access+' => '',
+    'Class:VPNLink/Attribute:type/Value:site_to_site' => 'Site to site',
+    'Class:VPNLink/Attribute:type/Value:site_to_site+' => '',
+    'Class:VPNLink/Attribute:reference' => 'Reference',
+    'Class:VPNLink/Attribute:reference+' => '',
+    'Class:VPNLink/Attribute:purchase_date' => 'Order date',
+    'Class:VPNLink/Attribute:purchase_date+' => '',
+    'Class:VPNLink/Attribute:renewal_date' => 'Renewal date',
+    'Class:VPNLink/Attribute:renewal_date+' => '',
+    'Class:VPNLink/Attribute:decommissioning_date' => 'Decommissioning Date',
+    'Class:VPNLink/Attribute:decommissioning_date+' => '',
+    'Class:VPNLink/Attribute:srcsubnet_id' => 'Source subnet',
+    'Class:VPNLink/Attribute:srcsubnet_id+' => '',
+    'Class:VPNLink/Attribute:destsubnet_id' => 'Destination subnet',
+    'Class:VPNLink/Attribute:destsubnet_id+' => '',
+    'Class:VPNLink/Attribute:protocol_id' => 'Protocol',
+    'Class:VPNLink/Attribute:protocol_id+' => '',
+    'Class:VPNLink/Attribute:encryption' => 'Encryption',
+    'Class:VPNLink/Attribute:encryption+' => '',
+    'Class:VPNLink/Attribute:encryption/Value:des3' => '3DES',
+    'Class:VPNLink/Attribute:encryption/Value:des3+' => '',
+    'Class:VPNLink/Attribute:encryption/Value:aes128' => 'AES-128',
+    'Class:VPNLink/Attribute:encryption/Value:aes128+' => '',
+    'Class:VPNLink/Attribute:encryption/Value:aes256' => 'AES-256',
+    'Class:VPNLink/Attribute:encryption/Value:aes256+' => '',
+));
+
+//
+// Class: VPNProtocol
+//
+Dict::Add('EN US', 'English', 'English', array(
+    'Class:VPNProtocol' => 'VPN Protocol',
+    'Class:VPNProtocol+' => '',
+    'Class:VPNProtocol/Attribute:description' => 'Description',
+    'Class:VPNProtocol/Attribute:description+' => '',
+    'Class:VPNProtocol/Attribute:vpnlinks_list' => 'VPN Links',
+    'Class:VPNProtocol/Attribute:vpnlinks_list+' => 'All VPN links using that protocol',
 ));
 
 //

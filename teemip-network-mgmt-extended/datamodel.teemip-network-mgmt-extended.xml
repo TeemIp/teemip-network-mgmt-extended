@@ -3922,9 +3922,8 @@
           <target_attcode>name</target_attcode>
         </field>
         <field id="local_device_id" xsi:type="AttributeExternalKey">
-          <filter><![CDATA[SELECT DatacenterDevice AS d WHERE d.org_id = :this->org_id AND d.location_id = :this->local_location_id]]></filter>
+          <filter><![CDATA[SELECT DatacenterDevice AS d WHERE d.location_id = :this->local_location_id]]></filter>
           <dependencies>
-            <attribute id="org_id"/>
             <attribute id="local_location_id"/>
           </dependencies>
           <sql>local_device_id</sql>
@@ -3963,7 +3962,7 @@
           <target_attcode>name</target_attcode>
         </field>
         <field id="remote_device_id" xsi:type="AttributeExternalKey">
-          <filter><![CDATA[SELECT ConnectableCI AS d WHERE d.org_id = :this->remote_org_id AND d.location_id = :this->remote_location_id]]></filter>
+          <filter><![CDATA[SELECT ConnectableCI AS d WHERE d.location_id = :this->remote_location_id]]></filter>
           <dependencies>
             <attribute id="remote_location_id"/>
           </dependencies>

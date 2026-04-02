@@ -6,7 +6,7 @@
 
 SetupWebPage::AddModule(
 	__FILE__, // Path to the current file, all other file names are relative to the directory containing this file
-	'teemip-bridge-virtualization-network-extended/3.2.1-dev',
+	'teemip-bridge-virtualization-network-extended/3.2.1',
 	array(
 		// Identification
 		//
@@ -16,7 +16,7 @@ SetupWebPage::AddModule(
 		// Setup
 		//
 		'dependencies' => array(
-			'teemip-virtualization-mgmt-adaptor/3.2.0',
+			'teemip-virtualization-mgmt-adaptor/3.2.2',
 			'teemip-network-mgmt-extended/3.2.1',
 		),
 		'mandatory' => false,

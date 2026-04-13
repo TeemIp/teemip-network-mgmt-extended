@@ -1,10 +1,10 @@
-# ![](https://wiki.teemip.net/lib/exe/fetch.php?media=extensions:picto_networkmanagementextended.png) TeemIp Network Management Extended
+# ![](https://wiki.teemip.net/lib/exe/fetch.php?media=extensions:picto_networkmanagementextended.png) teemIP Network Management Extended
 
-TeemIp extension that provides advanced classes for network management.
+teemIP extension that provides advanced classes for network management.
 
 ## Description
 
-With TeemIp Network Management Extended:
+With teemIP Network Management Extended:
 
 - Group interfaces together through Aggregate Links,
 - Manage high availability, high performance or load balancing clusters,
@@ -13,7 +13,7 @@ With TeemIp Network Management Extended:
 
 ## Documentation
 
-Comprehensive documentation can be found on TeemIp’s [wiki][1], namely in the chapter dedicated to the extension:
+Comprehensive documentation can be found on teemIP’s [wiki][1], namely in the chapter dedicated to the extension:
 
 [Network Management Extended][2]
 

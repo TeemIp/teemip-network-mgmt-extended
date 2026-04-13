@@ -7,6 +7,7 @@ teemIP extension that provides advanced classes for network management.
 With teemIP Network Management Extended:
 
 - Group interfaces together through Aggregate Links,
+- Document your VPN Links,
 - Manage high availability, high performance or load balancing clusters,
 - Attach components like power supplies, management boards… to network devices,
 - Add topological object to manage speeds, layer 2 protocols and connectors on your IP Interfaces.

@@ -509,18 +509,18 @@
                     </item>
                   </items>
                 </item>
+                <item id="fieldset:Class:IPInterface:l1info" _delta="merge">
+                  <rank _delta="define_if_not_exists">20</rank>
+                  <items>
+                    <item id="interfaceconnector_id" _delta="define">
+                      <rank>10</rank>
+                    </item>
+                    <item id="networkmodule_id" _delta="define">
+                      <rank>12</rank>
+                    </item>
+                  </items>
+                </item>
               </items>
-              <item id="fieldset:Class:IPInterface:l1info" _delta="merge">
-                <rank _delta="define_if_not_exists">20</rank>
-                <items>
-                  <item id="interfaceconnector_id" _delta="define">
-                    <rank>10</rank>
-                  </item>
-                  <item id="networkmodule_id" _delta="define">
-                    <rank>12</rank>
-                  </item>
-                </items>
-              </item>
             </item>
             <item id="col:col2" _delta="must_exist">
               <items>
@@ -1521,6 +1521,7 @@
           <count_min>0</count_min>
           <count_max>0</count_max>
           <ext_key_to_remote>vrf_id</ext_key_to_remote>
+          <display_style>property</display_style>
           <duplicates/>
         </field>
       </fields>
@@ -1636,14 +1637,8 @@
             <item id="vlans_list">
               <rank>10</rank>
             </item>
-            <item id="vrfs_list">
-              <rank>20</rank>
-            </item>
-            <item id="ip_list">
-              <rank>50</rank>
-            </item>
             <item id="col:col1">
-              <rank>60</rank>
+              <rank>20</rank>
               <items>
                 <item id="fieldset:Class:NetworkInterface:baseinfo">
                   <rank>10</rank>
@@ -1665,21 +1660,21 @@
                     </item>
                   </items>
                 </item>
-              </items>
-            </item>
-            <item id="col:col2">
-              <rank>60</rank>
-              <items>
                 <item id="fieldset:Class:AggregateLink:peerinfo">
-                  <rank>10</rank>
+                  <rank>20</rank>
                   <items>
                     <item id="peer_id">
                       <rank>10</rank>
                     </item>
                   </items>
                 </item>
-                <item id="fieldset:Class:NetworkInterface:moreinfo">
-                  <rank>20</rank>
+              </items>
+            </item>
+            <item id="col:col2">
+              <rank>30</rank>
+              <items>
+               <item id="fieldset:Class:IPInterface:l2info">
+                  <rank>10</rank>
                   <items>
                     <item id="macaddress">
                       <rank>10</rank>
@@ -1692,6 +1687,17 @@
                     </item>
                     <item id="mtu">
                       <rank>40</rank>
+                    </item>
+                  </items>
+                </item>
+                <item id="fieldset:Class:IPInterface:l3info">
+                  <rank>20</rank>
+                  <items>
+                    <item id="ip_list">
+                      <rank>20</rank>
+                    </item>
+                    <item id="vrfs_list">
+                      <rank>30</rank>
                     </item>
                   </items>
                 </item>

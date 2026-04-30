@@ -16,10 +16,10 @@ SetupWebPage::AddModule(
 		// Setup
 		//
 		'dependencies' => array(
-			'teemip-framework/3.2.1',
-            'teemip-network-mgmt/3.2.1',
-			'teemip-ip-mgmt/3.2.1',
-			'teemip-config-mgmt-adaptor/3.2.1',
+			'teemip-framework/3.3.0',
+            'teemip-network-mgmt/3.3.0',
+			'teemip-ip-mgmt/3.3.0',
+			'teemip-config-mgmt-adaptor/3.3.0',
 		),
 		'mandatory' => false,
 		'visible' => true,
